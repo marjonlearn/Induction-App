@@ -1,5 +1,10 @@
 /* Marjon Induction App Style Sheet - 2013 */
 
+img {
+    height: auto;
+    max-width: 100%;
+}
+
 /* Choose Page */
 
 #indexHead {
@@ -8,7 +13,18 @@
 
 #headerLogo {
 	width: 48px;
-	height: 89px;
 	margin: 5px auto 0 auto;
 	display: block;
+}
+
+#footerBar {
+	background: none;
+	border: none;
+}
+
+#indexFooterLogo {
+	width: 215px;
+	margin: 0 auto 20px auto;
+	display: block;
+	padding: 0 10px;
 }

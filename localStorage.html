@@ -10,7 +10,7 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script type="text/javascript" src="phonegap.js"></script>
+        <script src="phonegap.js"></script>
 	</head> 
 	
 	<body> 
@@ -21,9 +21,33 @@
 			</div><!-- /header -->
 		
 			<div data-role="content">
-				<p>Welcome to the Marjon Induction app! This app aims to offer you essential advice, whatever stage of your University life you are heading into. Let us know below if you are a brand new Undergraduate or a returning student coming back for more!</p>
-				<a href="#" data-role="button">I'm a new student</a>
-				<a href="#" data-role="button">I'm a returning student</a>	
+            <script>
+				    // Wait for PhoneGap to load
+                //
+                document.addEventListener("deviceready", onDeviceReady, false);
+            
+                // PhoneGap is ready
+                //
+                function onDeviceReady() {
+					
+					// create a new store key for user 
+                    window.localStorage.setItem("user", "1");
+					
+					// return the value
+                    var value = window.localStorage.getItem("user");
+					
+					// alert the value
+					alert(value);
+
+                }
+
+
+    </script>
+  </head>
+  <body>
+    <h1>Example</h1>
+    <p>localStorage</p>
+    <a href="javascript:onDeviceReady();">test storage</a>
 			</div><!-- /content -->
 			
 			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">
