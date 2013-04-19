@@ -1,8 +1,23 @@
 /* Marjon Induction App Style Sheet - 2013 */
 
+/* Global */
+
 img {
     height: auto;
     max-width: 100%;
+}
+
+#regHead {
+}
+
+#menuBtn .ui-btn-inner {
+	padding: 0;
+}
+
+#menuBtn img {
+	width: 21px;
+	height: 21px;
+	padding: 3.5px 8px;
 }
 
 /* Choose Page */
