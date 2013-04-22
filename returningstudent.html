@@ -4,11 +4,11 @@
 		<title>Marjon Induction - Returning Student</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
 		<link rel="stylesheet" href="css/induction_theme.css" />
 		<link rel="stylesheet" href="css/custom_style.css" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 		<script src="phonegap.js"></script>
 		<!--<script src="scripts/jquery.ui.map.js"></script>-->
@@ -35,6 +35,9 @@
 	
 	<body> 
 		<div data-role="page" data-theme="a" id="returningstudent">
+			<div data-role="panel" id="menuPanel">
+				<!-- panel content goes here -->
+			</div><!-- /panel -->
 		
 			<div data-role="header" id="regHead">
 				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
@@ -42,6 +45,37 @@
 			</div><!-- /header -->
 		
 			<div data-role="content">
+				<script>
+					$(function() {			
+					$("#menuBtn").click(function() {
+							// update panel with extenal menu contents
+							
+							$("#menuPanel").load('returningStudentMenu.html', function () {
+							$(this).trigger('create');
+							$("#menuPanel").panel("open");
+							$( "menuPanel" ).panel( "option", "swipeClose", true );
+						});
+					}
+					);
+					});			
+								// Wait for PhoneGap to load
+							//
+							document.addEventListener("deviceready", onDeviceReady, false);
+						
+							// PhoneGap is ready
+							//
+							function onDeviceReady() {
+								
+								// create a new store key for user 
+								window.localStorage.setItem("user", "1");
+								
+								// return the value
+								var value = window.localStorage.getItem("user");
+								
+								// alert the value
+								alert(value);
+							}
+   				 </script>
 				<p>I'm returning!</p>	
 			</div><!-- /content -->
 			

@@ -14,20 +14,20 @@
 /* A
 -----------------------------------------------------------------------------------------------------------*/
 .ui-bar-a {
-	border: 1px solid #b3b3b3 /*{a-bar-border}*/;
-	background: #2b2b2b /*{a-bar-background-color}*/;
-	color: #fafafa /*{a-bar-color}*/;
+	border: 1px solid #8fc400 /*{a-bar-border}*/;
+	background: #8FC400 /*{a-bar-background-color}*/;
+	color: #2f3e46 /*{a-bar-color}*/;
 	font-weight: bold;
-	text-shadow: 0 /*{a-bar-shadow-x}*/ 1px /*{a-bar-shadow-y}*/ 0 /*{a-bar-shadow-radius}*/ #3b3b3b /*{a-bar-shadow-color}*/;
-	background-image: -webkit-gradient(linear, left top, left bottom, from( #525252 /*{a-bar-background-start}*/), to( #000000 /*{a-bar-background-end}*/)); /* Saf4+, Chrome */
-	background-image: -webkit-linear-gradient( #525252 /*{a-bar-background-start}*/, #000000 /*{a-bar-background-end}*/); /* Chrome 10+, Saf5.1+ */
-	background-image:    -moz-linear-gradient( #525252 /*{a-bar-background-start}*/, #000000 /*{a-bar-background-end}*/); /* FF3.6 */
-	background-image:     -ms-linear-gradient( #525252 /*{a-bar-background-start}*/, #000000 /*{a-bar-background-end}*/); /* IE10 */
-	background-image:      -o-linear-gradient( #525252 /*{a-bar-background-start}*/, #000000 /*{a-bar-background-end}*/); /* Opera 11.10+ */
-	background-image:         linear-gradient( #525252 /*{a-bar-background-start}*/, #000000 /*{a-bar-background-end}*/);
+	text-shadow: 0 /*{a-bar-shadow-x}*/ 1px /*{a-bar-shadow-y}*/ 0 /*{a-bar-shadow-radius}*/ #fff /*{a-bar-shadow-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #c8e280 /*{a-bar-background-start}*/), to( #8fc400 /*{a-bar-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #c8e280 /*{a-bar-background-start}*/, #8fc400 /*{a-bar-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #c8e280 /*{a-bar-background-start}*/, #8fc400 /*{a-bar-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #c8e280 /*{a-bar-background-start}*/, #8fc400 /*{a-bar-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #c8e280 /*{a-bar-background-start}*/, #8fc400 /*{a-bar-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #c8e280 /*{a-bar-background-start}*/, #8fc400 /*{a-bar-background-end}*/);
 }
 .ui-bar-a .ui-link-inherit {
-	color: #fafafa /*{a-bar-color}*/;
+	color: #2f3e46 /*{a-bar-color}*/;
 }
 .ui-bar-a a.ui-link {
 	color: #7cc4e7 /*{a-bar-link-color}*/;
@@ -91,16 +91,16 @@
 }
 .ui-btn-up-a {
 	border: 1px solid #82B400 /*{a-bup-border}*/;
-	background: #C8E280 /*{a-bup-background-color}*/;
+	background: #8FC400 /*{a-bup-background-color}*/;
 	font-weight: bold;
 	color: #2f3e46 /*{a-bup-color}*/;
 	text-shadow: 0 /*{a-bup-shadow-x}*/ 1px /*{a-bup-shadow-y}*/ 0 /*{a-bup-shadow-radius}*/ #ffffff /*{a-bup-shadow-color}*/;
-	background-image: -webkit-gradient(linear, left top, left bottom, from( #c8e280 /*{a-bup-background-start}*/), to( #8FC400 /*{a-bup-background-end}*/)); /* Saf4+, Chrome */
-	background-image: -webkit-linear-gradient( #c8e280 /*{a-bup-background-start}*/, #8FC400 /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
-	background-image:    -moz-linear-gradient( #c8e280 /*{a-bup-background-start}*/, #8FC400 /*{a-bup-background-end}*/); /* FF3.6 */
-	background-image:     -ms-linear-gradient( #c8e280 /*{a-bup-background-start}*/, #8FC400 /*{a-bup-background-end}*/); /* IE10 */
-	background-image:      -o-linear-gradient( #c8e280 /*{a-bup-background-start}*/, #8FC400 /*{a-bup-background-end}*/); /* Opera 11.10+ */
-	background-image:         linear-gradient( #c8e280 /*{a-bup-background-start}*/, #8FC400 /*{a-bup-background-end}*/);
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #c8e280 /*{a-bup-background-start}*/), to( #8fc400 /*{a-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #c8e280 /*{a-bup-background-start}*/, #8fc400 /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #c8e280 /*{a-bup-background-start}*/, #8fc400 /*{a-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #c8e280 /*{a-bup-background-start}*/, #8fc400 /*{a-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #c8e280 /*{a-bup-background-start}*/, #8fc400 /*{a-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #c8e280 /*{a-bup-background-start}*/, #8fc400 /*{a-bup-background-end}*/);
 }
 .ui-btn-up-a:visited,
 .ui-btn-up-a a.ui-link-inherit {
@@ -793,4 +793,3 @@ a.ui-link-inherit {
 	outline-width: 1px;
 	outline-style: auto;
 }
-			
