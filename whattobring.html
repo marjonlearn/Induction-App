@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head> 
-		<title>Marjon Induction - Returning Student</title>
+		<title>Marjon Induction - What to Bring</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
@@ -34,14 +34,14 @@
 	</head> 
 	
 	<body> 
-		<div data-role="page" data-theme="a" id="returningstudent">
+		<div data-role="page" data-theme="a" id="newstudent">
 			<div data-role="panel" id="menuPanel">
 				<!-- panel content goes here -->
 			</div><!-- /panel -->
 		
 			<div data-role="header" id="regHead">
 				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
-				<h1>Marjon Induction - Returning Students</h1>
+				<h1>What to bring</h1>
 			</div><!-- /header -->
 		
 			<div data-role="content">
@@ -50,7 +50,7 @@
 					$("#menuBtn").click(function() {
 							// update panel with extenal menu contents
 							
-							$("#menuPanel").load('returningStudentMenu.html', function () {
+							$("#menuPanel").load('newStudentMenu.html', function () {
 							$(this).trigger('create');
 							$("#menuPanel").panel("open");
 							$( "menuPanel" ).panel( "option", "swipeClose", true );
@@ -75,9 +75,30 @@
 								// alert the value
 								alert(value);
 							}
-   				 </script>
-				 <h2>Welcome back to the University of St. Mark & St. John!</h2>
-				<p>I'm returning!</p>	
+				 </script>
+				<p id="top">There are so many things to think about leading up to University, not to mention various pieces of paperwork for enrolment, accomodation, parking etc.</p>
+				<p>This checklist offers you a definitive list of what you need to have with you when you arrive at Marjon. Check it often and make sure nothing is left at home!</p>
+				<form>
+					<fieldset data-iconpos="right">
+						<legend>What you need to bring for registration:</legend>
+						<input name="checkbox-h-6a" id="checkbox-h-6a" type="checkbox" data-theme="b">
+						<label for="checkbox-h-6a">One</label>
+						<input name="checkbox-h-6b" id="checkbox-h-6b" type="checkbox" data-theme="b">
+						<label for="checkbox-h-6b">Two</label>
+						<input name="checkbox-h-6c" id="checkbox-h-6c" type="checkbox" data-theme="b">
+						<label for="checkbox-h-6c">Three</label>
+					</fieldset>
+					
+					<fieldset data-iconpos="right">
+						<legend>What you need to bring for campus accommodation:</legend>
+						<input name="checkbox-h-6a" id="checkbox-h-6a" type="checkbox" data-theme="b">
+						<label for="checkbox-h-6a">One</label>
+						<input name="checkbox-h-6b" id="checkbox-h-6b" type="checkbox" data-theme="b">
+						<label for="checkbox-h-6b">Two</label>
+						<input name="checkbox-h-6c" id="checkbox-h-6c" type="checkbox" data-theme="b">
+						<label for="checkbox-h-6c">Three</label>
+					</fieldset>
+				</form>
 			</div><!-- /content -->
 			
 			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">

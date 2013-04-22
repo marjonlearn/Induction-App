@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head> 
+		<title>Marjon Induction</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+		<link rel="stylesheet" href="css/induction_theme.css" />
+		<link rel="stylesheet" href="css/custom_style.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src="phonegap.js"></script>
+		<!--<script src="scripts/jquery.ui.map.js"></script>-->
+	</head> 
+	
+	<body> 
+    <script>
+	$(function() {
+	$("#saveData").click(function(e) {
+	// Bit of generic data to test if saved data exists on page load
+	localStorage.setItem("flag", "set");	
+		// Bit of generic data to test if saved data exists on page load
+				localStorage.setItem("flag", "set");
+				
+				// serializeArray is awesome and powerful
+				var data = $("#testCheck").serializeArray();
+				
+				
+				var searializedObj = {}
+				 $("#testCheck input:checkbox").each(function(){
+				searializedObj[this.name] = this.checked;
+				});
+						
+				// iterate over results
+				$.each(data, function(i, obj) {
+					// HTML5 magic!!
+					localStorage.setItem(obj.name, obj.value);
+		});	
+    
+ });
+  
+  // Test if there is already saved data	
+		if (localStorage.getItem("flag") == "set") {
+		
+			// Tell the user
+			$("#checkMessage").before("<p id='message'>This form has saved data!</p>");
+			
+			// Same iteration stuff as before
+			var data = $("#testCheck").serializeArray();
+			
+			// Only the only way we can select is by the name attribute, but jQuery is down with that.
+			$.each(data, function(i, obj) {
+				console.log("test");				  
+				$("[name='" + obj.name +"']").val(localStorage.getItem(obj.name));
+			});
+			
+		}
+		
+		// Provide mechanism to remove data. You'd probably actually remove it not just kill the flag
+		$("#clearData")
+			.click(function(e) {
+				
+				e.preventDefault();
+				
+				localStorage.setItem("flag", "");
+				
+			});
+		
+	});
+	
+	
+
+	</script>
+		<div data-role="page" data-theme="a" id="checkListTest">
+		
+			<div data-role="header" id="regHead">
+				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
+				<h1>Marjon Induction</h1>
+			</div><!-- /header -->
+		
+			<div data-role="content">
+				<p id="checkMessage">This is a test of the induxtion app checklist functionality. The idea being students can tick stuff off which is remembered after the app is closed.</p>
+				<form id="testCheck" name="testCheck">
+                   <fieldset data-role="controlgroup">
+                    <legend>Registration Checklist:</legend>
+                    <input type="checkbox" name="checkbox-1a" id="checkbox-1a">
+                    <label for="checkbox-1a">Passport</label>
+                    <input type="checkbox" name="checkbox-2a" id="checkbox-2a">
+                    <label for="checkbox-2a">Welcome Letter</label>
+                    <input type="checkbox" name="checkbox-3a" id="checkbox-3a">
+                    <label for="checkbox-3a">Finance Agreement</label>
+                    <input type="checkbox" name="checkbox-4a" id="checkbox-4a">
+                    <label for="checkbox-4a">Document X</label>
+                </fieldset>   
+                </form>
+                <input type="button" value="Save Form" data-theme="b" id="saveData">
+                <input type="button" value="Clear Form" data-theme="b" id="clearData">
+			</div><!-- /content -->
+			
+			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">
+				<img src="images/indented_marjon_logo.png" alt="The University of St. Mark &amp; St. John" id="indexFooterLogo" />
+			</div><!-- /footer -->
+		
+		</div><!-- /page -->
+	</body>
+	
+</html>

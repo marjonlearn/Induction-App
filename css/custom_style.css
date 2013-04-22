@@ -25,10 +25,18 @@ img {
 	padding: 3.5px 8px;
 }
 
+p#top {
+	margin-top: 0;
+}
+
 /* Global Overwrites */
 
 .ui-body-a, .ui-overlay-a {
     border: none;
+}
+
+.ui-content h2 {
+	margin: 0;
 }
 
 /* Choose Page */
