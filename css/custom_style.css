@@ -201,6 +201,10 @@ p#top {
 
 /* ///////////////// */
 
+#checkGroup .ui-grid-a {
+	margin-bottom: 2px;
+}
+
 #checkGroup .ui-grid-a .ui-bar, #checkGroup .ui-grid-b .ui-bar {
 	border: none;
 	background: none;
