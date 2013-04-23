@@ -36,7 +36,7 @@
 	<body> 
 		<div data-role="page" data-theme="a" id="newstudent">
 			<div data-role="panel" id="menuPanel">
-				<!-- panel content goes here -->
+				<!-- panel content goes here -->test
 			</div><!-- /panel -->
 		
 			<div data-role="header" id="regHead">
@@ -49,7 +49,7 @@
 					$(function() {			
 					$("#menuBtn").click(function() {
 							// update panel with extenal menu contents
-							
+							alert("click");
 							$("#menuPanel").load('newStudentMenu.html', function () {
 							$(this).trigger('create');
 							$("#menuPanel").panel("open");
@@ -73,7 +73,7 @@
 								var value = window.localStorage.getItem("user");
 								
 								// alert the value
-								alert(value);
+								//alert(value);
 							}
    				 </script>
 				 <h2>Welcome to the University of St. Mark & St. John!</h2>

@@ -205,6 +205,14 @@ p#top {
 	margin-bottom: 2px;
 }
 
+#checkGroup #accomoCollapse .ui-btn-icon-left .ui-icon {
+    left: 17px;
+}
+
+#checkGroup .ui-checkbox .ui-btn-icon-left .ui-btn-inner, #checkGroup .ui-collapsible-heading .ui-btn-icon-left .ui-btn-inner {
+    padding-left: 50px;
+}
+
 #checkGroup .ui-grid-a .ui-bar, #checkGroup .ui-grid-b .ui-bar {
 	border: none;
 	background: none;
