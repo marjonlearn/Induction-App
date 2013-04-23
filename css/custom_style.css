@@ -39,6 +39,10 @@ p#top {
 	margin: 0;
 }
 
+.ui-icon-checkbox-on {
+    background-position: -648px 0;
+}
+
 /* Choose Page */
 
 #indexHead {
@@ -183,4 +187,94 @@ p#top {
 	background: url(../images/ui/panelHelpIcon.png) no-repeat right;
 	background-position: 93% 50%;
 	background-size: 30px, 30px;
+}
+
+/* What to Bring page */
+
+#accomoCollapse .ui-collapsible-content {
+	padding: 0;
+}
+
+#accomoCollapse .ui-controlgroup {
+	margin: 0;
+}
+
+#checkGroup .checkSection {
+	padding: 0;
+}
+
+#checkGroup .checkSection label {
+	margin: 0;
+}
+
+#checkGroup .helpTip {
+	background: url(../images/ui/greenHelpIcon.png) no-repeat center;
+	background-size: 30px, 30px;
+	border: none;
+	float: right;
+}
+
+#checkGroup .ui-controlgroup-controls {
+	width: 100%;
+}
+
+#checkGroup .ui-controlgroup-horizontal .helpItem .ui-checkbox .ui-icon {
+    display: none;
+}
+
+#checkGroup .checkItem {
+}
+
+#checkGroup .checkItem .ui-checkbox {
+	width: 100%;
+	position: absolute;
+	float: left;
+}
+
+#checkGroup .helpItem .ui-checkbox {
+	width: 50px;
+	position: relative;
+	float: right;
+}
+
+/* ///////////////// */
+
+#checkGroup .ui-grid-a .ui-bar, #checkGroup .ui-grid-b .ui-bar {
+	border: none;
+	background: none;
+	padding: 0;
+}
+
+#checkGroup .ui-grid-a .ui-bar label, #checkGroup .ui-grid-b .ui-bar label {
+	margin: 0;
+}
+
+#checkGroup .ui-block-a {
+	width: 80%;
+}
+
+#checkGroup .ui-block-a .ui-checkbox .ui-icon {
+	display: block;
+	border: 2px solid #92C508;
+	top: 17px;
+}
+
+#checkGroup .ui-block-b {
+	width: 20%;
+}
+
+#checkGroup .ui-block-b a {
+	margin: 0;
+	height: 41px;
+	width: 41px;
+}
+
+#checkGroup .ui-block-b img {
+	height: 20px;
+	width: 20px;
+	padding: 9px;
+}
+
+#checkGroup .ui-block-b .ui-btn-inner {
+	padding: 0;
 }

@@ -15,65 +15,45 @@
 	</head> 
 	
 	<body> 
-    <script>
-	$(function() {
-	$("#saveData").click(function(e) {
-	// Bit of generic data to test if saved data exists on page load
-	localStorage.setItem("flag", "set");	
-		// Bit of generic data to test if saved data exists on page load
-				localStorage.setItem("flag", "set");
-				
-				// serializeArray is awesome and powerful
-				var data = $("#testCheck").serializeArray();
-				
-				
-				var searializedObj = {}
-				 $("#testCheck input:checkbox").each(function(){
-				searializedObj[this.name] = this.checked;
-				});
-						
-				// iterate over results
-				$.each(data, function(i, obj) {
-					// HTML5 magic!!
-					localStorage.setItem(obj.name, obj.value);
-		});	
-    
- });
-  
-  // Test if there is already saved data	
-		if (localStorage.getItem("flag") == "set") {
-		
-			// Tell the user
-			$("#checkMessage").before("<p id='message'>This form has saved data!</p>");
-			
-			// Same iteration stuff as before
-			var data = $("#testCheck").serializeArray();
-			
-			// Only the only way we can select is by the name attribute, but jQuery is down with that.
-			$.each(data, function(i, obj) {
-				console.log("test");				  
-				$("[name='" + obj.name +"']").val(localStorage.getItem(obj.name));
-			});
-			
-		}
-		
-		// Provide mechanism to remove data. You'd probably actually remove it not just kill the flag
-		$("#clearData")
-			.click(function(e) {
-				
-				e.preventDefault();
-				
-				localStorage.setItem("flag", "");
-				
-			});
-		
-	});
-	
-	
 
-	</script>
 		<div data-role="page" data-theme="a" id="checkListTest">
-		
+			<script>
+            $(function() {
+            
+                // detect when a checkbox is changed and save the form to localStorage
+                $("input[type='checkbox']").bind( "change", function(event, ui) {
+                
+                    // set a flag so device knows data is saved
+                    localStorage.setItem("checkflag", "set");
+            
+                    // loop through the form and save checkbox values to localStorage
+                    $("#testCheck").find(':input').each(function(i){
+                        var theKey = $(this).attr('name');	
+                        var theVal = $(this).is(":checked");
+                        localStorage.setItem(theKey, theVal);
+                    });
+                });
+                            
+                // Test if there is already saved data	
+                if (localStorage.getItem("checkflag") == "set") {
+                        
+                        // loop through the form and update checkbox values from localStorage
+                        $("#testCheck").find(':input').each(function(i){
+                            var theKey = $(this).attr('name');	
+                            var theVal = localStorage.getItem(theKey);
+                           if (theVal == "false") {
+                                $("[name='" + theKey +"']").attr('checked', false);
+                                $("[name='" + theKey +"']").attr('checked', false).checkboxradio("refresh");
+                                
+                            } else {
+                                $("[name='" + theKey +"']").attr('checked', true);
+                                $("[name='" + theKey +"']").attr('checked', true).checkboxradio("refresh");
+                            }
+                        });
+                }		
+            });
+            
+            </script>		
 			<div data-role="header" id="regHead">
 				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
 				<h1>Marjon Induction</h1>
@@ -88,14 +68,19 @@
                     <label for="checkbox-1a">Passport</label>
                     <input type="checkbox" name="checkbox-2a" id="checkbox-2a">
                     <label for="checkbox-2a">Welcome Letter</label>
-                    <input type="checkbox" name="checkbox-3a" id="checkbox-3a">
-                    <label for="checkbox-3a">Finance Agreement</label>
+                    
                     <input type="checkbox" name="checkbox-4a" id="checkbox-4a">
                     <label for="checkbox-4a">Document X</label>
                 </fieldset>   
+                
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                    <input type="checkbox" name="checkbox-3a" id="checkbox-3a">
+                    <label for="checkbox-3a">Finance Agreement</label>
+                    <input type="checkbox" name="checkbox-3b" id="checkbox-3b">
+                    <label for="checkbox-3b">?</label>
+                    </fieldset>
                 </form>
-                <input type="button" value="Save Form" data-theme="b" id="saveData">
-                <input type="button" value="Clear Form" data-theme="b" id="clearData">
+               
 			</div><!-- /content -->
 			
 			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">

@@ -78,27 +78,104 @@
 				 </script>
 				<p id="top">There are so many things to think about leading up to University, not to mention various pieces of paperwork for enrolment, accomodation, parking etc.</p>
 				<p>This checklist offers you a definitive list of what you need to have with you when you arrive at Marjon. Check it often and make sure nothing is left at home!</p>
-				<form>
-					<fieldset data-iconpos="right">
-						<legend>What you need to bring for registration:</legend>
-						<input name="checkbox-h-6a" id="checkbox-h-6a" type="checkbox" data-theme="b">
-						<label for="checkbox-h-6a">One</label>
-						<input name="checkbox-h-6b" id="checkbox-h-6b" type="checkbox" data-theme="b">
-						<label for="checkbox-h-6b">Two</label>
-						<input name="checkbox-h-6c" id="checkbox-h-6c" type="checkbox" data-theme="b">
-						<label for="checkbox-h-6c">Three</label>
-					</fieldset>
-					
-					<fieldset data-iconpos="right">
-						<legend>What you need to bring for campus accommodation:</legend>
-						<input name="checkbox-h-6a" id="checkbox-h-6a" type="checkbox" data-theme="b">
-						<label for="checkbox-h-6a">One</label>
-						<input name="checkbox-h-6b" id="checkbox-h-6b" type="checkbox" data-theme="b">
-						<label for="checkbox-h-6b">Two</label>
-						<input name="checkbox-h-6c" id="checkbox-h-6c" type="checkbox" data-theme="b">
-						<label for="checkbox-h-6c">Three</label>
+				
+				<div id="checkGroup">
+				
+				<!--<form>
+					<fieldset data-role="controlgroup" data-type="horizontal">
+						<legend>Horizontal:</legend>
+						<span class="checkItem">
+						<input name="enrolCheck1" id="enrolCheck1" type="checkbox" data-theme="b" style="width:100%;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing: border-box;">
+						<label for="enrolCheck1">One</label>
+						</span>
+						
+						<span class="helpItem">
+						<input name="enrolHelp1" id="enrolHelp1" type="checkbox" data-theme="b">
+						<label for="enrolHelp1">?</label>
+						</span>
 					</fieldset>
 				</form>
+				
+				<form>
+					<fieldset data-role="controlgroup" data-type="horizontal">
+						<span class="checkItem">
+						<input name="enrolCheck1" id="enrolCheck1" type="checkbox" data-theme="b" style="width:100%;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing: border-box;">
+						<label for="enrolCheck1">One</label>
+						</span>
+						
+						<span class="helpItem">
+						<input name="enrolHelp1" id="enrolHelp1" type="checkbox" data-theme="b">
+						<label for="enrolHelp1">?</label>
+						</span>
+					</fieldset>
+				</form>-->
+				
+				<div class="ui-grid-a"><!-- Item 1 -->
+					<div class="ui-block-a"><div class="ui-bar ui-bar-e" style="height:60px">
+						<form>
+							<label>
+								<input name="checkbox-0 " type="checkbox" data-theme="b">Photo ID
+							</label>
+						</form>
+					</div></div>
+					<div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:60px">
+						<a data-theme="a" href="#popupInfo" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop" data-theme="e"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
+						<div data-role="popup" id="popupInfo" class="ui-content" data-theme="e" style="max-width:350px;">
+							<p>Here is a <strong>tiny popup</strong> being used like a tooltip. The text will wrap to multiple lines as needed.</p>
+						</div>
+						</div>
+					</div>
+				</div><!-- /grid-a -->
+				
+				<div class="ui-grid-a"><!-- Item 2 -->
+					<div class="ui-block-a"><div class="ui-bar ui-bar-e" style="height:60px">
+						<form>
+							<label>
+								<input name="checkbox-0 " type="checkbox" data-theme="b">Welcome Letter
+							</label>
+						</form>
+					</div></div>
+					<div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:60px">
+						<a data-theme="a" href="#popupInfo" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop" data-theme="e"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
+						<div data-role="popup" id="popupInfo" class="ui-content" data-theme="e" style="max-width:350px;">
+							<p>Here is a <strong>tiny popup</strong> being used like a tooltip. The text will wrap to multiple lines as needed.</p>
+						</div>
+						</div>
+					</div>
+				</div><!-- /grid-a -->
+				
+				<div class="ui-grid-a"><!-- Item 3 -->
+					<div class="ui-block-a"><div class="ui-bar ui-bar-e" style="height:60px">
+						<form>
+							<label>
+								<input name="checkbox-0 " type="checkbox" data-theme="b">Student Finance Letter
+							</label>
+						</form>
+					</div></div>
+					<div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:60px">
+						<a data-theme="a" href="#popupInfo" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop" data-theme="e"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
+						<div data-role="popup" id="popupInfo" class="ui-content" data-theme="e" style="max-width:350px;">
+							<p>Here is a <strong>tiny popup</strong> being used like a tooltip. The text will wrap to multiple lines as needed.</p>
+						</div>
+						</div>
+					</div>
+				</div><!-- /grid-a -->
+				
+					
+					<div data-role="collapsible" id="accomoCollapse">	
+						<h4>What you need to bring for campus accommodation:</h4>
+						<form>	
+							<fieldset data-role="controlgroup" data-iconpos="right">
+								<input name="checkbox-h-6a" id="checkbox-h-6a" type="checkbox" data-theme="b" class="checkBox">
+								<label for="checkbox-h-6a">One</label>
+								<input name="checkbox-h-6b" id="checkbox-h-6b" type="checkbox" data-theme="b" class="checkBox">
+								<label for="checkbox-h-6b">Two</label>
+								<input name="checkbox-h-6c" id="checkbox-h-6c" type="checkbox" data-theme="b" class="checkBox">
+								<label for="checkbox-h-6c">Three</label>
+							</fieldset>
+						</form>
+					</div>
+				</div>		
 			</div><!-- /content -->
 			
 			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">
