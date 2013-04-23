@@ -199,44 +199,6 @@ p#top {
 	margin: 0;
 }
 
-#checkGroup .checkSection {
-	padding: 0;
-}
-
-#checkGroup .checkSection label {
-	margin: 0;
-}
-
-#checkGroup .helpTip {
-	background: url(../images/ui/greenHelpIcon.png) no-repeat center;
-	background-size: 30px, 30px;
-	border: none;
-	float: right;
-}
-
-#checkGroup .ui-controlgroup-controls {
-	width: 100%;
-}
-
-#checkGroup .ui-controlgroup-horizontal .helpItem .ui-checkbox .ui-icon {
-    display: none;
-}
-
-#checkGroup .checkItem {
-}
-
-#checkGroup .checkItem .ui-checkbox {
-	width: 100%;
-	position: absolute;
-	float: left;
-}
-
-#checkGroup .helpItem .ui-checkbox {
-	width: 50px;
-	position: relative;
-	float: right;
-}
-
 /* ///////////////// */
 
 #checkGroup .ui-grid-a .ui-bar, #checkGroup .ui-grid-b .ui-bar {
@@ -250,7 +212,7 @@ p#top {
 }
 
 #checkGroup .ui-block-a {
-	width: 80%;
+	width: 100%;
 }
 
 #checkGroup .ui-block-a .ui-checkbox .ui-icon {
@@ -260,12 +222,15 @@ p#top {
 }
 
 #checkGroup .ui-block-b {
-	width: 20%;
+	position: absolute;
+    right: 14px;
+    width: 45px;
+    z-index: 2;
 }
 
 #checkGroup .ui-block-b a {
 	margin: 0;
-	height: 41px;
+	height: 40.5px;
 	width: 41px;
 }
 
