@@ -42,6 +42,14 @@ p#top {
 	cursor: pointer;
 }
 
+h3 {
+	margin: 0;
+}
+
+.contentContainer {
+	padding: 15px;
+}
+
 /* Global Overwrites */
 
 .ui-body-a, .ui-overlay-a {
@@ -58,6 +66,22 @@ p#top {
 
 .ui-body-b, .ui-overlay-b {
     border: 1px solid #90C501;
+}
+
+.ui-content {
+    padding: 0;
+}
+
+.ui-loading .ui-loader {
+    border-radius: 2em;
+}
+
+.ui-popup.ui-content, .ui-popup .ui-content {
+    padding: 15px;
+}
+
+.ui-bar, .ui-body {
+    padding: 0.4em;
 }
 
 /* Choose Page */
@@ -208,11 +232,11 @@ p#top {
 
 /* What to Bring page */
 
-#accomoCollapse1 .ui-collapsible-content, #accomoCollapse2 .ui-collapsible-content {
+#accomoCollapse0 .ui-collapsible-content, #accomoCollapse1 .ui-collapsible-content, #accomoCollapse2 .ui-collapsible-content {
 	padding: 0;
 }
 
-#accomoCollapse1 .ui-controlgroup, #accomoCollapse2 .ui-controlgroup {
+#accomoCollapse0 .ui-controlgroup, #accomoCollapse1 .ui-controlgroup, #accomoCollapse2 .ui-controlgroup {
 	margin: 0;
 }
 
@@ -222,11 +246,11 @@ p#top {
 	margin-bottom: 2px;
 }
 
-#checkGroup #accomoCollapse1 .ui-btn-icon-left .ui-icon, #checkGroup #accomoCollapse2 .ui-btn-icon-left .ui-icon {
+#checkGroup #accomoCollapse0 .ui-btn-icon-left .ui-icon, #checkGroup #accomoCollapse1 .ui-btn-icon-left .ui-icon, #checkGroup #accomoCollapse2 .ui-btn-icon-left .ui-icon {
     left: 18px;
 }
 
-#checkGroup #accomoCollapse1 .ui-btn-icon-left .ui-icon-checkbox-off, #checkGroup #accomoCollapse1 .ui-btn-icon-left .ui-icon-checkbox-on, #checkGroup #accomoCollapse2 .ui-btn-icon-left .ui-icon-checkbox-off, #checkGroup #accomoCollapse2 .ui-btn-icon-left .ui-icon-checkbox-on {
+#checkGroup #accomoCollapse0 .ui-btn-icon-left .ui-icon-checkbox-off, #checkGroup #accomoCollapse0 .ui-btn-icon-left .ui-icon-checkbox-on, #checkGroup #accomoCollapse1 .ui-btn-icon-left .ui-icon-checkbox-off, #checkGroup #accomoCollapse1 .ui-btn-icon-left .ui-icon-checkbox-on, #checkGroup #accomoCollapse2 .ui-btn-icon-left .ui-icon-checkbox-off, #checkGroup #accomoCollapse2 .ui-btn-icon-left .ui-icon-checkbox-on {
     left: 15px;
 }
 
@@ -276,4 +300,36 @@ p#top {
 
 #checkGroup .ui-block-b .ui-btn-inner {
 	padding: 0;
+}
+
+/* Landing page */
+
+img#landingLogo {
+	margin: 15px auto 0;
+	display: block;
+	height: 150px;
+	width: 150px;
+}
+
+#landingSplash {
+	border-bottom: 5px solid #91C505;
+}
+
+img#menuArrow {
+	width: 150px;
+	border: none;
+	margin: 0 auto;
+	display: block;
+}
+
+img#menuPush, img#menuShow {
+	width: 150px;
+	border: 1px solid #91C505;
+	margin: 0 auto;
+	display: block;
+}
+
+#landingInstruc .ui-bar-e {
+	background: none;
+	border: none;
 }
