@@ -29,6 +29,19 @@ p#top {
 	margin-top: 0;
 }
 
+.popUpHeader {
+	color: #333;
+	border-bottom: 1px solid #999;
+	padding-bottom: 5px;
+}
+
+.closeCross {
+	width: 15px;
+	height: 15px;
+	float: right;
+	cursor: pointer;
+}
+
 /* Global Overwrites */
 
 .ui-body-a, .ui-overlay-a {
@@ -41,6 +54,10 @@ p#top {
 
 .ui-icon-checkbox-on {
     background-position: -648px 0;
+}
+
+.ui-body-b, .ui-overlay-b {
+    border: 1px solid #90C501;
 }
 
 /* Choose Page */
@@ -191,11 +208,11 @@ p#top {
 
 /* What to Bring page */
 
-#accomoCollapse .ui-collapsible-content {
+#accomoCollapse1 .ui-collapsible-content, #accomoCollapse2 .ui-collapsible-content {
 	padding: 0;
 }
 
-#accomoCollapse .ui-controlgroup {
+#accomoCollapse1 .ui-controlgroup, #accomoCollapse2 .ui-controlgroup {
 	margin: 0;
 }
 
@@ -205,8 +222,12 @@ p#top {
 	margin-bottom: 2px;
 }
 
-#checkGroup #accomoCollapse .ui-btn-icon-left .ui-icon {
-    left: 17px;
+#checkGroup #accomoCollapse1 .ui-btn-icon-left .ui-icon, #checkGroup #accomoCollapse2 .ui-btn-icon-left .ui-icon {
+    left: 18px;
+}
+
+#checkGroup #accomoCollapse1 .ui-btn-icon-left .ui-icon-checkbox-off, #checkGroup #accomoCollapse1 .ui-btn-icon-left .ui-icon-checkbox-on, #checkGroup #accomoCollapse2 .ui-btn-icon-left .ui-icon-checkbox-off, #checkGroup #accomoCollapse2 .ui-btn-icon-left .ui-icon-checkbox-on {
+    left: 15px;
 }
 
 #checkGroup .ui-checkbox .ui-btn-icon-left .ui-btn-inner, #checkGroup .ui-collapsible-heading .ui-btn-icon-left .ui-btn-inner {
@@ -225,6 +246,7 @@ p#top {
 
 #checkGroup .ui-block-a {
 	width: 100%;
+	height: 42px;
 }
 
 #checkGroup .ui-block-a .ui-checkbox .ui-icon {
@@ -235,15 +257,15 @@ p#top {
 
 #checkGroup .ui-block-b {
 	position: absolute;
-    right: 14px;
+    right: 13px;
     width: 45px;
     z-index: 2;
 }
 
 #checkGroup .ui-block-b a {
 	margin: 0;
-	height: 40.5px;
-	width: 41px;
+	height: 40px;
+	width: 40px;
 }
 
 #checkGroup .ui-block-b img {

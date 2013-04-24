@@ -34,7 +34,56 @@
 	</head> 
 	
 	<body> 
-		<div data-role="page" data-theme="a" id="newstudent">
+		<div data-role="page" data-theme="a" id="checklist">
+			<script type="text/javascript">
+				$(function() {			
+						$("#menuBtn").click(function() {
+								// update panel with extenal menu contents
+								alert("click");
+								$("#menuPanel").load('./newStudentMenu.html', function () {
+								$(this).trigger('create');
+								$("#menuPanel").panel("open");
+								$( "menuPanel" ).panel( "option", "swipeClose", true );
+							});
+						}
+					);
+				});
+					
+				$(function() {
+				
+					// detect when a checkbox is changed and save the form to localStorage
+					$("input[type='checkbox']").bind( "change", function(event, ui) {
+					
+						// set a flag so device knows data is saved
+						localStorage.setItem("checkflag", "set");
+				
+						// loop through the form and save checkbox values to localStorage
+						$("#checkForm").find(':input').each(function(i){
+							var theKey = $(this).attr('name');	
+							var theVal = $(this).is(":checked");
+							localStorage.setItem(theKey, theVal);
+						});
+					});
+								
+					// Test if there is already saved data	
+					if (localStorage.getItem("checkflag") == "set") {
+							
+							// loop through the form and update checkbox values from localStorage
+							$("#checkForm").find(':input').each(function(i){
+								var theKey = $(this).attr('name');	
+								var theVal = localStorage.getItem(theKey);
+							   if (theVal == "false") {
+									$("[name='" + theKey +"']").attr('checked', false);
+									$("[name='" + theKey +"']").attr('checked', false).checkboxradio("refresh");
+									
+								} else {
+									$("[name='" + theKey +"']").attr('checked', true);
+									$("[name='" + theKey +"']").attr('checked', true).checkboxradio("refresh");
+								}
+							});
+					}		
+				});        
+            </script>
 			<div data-role="panel" id="menuPanel">
 				<!-- panel content goes here -->
 			</div><!-- /panel -->
@@ -45,256 +94,210 @@
 			</div><!-- /header -->
 		
 			<div data-role="content">
-				<script>
-					$(function() {			
-					$("#menuBtn").click(function() {
-							// update panel with extenal menu contents
-							
-							$("#menuPanel").load('newStudentMenu.html', function () {
-							$(this).trigger('create');
-							$("#menuPanel").panel("open");
-							$( "menuPanel" ).panel( "option", "swipeClose", true );
-						});
-					}
-					);
-					});			
-								// Wait for PhoneGap to load
-							//
-							document.addEventListener("deviceready", onDeviceReady, false);
-						
-							// PhoneGap is ready
-							//
-							function onDeviceReady() {
-								
-								// create a new store key for user 
-								window.localStorage.setItem("user", "1");
-								
-								// return the value
-								var value = window.localStorage.getItem("user");
-								
-								// alert the value
-								alert(value);
-							}
-				 </script>
 				<p id="top">There are so many things to think about leading up to University, not to mention various pieces of paperwork for enrolment, accomodation, parking etc.</p>
 				<p>This checklist offers you a definitive list of what you need to have with you when you arrive at Marjon. Check it often and make sure nothing is left at home!</p>
+				<p>The following three items will be required during the enrolment process and it is <strong>vital</strong> that you make sure you bring them with you:</p>
 				
 				<div id="checkGroup">
-				
-				<!--<form>
-					<fieldset data-role="controlgroup" data-type="horizontal">
-						<legend>Horizontal:</legend>
-						<span class="checkItem">
-						<input name="enrolCheck1" id="enrolCheck1" type="checkbox" data-theme="b" style="width:100%;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing: border-box;">
-						<label for="enrolCheck1">One</label>
-						</span>
-						
-						<span class="helpItem">
-						<input name="enrolHelp1" id="enrolHelp1" type="checkbox" data-theme="b">
-						<label for="enrolHelp1">?</label>
-						</span>
-					</fieldset>
-				</form>
-				
-				<form>
-					<fieldset data-role="controlgroup" data-type="horizontal">
-						<span class="checkItem">
-						<input name="enrolCheck1" id="enrolCheck1" type="checkbox" data-theme="b" style="width:100%;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing: border-box;">
-						<label for="enrolCheck1">One</label>
-						</span>
-						
-						<span class="helpItem">
-						<input name="enrolHelp1" id="enrolHelp1" type="checkbox" data-theme="b">
-						<label for="enrolHelp1">?</label>
-						</span>
-					</fieldset>
-				</form>-->
-				
-				<div class="ui-grid-a"><!-- Item 1 -->
-					<div class="ui-block-a"><div class="ui-bar ui-bar-e">
-						<form>
-							<label>
-								<input name="checkbox1" type="checkbox" data-theme="b">Photo ID
-							</label>
-						</form>
-					</div></div>
-					<div class="ui-block-b"><div class="ui-bar ui-bar-e">
-						<a data-theme="a" href="#popupInfo1" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
-						<div data-role="popup" id="popupInfo1" class="ui-content" data-theme="b" style="max-width:350px;">
-							<p>For photo ID we will accept any current and valid Passport, a UK Biometric Residence Permit, a current UK/Isle of Man/Channel Islands Driving License card with counterpart paper license, or a UK/Channel Islands Birth Certificate (including those issued by UK authorities overseas e.g. Embassies, High Commisions and HM Forces).</p>
-						</div>
-						</div>
-					</div>
-				</div><!-- /grid-a -->
-				
-				<div class="ui-grid-a"><!-- Item 2 -->
-					<div class="ui-block-a"><div class="ui-bar ui-bar-e">
-						<form>
-							<label>
-								<input name="checkbox2" type="checkbox" data-theme="b">Welcome Letter
-							</label>
-						</form>
-					</div></div>
-					<div class="ui-block-b"><div class="ui-bar ui-bar-e">
-						<a data-theme="a" href="#popupInfo2" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
-						<div data-role="popup" id="popupInfo2" class="ui-content" data-theme="b" style="max-width:350px;">
-							<p>To be completed...</p>
-						</div>
-						</div>
-					</div>
-				</div><!-- /grid-a -->
-				
-				<div class="ui-grid-a"><!-- Item 3 -->
-					<div class="ui-block-a"><div class="ui-bar ui-bar-e">
-						<form>
-							<label>
-								<input name="checkbox3" type="checkbox" data-theme="b">Student Finance Letter
-							</label>
-						</form>
-					</div></div>
-					<div class="ui-block-b"><div class="ui-bar ui-bar-e">
-						<a data-theme="a" href="#popupInfo3" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
-						<div data-role="popup" id="popupInfo3" class="ui-content" data-theme="b" style="max-width:350px;">
-							<p>This will be the letter you recieved from Student Finance containing a barcode which will be scanned by student ambassadors during enrolment. This letter confirms how much of your tuition fees will be paid to Marjon and may include information on your mainenance grant.</p>
-						</div>
-						</div>
-					</div>
-				</div><!-- /grid-a -->
-				
-					<!-- //// Collapsable campus accomodation list //// -->
-					
-					<div data-role="collapsible" id="accomoCollapse">	
-						<h4>What you need to bring for campus accommodation:</h4>
-						
-						<div class="ui-grid-a"><!-- Item 4 -->
+					<form id="checkForm" name="checkForm">								
+						<div class="ui-grid-a"><!-- Item 1 -->
 							<div class="ui-block-a"><div class="ui-bar ui-bar-e">
-								<form>
 									<label>
-										<input name="checkbox4" type="checkbox" data-theme="b">Sheets, duvet, duvet cover, pillows and pillow cases and blanket
+										<input name="checkbox1" type="checkbox" data-theme="b">Photo ID
 									</label>
-								</form>
 							</div></div>
-							</div><!-- /grid-a -->
+							<div class="ui-block-b"><div class="ui-bar ui-bar-e">
+								<a data-theme="a" href="#popupInfo1" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
+								<div data-role="popup" id="popupInfo1" class="ui-content" data-theme="b" style="max-width:350px;">
+									<h4 class="popUpHeader">Help<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+									<p>For photo ID we will accept any current and valid Passport, a UK Biometric Residence Permit, a current UK/Isle of Man/Channel Islands Driving License card with counterpart paper license, or a UK/Channel Islands Birth Certificate (including those issued by UK authorities overseas e.g. Embassies, High Commisions and HM Forces).</p>
+								</div>
+								</div>
+							</div>
+						</div><!-- /grid-a -->
 						
-						<div class="ui-grid-a"><!-- Item 5 -->
+						<div class="ui-grid-a"><!-- Item 2 -->
 							<div class="ui-block-a"><div class="ui-bar ui-bar-e">
-							<form>
-								<label>
-									<input name="checkbox5" type="checkbox" data-theme="b">laundry bag
-								</label>
-							</form>
-							</div></div>
-					</div><!-- /grid-a -->
-					
-					<div class="ui-grid-a"><!-- Item 6 -->
-							<div class="ui-block-a"><div class="ui-bar ui-bar-e">
-							<form>
-								<label>
-									<input name="checkbox6" type="checkbox" data-theme="b">Coat hangers
-								</label>
-							</form>
-							</div></div>
-					</div><!-- /grid-a -->
-					
-					<div class="ui-grid-a"><!-- Item 7 -->
-							<div class="ui-block-a"><div class="ui-bar ui-bar-e">
-							<form>
-								<label>
-									<input name="checkbox7" type="checkbox" data-theme="b">Alarm clock
-								</label>
-							</form>
-							</div></div>
-					</div><!-- /grid-a -->
-					
-					<div class="ui-grid-a"><!-- Item 8 -->
-							<div class="ui-block-a"><div class="ui-bar ui-bar-e">
-							<form>
-								<label>
-									<input name="checkbox8" type="checkbox" data-theme="b">Television
-								</label>
-							</form>
+									<label>
+										<input name="checkbox2" type="checkbox" data-theme="b">Welcome Letter
+									</label>
 							</div></div>
 							<div class="ui-block-b"><div class="ui-bar ui-bar-e">
-								<a data-theme="a" href="#popupInfo8" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
-								<div data-role="popup" id="popupInfo8" class="ui-content" data-theme="b" style="max-width:350px;">
-								<p>The University does not provide televisions. If you bring your own don't forget you will need a TV License.</p>
+								<a data-theme="a" href="#popupInfo2" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
+								<div data-role="popup" id="popupInfo2" class="ui-content" data-theme="b" style="max-width:350px;">
+									<h4 class="popUpHeader">Help<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+									<p>Your welcome letter will be scanned during enrolment in order to generate your picture on screen which will then be checked with your photo ID.</p>
+								</div>
+								</div>
+							</div>
+						</div><!-- /grid-a -->
+						
+						<div class="ui-grid-a"><!-- Item 3 -->
+							<div class="ui-block-a"><div class="ui-bar ui-bar-e">
+									<label>
+										<input name="checkbox3" type="checkbox" data-theme="b">Student Finance Letter
+									</label>
+							</div></div>
+							<div class="ui-block-b"><div class="ui-bar ui-bar-e">
+								<a data-theme="a" href="#popupInfo3" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
+								<div data-role="popup" id="popupInfo3" class="ui-content" data-theme="b" style="max-width:350px;">
+									<h4 class="popUpHeader">Help<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+									<p>This will be the letter you recieved from Student Finance containing a barcode which may be scanned by the Accounts department if need be.</p>
+								</div>
+								</div>
+							</div>
+						</div><!-- /grid-a -->
+					
+						<!-- //// Collapsable campus accomodation list //// -->
+						
+						<div data-role="collapsible" id="accomoCollapse1">	
+							<h4>Accommodation essentials:</h4>
+							
+							<div class="ui-grid-a"><!-- Item 4 -->
+								<div class="ui-block-a"><div class="ui-bar ui-bar-e">
+										<label>
+											<input name="checkbox4" type="checkbox" data-theme="b">Bedding
+										</label>
+								</div></div>
+								<div class="ui-block-b"><div class="ui-bar ui-bar-e">
+							<a data-theme="a" href="#popupInfo4" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
+							<div data-role="popup" id="popupInfo4" class="ui-content" data-theme="b" style="max-width:350px;">
+								<h4 class="popUpHeader">Help<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+								<p>Sheets, duvet, duvet cover, pillows and pillow cases and blanket</p>
 							</div>
 							</div>
 						</div>
-					</div><!-- /grid-a -->
-					
-					<div class="ui-grid-a"><!-- Item 9 -->
-							<div class="ui-block-a"><div class="ui-bar ui-bar-e">
-							<form>
-								<label>
-									<input name="checkbox9" type="checkbox" data-theme="b">Washing items
-								</label>
-							</form>
-							</div></div>
-							<div class="ui-block-b"><div class="ui-bar ui-bar-e">
-								<a data-theme="a" href="#popupInfo9" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
-								<div data-role="popup" id="popupInfo9" class="ui-content" data-theme="b" style="max-width:350px;">
-								<p>Toothbrush and toothpaste, shower gel/soap, deodorant/anti-perspirant, wash bag, hair products, hairbrush.</p>
+								</div><!-- /grid-a -->
+							
+							<div class="ui-grid-a"><!-- Item 5 -->
+								<div class="ui-block-a"><div class="ui-bar ui-bar-e">
+									<label>
+										<input name="checkbox5" type="checkbox" data-theme="b">laundry bag
+									</label>
+								</div></div>
+						</div><!-- /grid-a -->
+						
+						<div class="ui-grid-a"><!-- Item 6 -->
+								<div class="ui-block-a"><div class="ui-bar ui-bar-e">
+									<label>
+										<input name="checkbox6" type="checkbox" data-theme="b">Coat hangers
+									</label>
+								</div></div>
+						</div><!-- /grid-a -->
+						
+						<div class="ui-grid-a"><!-- Item 7 -->
+								<div class="ui-block-a"><div class="ui-bar ui-bar-e">
+									<label>
+										<input name="checkbox7" type="checkbox" data-theme="b">Alarm clock
+									</label>
+								</div></div>
+						</div><!-- /grid-a -->
+						
+						<div class="ui-grid-a"><!-- Item 8 -->
+								<div class="ui-block-a"><div class="ui-bar ui-bar-e">
+									<label>
+										<input name="checkbox8" type="checkbox" data-theme="b">Television
+									</label>
+								</div></div>
+								<div class="ui-block-b"><div class="ui-bar ui-bar-e">
+									<a data-theme="a" href="#popupInfo8" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
+									<div data-role="popup" id="popupInfo8" class="ui-content" data-theme="b" style="max-width:350px;">
+									<h4 class="popUpHeader">Help<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+									<p>The University does not provide televisions. If you bring your own don't forget you will need a TV License.</p>
+								</div>
+								</div>
 							</div>
+						</div><!-- /grid-a -->
+						
+						<div class="ui-grid-a"><!-- Item 9 -->
+								<div class="ui-block-a"><div class="ui-bar ui-bar-e">
+									<label>
+										<input name="checkbox9" type="checkbox" data-theme="b">Washing items
+									</label>
+								</div></div>
+								<div class="ui-block-b"><div class="ui-bar ui-bar-e">
+									<a data-theme="a" href="#popupInfo9" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
+									<div data-role="popup" id="popupInfo9" class="ui-content" data-theme="b" style="max-width:350px;">
+									<h4 class="popUpHeader">Help<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+									<p>Toothbrush and toothpaste, shower gel/soap, deodorant/anti-perspirant, wash bag, hair products, hairbrush.</p>
+								</div>
+								</div>
 							</div>
-						</div>
-					</div><!-- /grid-a -->
-					
-					<div class="ui-grid-a"><!-- Item 10 -->
-							<div class="ui-block-a"><div class="ui-bar ui-bar-e">
-							<form>
-								<label>
-									<input name="checkbox10" type="checkbox" data-theme="b">Cutlery and dishes
-								</label>
-							</form>
-							</div></div>
-							<div class="ui-block-b"><div class="ui-bar ui-bar-e">
-								<a data-theme="a" href="#popupInfo10" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
-								<div data-role="popup" id="popupInfo10" class="ui-content" data-theme="b" style="max-width:350px;">
-								<p>Mug, glass, large and small plates, bowl, knife, fork, dessert spoon and teaspoon.</p>
+						</div><!-- /grid-a -->
+						
+						<div class="ui-grid-a"><!-- Item 10 -->
+								<div class="ui-block-a"><div class="ui-bar ui-bar-e">
+									<label>
+										<input name="checkbox10" type="checkbox" data-theme="b">Cutlery and dishes
+									</label>
+								</div></div>
+								<div class="ui-block-b"><div class="ui-bar ui-bar-e">
+									<a data-theme="a" href="#popupInfo10" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
+									<div data-role="popup" id="popupInfo10" class="ui-content" data-theme="b" style="max-width:350px;">
+									<h4 class="popUpHeader">Help<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+									<p>Mug, glass, large and small plates, bowl, knife, fork, dessert spoon and teaspoon.</p>
+								</div>
+								</div>
 							</div>
+						</div><!-- /grid-a -->
+						
+						<div class="ui-grid-a"><!-- Item 11 -->
+								<div class="ui-block-a"><div class="ui-bar ui-bar-e">
+									<label>
+										<input name="checkbox11" type="checkbox" data-theme="b">Kitchen utensils
+									</label>
+								</div></div>
+								<div class="ui-block-b"><div class="ui-bar ui-bar-e">
+									<a data-theme="a" href="#popupInfo11" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
+									<div data-role="popup" id="popupInfo11" class="ui-content" data-theme="b" style="max-width:350px;">
+									<h4 class="popUpHeader">Help<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+									<p>Cooks knife, chopping board, peeler and grater, sauce pan and frying pan, wooden spoon and spatula, masher, tin opener and bottle opener</p>
+								</div>
+								</div>
 							</div>
-						</div>
-					</div><!-- /grid-a -->
-					
-					<div class="ui-grid-a"><!-- Item 11 -->
-							<div class="ui-block-a"><div class="ui-bar ui-bar-e">
-							<form>
-								<label>
-									<input name="checkbox11" type="checkbox" data-theme="b">Kitchen utensils
-								</label>
-							</form>
-							</div></div>
-							<div class="ui-block-b"><div class="ui-bar ui-bar-e">
-								<a data-theme="a" href="#popupInfo11" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
-								<div data-role="popup" id="popupInfo11" class="ui-content" data-theme="b" style="max-width:350px;">
-								<p>Cooks knife, chopping board, peeler and grater, sauce pan and frying pan, wooden spoon and spatula, masher, tin opener and bottle opener</p>
+						</div><!-- /grid-a -->
+						
+						<div class="ui-grid-a"><!-- Item 12 -->
+								<div class="ui-block-a"><div class="ui-bar ui-bar-e">
+									<label>
+										<input name="checkbox12" type="checkbox" data-theme="b">Cleaning materials
+									</label>
+								</div></div>
+								<div class="ui-block-b"><div class="ui-bar ui-bar-e">
+									<a data-theme="a" href="#popupInfo12" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
+									<div data-role="popup" id="popupInfo12" class="ui-content" data-theme="b" style="max-width:350px;">
+									<h4 class="popUpHeader">Help<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+									<p>Including washing liquid and bin bags/plastic bags. Remember, you are responsible for the cleanliness of your shared kitchen!</p>
+								</div>
+								</div>
 							</div>
-							</div>
-						</div>
-					</div><!-- /grid-a -->
-					
-					<div class="ui-grid-a"><!-- Item 12 -->
-							<div class="ui-block-a"><div class="ui-bar ui-bar-e">
-							<form>
-								<label>
-									<input name="checkbox12" type="checkbox" data-theme="b">Cleaning materials
-								</label>
-							</form>
-							</div></div>
-							<div class="ui-block-b"><div class="ui-bar ui-bar-e">
-								<a data-theme="a" href="#popupInfo12" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
-								<div data-role="popup" id="popupInfo12" class="ui-content" data-theme="b" style="max-width:350px;">
-								<p>Including washing liquid and bin bags/plastic bags. Remember, you are responsible for the cleanliness of your shared kitchen!</p>
-							</div>
-							</div>
-						</div>
-					</div><!-- /grid-a -->
-					
-				</div>
+						</div><!-- /grid-a -->
 						
 					</div>
-				</div>		
+				
+						<!-- //// Collapsable just in case list //// -->
+					
+						<div data-role="collapsible" id="accomoCollapse2">	
+							<h4>Just in case:</h4>
+							
+							<div class="ui-grid-a"><!-- Item 13 -->
+								<div class="ui-block-a"><div class="ui-bar ui-bar-e">
+									<label>
+										<input name="checkbox13" type="checkbox" data-theme="b">USB Memory Stick
+									</label>
+								</div></div>
+								<div class="ui-block-b"><div class="ui-bar ui-bar-e">
+									<a data-theme="a" href="#popupInfo13" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
+									<div data-role="popup" id="popupInfo13" class="ui-content" data-theme="b" style="max-width:350px;">
+									<h4 class="popUpHeader">Help<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+									<p>A USB Memory Stick will be helpful to save work securely and for easy transportation in order to work on your coursework using any of the Universities computer facilities.</p>
+									</div>
+								</div>
+							</div><!-- /grid-a -->
+							</div>
+						</div>
+					</form>
+					</div>
 			</div><!-- /content -->
 			
 			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">
