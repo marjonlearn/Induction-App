@@ -35,19 +35,36 @@
 	
 	<body> 
 		<div data-role="page" data-theme="a" id="checklist">
-			<script type="text/javascript">
+			
+			<div data-role="panel" id="menuPanel">
+				<!-- panel content goes here -->
+			</div><!-- /panel -->
+		
+			<div data-role="header" id="regHead">
+				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
+				<h1>What to bring</h1>
+			</div><!-- /header -->
+		
+			<div data-role="content">
+            
+            <script type="text/javascript">
+				
+			$("#checklist").on( "pagebeforeshow", function( event ) { 
+																
+					
 				$(function() {			
-						$("#menuBtn").click(function() {
-								// update panel with extenal menu contents
-								alert("click");
-								$("#menuPanel").load('./newStudentMenu.html', function () {
-								$(this).trigger('create');
-								$("#menuPanel").panel("open");
-								$( "menuPanel" ).panel( "option", "swipeClose", true );
-							});
-						}
+					$("#checklist #menuBtn").click(function() {
+							// update panel with extenal menu contents
+							//alert("test");
+							$("#menuPanel").load('newstudentmenu.html', function () {
+							$(this).trigger('create');
+							$("#menuPanel").panel("open");
+							
+						});
+					}
 					);
-				});
+					});	
+				
 					
 				$(function() {
 				
@@ -83,17 +100,15 @@
 							});
 					}		
 				});        
+				
+				
+				
+			} );
+			
+			
+				
             </script>
-			<div data-role="panel" id="menuPanel">
-				<!-- panel content goes here -->
-			</div><!-- /panel -->
-		
-			<div data-role="header" id="regHead">
-				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
-				<h1>What to bring</h1>
-			</div><!-- /header -->
-		
-			<div data-role="content">
+            
 			<div class="contentContainer">
 				<p id="top">There are so many things to think about leading up to University, not to mention various pieces of paperwork for enrolment, accomodation, parking etc.</p>
 				<p>This checklist offers you a definitive list of what you need to have with you when you arrive at Marjon. Check it often and make sure nothing is left at home!</p>

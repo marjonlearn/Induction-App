@@ -333,3 +333,10 @@ img#menuPush, img#menuShow {
 	background: none;
 	border: none;
 }
+
+/* Mobile App page */
+
+ul#appFeatureList {
+	list-style: none;
+	padding: 0;
+}
