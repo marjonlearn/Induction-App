@@ -49,11 +49,11 @@
 					$(function() {			
 					$("#menuBtn").click(function() {
 							// update panel with extenal menu contents
-							alert("click");
+							//alert("click");
 							$("#menuPanel").load('./newStudentMenu.html', function () {
 							$(this).trigger('create');
 							$("#menuPanel").panel("open");
-							$( "menuPanel" ).panel( "option", "swipeClose", true );
+							//$( "menuPanel" ).panel( "option", "swipeClose", true );
 						});
 					}
 					);
@@ -76,11 +76,20 @@
 								//alert(value);
 							}
    				 </script>
-				 <!--<img src="images/quadSplash.jpg" alt="Welcome to the University of St. Mark &amp; St. John" id="landingSplash" />-->
 				 <img id="landingLogo" src="images/landingLogo.png" alt="University of St. Mark &amp; St. John - Induction App" />
 				 <div class="contentContainer">
+                 <p>Various URLs for testing purposes</p>
+                 <p>
+                 <a href="newStudentMenu.html">menu page1</a><br/>
+                 <a href="./newStudentMenu.html">menu page2</a><br/>
+                 <a href="/newStudentMenu.html">menu page3</a><br/>
+                 <a href="file://newStudentMenu.html">menu page4</a><br/>
+                 <a href="file://www/newStudentMenu.html">menu page5</a><br/>
+                 <a href="../newStudentMenu.html">menu page6</a><br/>
+                 </p>
+                 
 					 <h3 id="landingHeader">Welcome to the University of St. Mark &amp; St. John!</h3>
-					<p>For new students induction is the process of introducing you to the University, its staff and its environment. You'll complete your registration onto your programme of study and prepare for the academic year ahead.</p>
+					<p>Induction is the process of introducing you to the University, its staff and its environment. You'll complete your registration onto your programme of study and prepare for the academic year ahead.</p>
 					<p>This app is designed to help you before, during and after the induction process by providing you with a range of information to help make sure everything goes as smoothly as possible.</p>
 					<p>To access the quick menu, simply press the icon on the top left hand corner of the screen and select the section that you would like to visit from the list:</p>
 					
