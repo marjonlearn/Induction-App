@@ -304,7 +304,7 @@ h3 {
 
 /* Landing page */
 
-img#landingLogo {
+img#landingLogo, img#mobileLogo {
 	margin: 15px auto 0;
 	display: block;
 	height: 150px;

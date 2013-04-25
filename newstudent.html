@@ -37,6 +37,7 @@
 		<div data-role="page" data-theme="a" id="newstudent">
 			<div data-role="panel" id="menuPanel">
 				<!-- panel content goes here -->
+                some content here
 			</div><!-- /panel -->
 		
 			<div data-role="header" id="regHead">
@@ -49,15 +50,15 @@
 					$(function() {			
 					$("#menuBtn").click(function() {
 							// update panel with extenal menu contents
-							//alert("click");
-							$("#menuPanel").load('./newstudentmenu.html', function () {
+							
+							$("#menuPanel").load('newstudentmenu.html', function () {
 							$(this).trigger('create');
 							$("#menuPanel").panel("open");
 							//$( "menuPanel" ).panel( "option", "swipeClose", true );
 						});
 					}
 					);
-					});			
+					});		
 								// Wait for PhoneGap to load
 							//
 							document.addEventListener("deviceready", onDeviceReady, false);
@@ -71,6 +72,9 @@
 								
 								// return the value
 								var value = window.localStorage.getItem("user");
+								
+								
+								
 								
 								// alert the value
 								//alert(value);
