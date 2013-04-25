@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head> 
+		<title>Marjon Induction - Campus Map</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+		<link rel="stylesheet" href="css/induction_theme.css" />
+		<link rel="stylesheet" href="css/custom_style.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src="phonegap.js"></script>
+		<script src="scripts/jquery.ui.map.js"></script>
+		
+	</head> 
+	
+	<body> 
+		<div data-role="page" data-theme="a" id="campusMap">		
+			<div data-role="panel" id="menuPanel">
+				<!-- panel content goes here -->
+			</div><!-- /panel -->
+		
+			<div data-role="header" id="regHead" class="mapHead">
+				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
+				<h1></h1>
+				<label id="mapLabel" for="slider2">Flip switch:</label>
+				<select name="slider2" id="slider2" data-role="slider">
+					<option value="campus" data-theme="c">Campus Map</option>
+					<option value="local" data-theme="c">Local Map</option>
+				</select>
+			</div><!-- /header -->
+		
+			<div data-role="content">
+				<script>
+				$("#campusMap").on( "pagebeforeshow", function(event) {
+					$(function() {			
+					$("#campusMap #menuBtn").click(function() {
+							// update panel with extenal menu contents
+							
+							$("#menuPanel").load('newstudentmenu.html', function () {
+							$(this).trigger('create');
+							$("#menuPanel").panel("open");
+							
+						});
+					}
+					);
+					});
+					$(function() {
+					function initialize() {
+						campusZone = new google.maps.LatLng(50.420338, -4.110507);
+					  
+						var mapOptions = {
+						  center: campusZone,
+						  zoom: 17,
+						  mapTypeId: google.maps.MapTypeId.ROADMAP
+						};
+						map = new google.maps.Map(document.getElementById("mapCanvas"),
+							mapOptions);
+					  }
+					 // google.maps.event.addDomListener(window, 'load', initialize);		
+						initialize();			
+					});	
+					});
+					$("#campusMap").on( "pageshow", function(event) {
+						$(function() {
+							console.log("resize hura");
+							google.maps.event.trigger(map, 'resize');
+							map.setCenter(campusZone);
+						});
+					});								
+				 </script>
+			 	<div class="contentContainer">
+					<div id="mapSearchBar">
+						<label id="searchLabel" for="search">Search Input:</label>
+						<input name="search" id="search" value="" placeholder="Search..." type="search" data-theme="c">
+					</div>
+					<div id="mapCanvas" style="height:300px;"></div>
+					<form id="campusOverlays">
+						<input value="Show campus parking" type="button">
+						<input value="Show facilities" type="button">
+					</form>
+					
+					<form id="localOverlays">
+						<input value="Show local shops" type="button">
+						<input value=" Show local restaurants" type="button">
+					</form>
+				</div>
+			</div><!-- /content -->
+			
+			<div id="footerBar" data-role="footer" data-id="footerMob">
+			</div><!-- /footer -->
+		
+		</div><!-- /page -->
+	</body>
+	
+</html>

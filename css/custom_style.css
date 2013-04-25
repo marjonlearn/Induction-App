@@ -348,29 +348,70 @@ ul#appFeatureList li {
 	margin: 10px 0;
 }
 
+/* Canvas Map page */
+
+label#mapLabel, label#searchLabel {
+	display: none;
+}
+
+#regHead div.ui-slider-switch {
+	display: inline-block;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	margin: 0;
+	width: 10em;
+}
+
+#mapCanvas {
+	border: medium solid #8FC402;
+}
+
+#mapSearchBar .ui-btn-icon-notext .ui-btn-inner .ui-icon {
+    float: left;
+    margin: 3px 4px;
+}
+
+#mapSearchBar .ui-input-search {
+    margin: 0 0 0.5em 0;
+}
+
+#mapSearchBar .ui-icon, #mapSearchBar .ui-icon-searchfield:after {
+    background-color: transparent;
+    background-image: url("images/icons-18-black.png");
+    background-repeat: no-repeat;
+    border-radius: 9px 9px 9px 9px;
+}
+
+#mapSearchBar .ui-icon-delete {
+	background-image: url("images/icons-18-white.png");
+}
+
 /* HD/"retina" sprite
 -----------------------------------------------------------------------------------------------------------*/
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3),
        only screen and (min--moz-device-pixel-ratio: 1.3),
        only screen and (min-resolution: 200dpi) {
-	
-	.ui-icon-plus, .ui-icon-minus, .ui-icon-delete, .ui-icon-arrow-r,
-	.ui-icon-arrow-l, .ui-icon-arrow-u, .ui-icon-arrow-d, .ui-icon-check,
-	.ui-icon-gear, .ui-icon-refresh, .ui-icon-forward, .ui-icon-back,
-	.ui-icon-grid, .ui-icon-star, .ui-icon-alert, .ui-icon-info, .ui-icon-home, .ui-icon-bars, .ui-icon-edit,
-	.ui-icon-search, .ui-icon-searchfield:after, 
-	.ui-icon-checkbox-off, .ui-icon-checkbox-on, .ui-icon-radio-off, .ui-icon-radio-on {
-		background-image: url(images/icons-36-white.png);
-		-moz-background-size: 864px 18px;
-		-o-background-size: 864px 18px;
-		-webkit-background-size: 864px 18px;
-		background-size: 864px 18px;
-	}
-	
 	.ui-icon-checkbox-on {
 		background-position: 	-723px 50%;
 	}
 	.ui-icon-checkbox-off {
 		background-position: 	-760px 50%;
 	}
+	
+	#mapSearchBar .ui-icon, #mapSearchBar .ui-icon-searchfield:after {
+    background-color: transparent;
+    background-image: url("images/icons-36-black.png");
+    background-repeat: no-repeat;
+    border-radius: 9px 9px 9px 9px;
+}
+
+#mapSearchBar .ui-icon-delete {
+	background-image: url("images/icons-36-white.png");
+	background-position: -82px 50%;
+}
+
+.ui-icon-search, .ui-icon-searchfield:after {
+	background-position: -684px 50%;
+}
 }

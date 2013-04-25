@@ -366,17 +366,17 @@
 	color: #2489ce /*{c-body-link-active}*/;
 }
 .ui-btn-up-c {
-	border: 1px solid #cccccc /*{c-bup-border}*/;
-	background: #eeeeee /*{c-bup-background-color}*/;
+	border: 1px solid #82b400 /*{c-bup-border}*/;
+	background: #c8e280 /*{c-bup-background-color}*/;
 	font-weight: bold;
 	color: #2f3e46 /*{c-bup-color}*/;
 	text-shadow: 0 /*{c-bup-shadow-x}*/ 1px /*{c-bup-shadow-y}*/ 0 /*{c-bup-shadow-radius}*/ #ffffff /*{c-bup-shadow-color}*/;
-	background-image: -webkit-gradient(linear, left top, left bottom, from( #ffffff /*{c-bup-background-start}*/), to( #f1f1f1 /*{c-bup-background-end}*/)); /* Saf4+, Chrome */
-	background-image: -webkit-linear-gradient( #ffffff /*{c-bup-background-start}*/, #f1f1f1 /*{c-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
-	background-image:    -moz-linear-gradient( #ffffff /*{c-bup-background-start}*/, #f1f1f1 /*{c-bup-background-end}*/); /* FF3.6 */
-	background-image:     -ms-linear-gradient( #ffffff /*{c-bup-background-start}*/, #f1f1f1 /*{c-bup-background-end}*/); /* IE10 */
-	background-image:      -o-linear-gradient( #ffffff /*{c-bup-background-start}*/, #f1f1f1 /*{c-bup-background-end}*/); /* Opera 11.10+ */
-	background-image:         linear-gradient( #ffffff /*{c-bup-background-start}*/, #f1f1f1 /*{c-bup-background-end}*/);
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #c8e280 /*{c-bup-background-start}*/), to( #8fc400 /*{c-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #c8e280 /*{c-bup-background-start}*/, #8fc400 /*{c-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #c8e280 /*{c-bup-background-start}*/, #8fc400 /*{c-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #c8e280 /*{c-bup-background-start}*/, #8fc400 /*{c-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #c8e280 /*{c-bup-background-start}*/, #8fc400 /*{c-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #c8e280 /*{c-bup-background-start}*/, #8fc400 /*{c-bup-background-end}*/);
 }
 .ui-btn-up-c:visited,
 .ui-btn-up-c a.ui-link-inherit {
@@ -402,16 +402,16 @@
 }
 .ui-btn-down-c {
 	border: 1px solid #bbbbbb /*{c-bdown-border}*/;
-	background: #d6d6d6 /*{c-bdown-background-color}*/;
+	background: #fdfdfd /*{c-bdown-background-color}*/;
 	font-weight: bold;
 	color: #2f3e46 /*{c-bdown-color}*/;
 	text-shadow: 0 /*{c-bdown-shadow-x}*/ 1px /*{c-bdown-shadow-y}*/ 0 /*{c-bdown-shadow-radius}*/ #ffffff /*{c-bdown-shadow-color}*/;
-	background-image: -webkit-gradient(linear, left top, left bottom, from( #d0d0d0 /*{c-bdown-background-start}*/), to( #dfdfdf /*{c-bdown-background-end}*/)); /* Saf4+, Chrome */
-	background-image: -webkit-linear-gradient( #d0d0d0 /*{c-bdown-background-start}*/, #dfdfdf /*{c-bdown-background-end}*/); /* Chrome 10+, Saf5.1+ */
-	background-image:    -moz-linear-gradient( #d0d0d0 /*{c-bdown-background-start}*/, #dfdfdf /*{c-bdown-background-end}*/); /* FF3.6 */
-	background-image:     -ms-linear-gradient( #d0d0d0 /*{c-bdown-background-start}*/, #dfdfdf /*{c-bdown-background-end}*/); /* IE10 */
-	background-image:      -o-linear-gradient( #d0d0d0 /*{c-bdown-background-start}*/, #dfdfdf /*{c-bdown-background-end}*/); /* Opera 11.10+ */
-	background-image:         linear-gradient( #d0d0d0 /*{c-bdown-background-start}*/, #dfdfdf /*{c-bdown-background-end}*/);
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #fdfdfd /*{c-bdown-background-start}*/), to( #dcdcdc /*{c-bdown-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #fdfdfd /*{c-bdown-background-start}*/, #dcdcdc /*{c-bdown-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #fdfdfd /*{c-bdown-background-start}*/, #dcdcdc /*{c-bdown-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #fdfdfd /*{c-bdown-background-start}*/, #dcdcdc /*{c-bdown-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #fdfdfd /*{c-bdown-background-start}*/, #dcdcdc /*{c-bdown-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #fdfdfd /*{c-bdown-background-start}*/, #dcdcdc /*{c-bdown-background-end}*/);
 }
 .ui-btn-down-c:visited,
 .ui-btn-down-c:hover,
