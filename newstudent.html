@@ -36,7 +36,7 @@
 	<body> 
 		<div data-role="page" data-theme="a" id="newstudent">
 			<div data-role="panel" id="menuPanel">
-				<!-- panel content goes here -->test
+				<!-- panel content goes here -->
 			</div><!-- /panel -->
 		
 			<div data-role="header" id="regHead">
@@ -50,7 +50,7 @@
 					$("#menuBtn").click(function() {
 							// update panel with extenal menu contents
 							//alert("click");
-							$("#menuPanel").load('newstudentmenu.html', function () {
+							$("#menuPanel").load('./newstudentmenu.html', function () {
 							$(this).trigger('create');
 							$("#menuPanel").panel("open");
 							//$( "menuPanel" ).panel( "option", "swipeClose", true );
