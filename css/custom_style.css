@@ -350,6 +350,10 @@ ul#appFeatureList li {
 
 /* Canvas Map page */
 
+#campusMap #regHead {
+	height: 42px;
+}
+
 label#mapLabel, label#searchLabel {
 	display: none;
 }

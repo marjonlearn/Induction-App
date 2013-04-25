@@ -53,6 +53,7 @@
 						var mapOptions = {
 						  center: campusZone,
 						  zoom: 17,
+						  disableDefaultUI: true,
 						  mapTypeId: google.maps.MapTypeId.ROADMAP
 						};
 						map = new google.maps.Map(document.getElementById("mapCanvas"),
@@ -64,7 +65,6 @@
 					});
 					$("#campusMap").on( "pageshow", function(event) {
 						$(function() {
-							console.log("resize hura");
 							google.maps.event.trigger(map, 'resize');
 							map.setCenter(campusZone);
 						});
