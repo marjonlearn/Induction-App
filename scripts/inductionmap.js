@@ -126,6 +126,7 @@
 					
 				function plopRoom(location, block, myfloor, room) {
 				clearRooms();
+				clearOverlays();
 				
 				image = new google.maps.MarkerImage('images/markers/mapMarker.png',
 				new google.maps.Size(30, 30));
