@@ -371,25 +371,66 @@ label#mapLabel, label#searchLabel {
 	border: medium solid #8FC402;
 }
 
-#mapSearchBar .ui-btn-icon-notext .ui-btn-inner .ui-icon {
+#campusSearchBar .ui-btn-icon-notext .ui-btn-inner .ui-icon {
     float: left;
     margin: 3px 4px;
 }
 
-#mapSearchBar .ui-input-search {
+#campusSearchBar .ui-input-search {
     margin: 0 0 0.5em 0;
 }
 
-#mapSearchBar .ui-icon, #mapSearchBar .ui-icon-searchfield:after {
+#campusSearchBar .ui-icon, #campusSearchBar .ui-icon-searchfield:after {
     background-color: transparent;
     background-image: url("images/icons-18-black.png");
     background-repeat: no-repeat;
     border-radius: 9px 9px 9px 9px;
 }
 
-#mapSearchBar .ui-icon-delete {
+#campusSearchBar .ui-icon-delete {
 	background-image: url("images/icons-18-white.png");
 }
+
+#localSearchBar {
+	display:none;	
+}
+
+#localSearchBar .ui-btn-icon-notext .ui-btn-inner .ui-icon {
+    float: left;
+    margin: 3px 4px;
+}
+
+#localSearchBar .ui-input-search {
+    margin: 0 0 0.5em 0;
+}
+
+#localSearchBar .ui-icon, #localSearchBar .ui-icon-searchfield:after {
+    background-color: transparent;
+    background-image: url("images/icons-18-black.png");
+    background-repeat: no-repeat;
+    border-radius: 9px 9px 9px 9px;
+}
+
+#localSearchBar .ui-icon-delete {
+	background-image: url("images/icons-18-white.png");
+}
+
+
+#localOverlays {
+	display:none;	
+}
+
+.mapInfoBox {
+	/*width:250px;
+	height:100px;*/
+	background-color:#0C6;
+	
+}
+
+img[src*="iws3.png"] {
+    display: none;
+}
+
 
 /* HD/"retina" sprite
 -----------------------------------------------------------------------------------------------------------*/
