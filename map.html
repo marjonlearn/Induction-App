@@ -30,8 +30,10 @@
 			</div><!-- /header -->
 		
 			<div data-role="content">
-            		<script src="scripts/jquery.ui.map.js"></script>
-		<script src="scripts/infobox.js"></script>
+            <script src="scripts/jquery.ui.map.js"></script>
+			<script src="scripts/infobox.js"></script>
+            <script type="text/javascript" src="scripts/autoComplete.js"></script>
+            
 				<script>
 				$("#campusMap").on( "pagebeforeshow", function(event) {
 					$("#campusMap #menuBtn").click(function() {
@@ -40,173 +42,10 @@
 							$(this).trigger('create');
 							$("#menuPanel").panel("open");					
 						});
-					}
-					);
-					
-					// function to load the google map
-					function initialize() {
-							campusZone = new google.maps.LatLng(50.420338, -4.110507);
-						  
-							var mapOptions = {
-							  center: campusZone,
-							  zoom: 17,
-							  disableDefaultUI: true,
-							  mapTypeId: google.maps.MapTypeId.ROADMAP
-							};
-							map = new google.maps.Map(document.getElementById("mapCanvas"),
-								mapOptions);
 							
-							// specify the custom icon image and size
-							var marjonIcon = new google.maps.MarkerImage("images/markers/marjonicon.png", null, null, null, new google.maps.Size(75,38));
-							
-							
-							// generate the marker
-							var marker = new google.maps.Marker({
-							  position: new google.maps.LatLng(parseFloat(50.420703),parseFloat(-4.109965)),
-							  map: map,
-							  icon: marjonIcon,
-							  title: ""  
-							});
-					  }
-					  
-					 
-					 // function to change the map and divs when toggle clicked
-					 function changeMap(whichMap) {
-						 //console.log(whichMap);
-						
-						// work out which divs to show and change map settings
-						if (whichMap == "local") {
-							// show local map divs
-							$("#localOverlays").show();
-							$("#localSearchBar").show();
-							$("#campusOverlays").hide();
-							$("#campusSearchBar").hide();
-							//map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
-							clearOverlays();
-							map.setZoom(14);
-							map.setCenter(campusZone);
-							//console.log("local map stuff");	
-						}
-						else {
-							//console.log("campus map stuff");	
-							$("#localOverlays").hide();
-							$("#localSearchBar").hide();
-							$("#campusOverlays").show();
-							$("#campusSearchBar").show();
-							//map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
-							map.setZoom(17);
-							map.setCenter(campusZone);
-						}
-						 
-					 }
-					
-					// function to place a marker on the map
-					function plopMarker(location, facility) {
-						
-						// delete any markers on the map
-						//clearOverlays();
-						
-						image = new google.maps.MarkerImage('images/markers/mapMarker.png',
-						new google.maps.Size(30, 30));
-						
-										
-						
-						// retrieve the passed location and split at the comma
-						var location=location.split(",");
-						var marker = new google.maps.Marker({
-						  position: new google.maps.LatLng(
-								  parseFloat(location[0]),
-								  parseFloat(location[1])),
-						  map: map,
-						  icon: image,
-						  title:""						  
-					 	 });
-						
-						
-						// push marker in to array, can then be deleted when required
-						markersArray.push(marker);
-						
-						
-						
-						var boxText = document.createElement("div");				
-						boxText.innerHTML = "<p>"+facility+"</p>";
-						
-						var myOptions = {
-						 content: boxText,
-						 disableAutoPan: false,
-						 maxWidth: 220,
-						 pixelOffset: new google.maps.Size(-85, -63),
-						 zIndex: 2,
-						 boxStyle: { 
-						  background: "url('images/markers/markerBG.gif') repeat-x #0a93be",
-						  width: "150px",
-						  height:"35px",
-						  border: "2px solid #47c3fd",
-						  color: "#fff",
-						  font: "12px arial",
-						  padding: "5px"
-						 },
-						 closeBoxMargin: "0 0 0px 0px",
-						 closeBoxURL: "images/markers/map_cross.png",
-						 infoBoxClearance: new google.maps.Size(1, 1),
-						 isHidden: false,
-						 pane: "floatPane",
-						 enableEventPropagation: false
-						};
-						
-						var ib = new InfoBox(myOptions);
-						ib.open(map, marker);
-						map.setCenter(campusZone);
-						infowindowsArray.push(ib);
-						
+					initialize();		
 					}
-					
-					// function to clear the map from any markers
-					function clearOverlays() {
-						
-					// remove markers	
-					  for (var i = 0; i < markersArray.length; i++ ) {
-						markersArray[i].setMap(null);
-					  }
-					 // remove overlays 
-					  for (var i = 0; i < infowindowsArray.length; i++ ) {
-						infowindowsArray[i].setMap(null);
-					  }
-					}
-					  
-					// call the initialisze function when the page has loaded
-					initialize();
-					
-					
-					// create an array to hold all map passed markers (useful to delete them)
-					var markersArray = [];
-					var infowindowsArray = [];
-					
-					$("#map_Facilities").click(function() {
-						// add service markers
-						plopMarker('50.420202,-4.10893', 'Registry Services');
-						plopMarker('50.420084,-4.112879', 'Sports Centre');
-						plopMarker('50.421135,-4.109321', 'Student Support');
-						plopMarker('50.420092,-4.109965', 'Comp. Services / MOLU');
-						plopMarker('50.42039,-4.110222', 'Library');
-						plopMarker('50.419884,-4.109525', 'Finance');
-						plopMarker('50.421172,-4.11041', 'Reception');
-						
-						map.setCenter(campusZone);
-						map.setZoom(18);
-					});
-					
-					// listen for map toggle click
-					$( "#mapSlider" ).slider({
-						  stop: function( event, ui ) {
-							 var whichMap =  $("#mapSlider").val();
-							 
-							 // call the changeMap function
-							 changeMap(whichMap);
-							 
-							 }
-						});								
-															
+					);										
 					
 				});
 				
@@ -221,7 +60,8 @@
 			 	<div class="contentContainer">
 					<div id="campusSearchBar">
 						<label id="searchLabel" for="search">Search Input:</label>
-						<input name="search" id="campus_search" value="" placeholder="Room Search..." type="search" data-theme="c">
+						<input name="search" id="campus_search" value="" placeholder="Room Search..." type="search" data-theme="c" autocomplete="off">
+                          <ul id="suggestions" data-role="listview" data-inset="true"></ul>
 					</div>
                     <div id="localSearchBar">
 						<label id="searchLabel" for="search">Search Input:</label>
@@ -238,7 +78,61 @@
 						<input value=" Show local restaurants" type="button">
 					</form>
 				</div>
-                                
+                <script>
+				$("#campusMap").on("pageshow", function(e) {
+    			 
+			// javascript object which holds rooms, blocks, floors and location information (populated dynamically on load)	  
+			  var objectTags = [{label: "15", value:{ latlng: "50.420027,-4.109113", block: "Primary Centre", myfloor: "Ground"}}, {label: "150", value:{ latlng: "50.420007,-4.109661", block: "A Block", myfloor: "Second"}}, {label: "155", value:{ latlng: "50.419956,-4.109758", block: "A Block", myfloor: "Second"}}, {label: "157", value:{ latlng: "50.42001,-4.109848", block: "A Block", myfloor: "Second"}}, {label: "16", value:{ latlng: "50.42013,-4.109258", block: "Primary Centre", myfloor: "Ground"}}, {label: "168", value:{ latlng: "50.420149,-4.110025", block: "A Block", myfloor: "Second"}}, {label: "169", value:{ latlng: "50.420179,-4.110049", block: "A Block", myfloor: "Second"}}, {label: "17", value:{ latlng: "50.419956,-4.109323", block: "Primary Centre", myfloor: "Ground"}}, {label: "170", value:{ latlng: "50.420193,-4.109835", block: "A Block", myfloor: "Second"}}, {label: "171", value:{ latlng: "50.420154,-4.109805", block: "A Block", myfloor: "Second"}}, {label: "18", value:{ latlng: "50.420017,-4.109529", block: "Primary Centre", myfloor: "Ground"}}, {label: "24 Hour Open Access Room", value:{ latlng: "50.42014,-4.109949", block: "A Block", myfloor: "Ground"}}, {label: "310", value:{ latlng: "50.420422,-4.110331", block: "B Block", myfloor: "Ground"}}, {label: "311", value:{ latlng: "50.420461,-4.110374", block: "B Block", myfloor: "Ground"}}, {label: "316", value:{ latlng: "50.42042,-4.110299", block: "B Block", myfloor: "Ground"}}, {label: "317", value:{ latlng: "50.42042,-4.110299", block: "B Block", myfloor: "Ground"}}, {label: "331", value:{ latlng: "50.42042,-4.110245", block: "B Block", myfloor: "First"}}, {label: "332", value:{ latlng: "50.42042,-4.11021", block: "B Block", myfloor: "First"}}, {label: "333", value:{ latlng: "50.420484,-4.110328", block: "B Block", myfloor: "First"}}, {label: "336", value:{ latlng: "50.420451,-4.110277", block: "B Block", myfloor: "First"}}, {label: "352", value:{ latlng: "50.420461,-4.110374", block: "B Block", myfloor: "First"}}, {label: "354", value:{ latlng: "50.420537,-4.110441", block: "B Block", myfloor: "First"}}, {label: "359", value:{ latlng: "50.42075,-4.110441", block: "B Block", myfloor: "First"}}, {label: "360", value:{ latlng: "50.420714,-4.110401", block: "B Block", myfloor: "First"}}, {label: "361", value:{ latlng: "50.420632,-4.110302", block: "B Block", myfloor: "First"}}, {label: "362", value:{ latlng: "50.420554,-4.110221", block: "B Block", myfloor: "First"}}, {label: "38", value:{ latlng: "50.419925,-4.109543", block: "F Block", myfloor: "First"}}, {label: "4", value:{ latlng: "50.42013,-4.109258", block: "Primary Centre", myfloor: "Ground"}}, {label: "523", value:{ latlng: "50.42121,-4.109757", block: "Kirby Cudmore", myfloor: "First"}}, {label: "524", value:{ latlng: "50.421119,-4.109851", block: "Kirby Cudmore", myfloor: "First"}}, {label: "525", value:{ latlng: "50.421063,-4.109784", block: "Kirby Cudmore", myfloor: "First"}}, {label: "526", value:{ latlng: "50.420959,-4.109669", block: "Kirby Cudmore", myfloor: "First"}}, {label: "527", value:{ latlng: "50.420802,-4.109486", block: "Kirby Cudmore", myfloor: "First"}}, {label: "556", value:{ latlng: "50.421065,-4.109663", block: "Kirby Cudmore", myfloor: "Ground"}}, {label: "557", value:{ latlng: "50.420781,-4.109269", block: "Kirby Cudmore", myfloor: "Ground"}}, {label: "558", value:{ latlng: "50.420877,-4.10929", block: "Kirby Cudmore", myfloor: "Ground"}}, {label: "569", value:{ latlng: "50.420819,-4.10947", block: "Kirby Cudmore", myfloor: "Ground"}}, {label: "7", value:{ latlng: "50.420209,-4.109025", block: "Primary Centre", myfloor: "Ground"}}, {label: "8", value:{ latlng: "50.420125,-4.108915", block: "Primary Centre", myfloor: "Ground"}}, {label: "Accounts", value:{ latlng: "50.419913,-4.109486", block: "F Block", myfloor: "First"}}, {label: "Boardroom", value:{ latlng: "50.419956,-4.109372", block: "F Block", myfloor: "First"}}, {label: "Bookshop", value:{ latlng: "50.421106,-4.110312", block: "Reception Block", myfloor: "Ground"}}, {label: "Chaplaincy", value:{ latlng: "50.42048,-4.109231", block: "Chapel", myfloor: "n/a"}}, {label: "Chelsea Room", value:{ latlng: "50.420971,-4.109611", block: "Sports Centre", myfloor: "Ground"}}, {label: "Clark Hall", value:{ latlng: "50.420019,-4.11135", block: "Halls of Residence", myfloor: "n/a"}}, {label: "Climbing Wall", value:{ latlng: "50.420212,-4.112722", block: "Sports Centre", myfloor: "Ground"}}, {label: "Coleridge Hall", value:{ latlng: "50.420328,-4.111138", block: "Halls of Residence", myfloor: "n/a"}}, {label: "Computing & Media Services", value:{ latlng: "50.420198,-4.109966", block: "A Block", myfloor: "Ground"}}, {label: "Copy Shop", value:{ latlng: "50.420481,-4.110218", block: "B Block", myfloor: "Ground"}}, {label: "Cromwell Hall", value:{ latlng: "50.420205,-4.111981", block: "Halls of Residence", myfloor: "n/a"}}, {label: "Dining Hall", value:{ latlng: "50.42095,-4.1102", block: "Reception Block", myfloor: "Ground"}}, {label: "Dix Hall", value:{ latlng: "50.41992,-4.110731", block: "Halls of Residence", myfloor: "n/a"}}, {label: "Drama Theatre", value:{ latlng: "50.420383,-4.108805", block: "Desmond Tutu Centre", myfloor: "Ground"}}, {label: "e-Learning", value:{ latlng: "50.420029,-4.109861", block: "A Block", myfloor: "Ground"}}, {label: "Estates & Procurement", value:{ latlng: "50.420668,-4.11045", block: "B Block", myfloor: "Ground"}}, {label: "FEHW Faculty Office", value:{ latlng: "50.419911,-4.109461", block: "Primary Centre", myfloor: "Ground"}}, {label: "Fitness Suite", value:{ latlng: "50.419983,-4.113468", block: "Sports Centre", myfloor: "Ground"}}, {label: "FSMAM Faculty Office", value:{ latlng: "50.420687,-4.110496", block: "B Block", myfloor: "Ground"}}, {label: "Grandstand Café", value:{ latlng: "50.420082,-4.112435", block: "Sports Centre", myfloor: "Ground"}}, {label: "HDC101", value:{ latlng: "50.420779,-4.10895", block: "Henry Durowse Centre", myfloor: "Ground"}}, {label: "HDC201", value:{ latlng: "50.420987,-4.109089", block: "Henry Durowse Centre", myfloor: "First"}}, {label: "HDC202", value:{ latlng: "50.420941,-4.109031", block: "Henry Durowse Centre", myfloor: "First"}}, {label: "HDC203", value:{ latlng: "50.420883,-4.108964", block: "Henry Durowse Centre", myfloor: "First"}}, {label: "HDC204", value:{ latlng: "50.420795,-4.108882", block: "Henry Durowse Centre", myfloor: "First"}}, {label: "HDC215", value:{ latlng: "50.421112,-4.109207", block: "Henry Durowse Centre", myfloor: "First"}}, {label: "HDC216", value:{ latlng: "50.421168,-4.109254", block: "Henry Durowse Centre", myfloor: "First"}}, {label: "HDC217", value:{ latlng: "50.421247,-4.109354", block: "Henry Durowse Centre", myfloor: "First"}}, {label: "HDC218", value:{ latlng: "50.421303,-4.109406", block: "Henry Durowse Centre", myfloor: "First"}}, {label: "HDC301", value:{ latlng: "50.420987,-4.109089", block: "Henry Durowse Centre", myfloor: "Second"}}, {label: "HDC302", value:{ latlng: "50.420941,-4.109031", block: "Henry Durowse Centre", myfloor: "Second"}}, {label: "HDC303", value:{ latlng: "50.420883,-4.108964", block: "Henry Durowse Centre", myfloor: "Second"}}, {label: "HDC314", value:{ latlng: "50.421112,-4.109207", block: "Henry Durowse Centre", myfloor: "Second"}}, {label: "HDC315", value:{ latlng: "50.421168,-4.109254", block: "Henry Durowse Centre", myfloor: "Second"}}, {label: "HDC316", value:{ latlng: "50.421247,-4.109354", block: "Henry Durowse Centre", myfloor: "Second"}}, {label: "Hudson Hall", value:{ latlng: "50.420465,-4.11134", block: "Halls of Residence", myfloor: "n/a"}}, {label: "Human Resources", value:{ latlng: "50.42014,-4.108947", block: "F Block", myfloor: "First"}}, {label: "iSpace", value:{ latlng: "50.421125,-4.109827", block: "Kirby Cudmore", myfloor: "Ground"}}, {label: "ITT Office", value:{ latlng: "50.419979,-4.109311", block: "Primary Centre", myfloor: "Ground"}}, {label: "Kay-Shuttleworth Hall", value:{ latlng: "50.420075,-4.11105", block: "Halls of Residence", myfloor: "n/a"}}, {label: "Lecture Theatre", value:{ latlng: "50.420386,-4.109906", block: "Learning Resources Centre", myfloor: "First"}}, {label: "Library", value:{ latlng: "50.420303,-4.11013", block: "Learning Resources Centre", myfloor: "Ground/First/Second"}}, {label: "Main Reception", value:{ latlng: "50.421102,-4.110516", block: "Reception Block", myfloor: "Ground"}}, {label: "Marjon Student Union", value:{ latlng: "50.421217,-4.110218", block: "Reception Block", myfloor: "Ground"}}, {label: "Marketing", value:{ latlng: "50.42082,-4.110607", block: "B Block", myfloor: "Ground"}}, {label: "Marshall Room", value:{ latlng: "50.420531,-4.109218", block: "Chapel", myfloor: "n/a"}}, {label: "MOLU", value:{ latlng: "50.420085,-4.109939", block: "A Block", myfloor: "Ground"}}, {label: "Old Chapel Studio", value:{ latlng: "50.420279,-4.108566", block: "Desmond Tutu Centre", myfloor: "Ground"}}, {label: "PAHC Building", value:{ latlng: "50.419612,-4.110428", block: "PAHC Building", myfloor: "n/a"}}, {label: "Print Shop", value:{ latlng: "50.420475,-4.110346", block: "B Block", myfloor: "Ground"}}, {label: "Registry", value:{ latlng: "50.420181,-4.109132", block: "F Block", myfloor: "First"}}, {label: "SF35 Speech Lab", value:{ latlng: "50.419508,-4.110676", block: "PAHC Building", myfloor: "Second"}}, {label: "SF39 Tutorial", value:{ latlng: "50.419535,-4.110601", block: "PAHC Building", myfloor: "Second"}}, {label: "SF40 SClinic", value:{ latlng: "50.419566,-4.110526", block: "PAHC Building", myfloor: "Second"}}, {label: "SF42 LClinic", value:{ latlng: "50.41959,-4.110471", block: "PAHC Building", myfloor: "Second"}}, {label: "Sports Centre", value:{ latlng: "50.420084,-4.112879", block: "Sports Centre", myfloor: "n/a"}}, {label: "Sports Hall 1", value:{ latlng: "50.4204,-4.112535", block: "Sports Centre", myfloor: "Ground"}}, {label: "Sports Hall 2", value:{ latlng: "50.4204,-4.112535", block: "Sports Centre", myfloor: "Ground"}}, {label: "Sports Hall 3", value:{ latlng: "50.4204,-4.112535", block: "Sports Centre", myfloor: "Ground"}}, {label: "Sports Science Lab", value:{ latlng: "50.420068,-4.112974", block: "Sports Centre", myfloor: "Ground"}}, {label: "Staff Club", value:{ latlng: "50.419963,-4.109142", block: "F Block", myfloor: "First"}}, {label: "Student Support", value:{ latlng: "50.421054,-4.109303", block: "Henry Durowse Centre", myfloor: "Ground"}}, {label: "Student Union Bar", value:{ latlng: "50.420889,-4.110428", block: "Reception Block", myfloor: "Ground"}}, {label: "Student Village", value:{ latlng: "50.42099,-4.108177", block: "Student Village", myfloor: "n/a"}}, {label: "Swimming Pool", value:{ latlng: "50.420263,-4.112551", block: "Sports Centre", myfloor: "Ground"}}, {label: "The Shop", value:{ latlng: "50.420925,-4.110787", block: "Reception Block", myfloor: "First"}}, {label: "Tufnell Hall", value:{ latlng: "50.420186,-4.110792", block: "Halls of Residence", myfloor: "n/a"}}];
+			
+			// run the autocomplete script which matches rooms again search box
+			$("#campus_search").autocomplete({
+				target: $('#suggestions'),
+				source: objectTags,
+				callback: function(e) {
+					//console.log("here2");
+					var $a = $(e.currentTarget);
+					
+					// update search box with selected suggestion, hide other suggestions
+					$('#campus_search').val($a.text());
+					var theroom = $a.text();
+					$("#campus_search").autocomplete('clear');
+					var data = $a.attr("data-id");
+
+					// retrieve room latitude and longitude and block location
+					for(var i=0;i<objectTags.length;i++){
+						var obj = objectTags[i];
+						//alert(obj.label);
+						if (obj.label == theroom) {
+						var room = 	theroom;
+						var point = obj.value.latlng;
+						var block = obj.value.block	
+						var myfloor = obj.value.myfloor	
+						break;
+						}
+					}
+
+					// convert lat and long to float for google map
+					var point2 = point.split(",");
+					var lat = point2[0];
+					var lng = point2[1];
+					var lat = parseFloat(lat);
+					var lng = parseFloat(lng);
+					// fire off function to insert marker
+					plopRoom(new google.maps.LatLng(lat,lng), block, myfloor, room);
+				},
+				/*link: 'target.html?term=',*/
+				minLength: 2,
+				matchFromStart: false
+			});
+				});
+			
+			/*$("#roomSearchForm").live('submit', function()
+				{
+					// stop the form from being submitted
+					return false;
+				});*/
+				</script>
+                <script src="scripts/inductionmap.js"></script>
 			</div><!-- /content -->
 			
 			<div id="footerBar" data-role="footer" data-id="footerMob">
