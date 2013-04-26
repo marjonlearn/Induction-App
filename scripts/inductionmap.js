@@ -68,13 +68,8 @@
 					// function to place a marker on the map
 					function plopMarker(location, facility) {
 						
-						// delete any markers on the map
-						//clearOverlays();
-						
 						image = new google.maps.MarkerImage('images/markers/mapMarker.png',
 						new google.maps.Size(30, 30));
-						
-										
 						
 						// retrieve the passed location and split at the comma
 						var location=location.split(",");
@@ -123,7 +118,8 @@
 						infowindowsArray.push(ib);
 						
 					}
-					
+				
+				// function sticks a marker and info box on the campus map with passed room details from autocomplete
 				function plopRoom(location, block, myfloor, room) {
 				clearRooms();
 				clearOverlays();
@@ -140,8 +136,7 @@
 					position: location,
 					map: map,
 					shadow: shadow,
-					icon: image,
-					
+					icon: image,	
 					animation: google.maps.Animation.DROP
   				});
 				

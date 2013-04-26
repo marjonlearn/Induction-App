@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.example"
+        id        = "marjon.induction"
         versionCode = "1" 
         version   = "0.1">
 
 		<!-- versionCode is optional and Android only -->
 	
-		<name>Marjon Induction App</name>
+		<name>Marjon Induction</name>
 	
 		<description>
-			Marjon Induction App. Offering help and guidance as you join the University of St. mark &amp; St. John. 
+			Marjon Induction App: offering help and guidance as you join the University of St Mark &amp; St John. 
 		</description>
 	
-		<author href="https://www.marjon.ac.uk" email="elearning@marjon.ac.uk">
-			eLearning Team - University of St. Mark &amp; St. John &copy; 2013
+		<author href="http://www.marjon.ac.uk" email="elearning@marjon.ac.uk">
+			e-Learning Team - University of St Mark &amp; St John &copy; 2013
 		</author>
 		
 		<preference name="phonegap-version" value="2.5.0" />
 		<preference name="fullscreen" value="true" />
+		<preference name="orientation" value="portrait" />
+		<preference name="auto-hide-splash-screen" value="true" />
 		<!-- iOS specific preferences -->
 		<preference name="prerendered-icon" value="true" />
 		<preference name="show-splash-screen-spinner" value="false" />

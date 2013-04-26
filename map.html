@@ -43,7 +43,7 @@
 							$("#menuPanel").panel("open");					
 						});
 							
-					initialize();		
+					//initialize();		
 					}
 					);										
 					
@@ -89,7 +89,6 @@
 				target: $('#suggestions'),
 				source: objectTags,
 				callback: function(e) {
-					//console.log("here2");
 					var $a = $(e.currentTarget);
 					
 					// update search box with selected suggestion, hide other suggestions
@@ -126,12 +125,8 @@
 			});
 				});
 			
-			/*$("#roomSearchForm").live('submit', function()
-				{
-					// stop the form from being submitted
-					return false;
-				});*/
 				</script>
+                <!-- load the induction map scripts -->
                 <script src="scripts/inductionmap.js"></script>
 			</div><!-- /content -->
 			
