@@ -3,7 +3,7 @@
 <script language="javascript" runat="server" src='json2.js'></script>
 <script language="javascript" runat="server">
 
-var sourceObj = { "testkey" : "test value", "otherkey" : 5 };
+var sourceObj = [{ "session" : "IT Basics", "date" : "01/08/13"},{ "session" : "Harvard Referencing", "date" : "11/09/13" }];
 var jsonstr = JSON.stringify(sourceObj);
 Response.Write("jsoncallback(" + jsonstr + ");");
 

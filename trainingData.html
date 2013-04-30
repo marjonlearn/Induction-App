@@ -45,7 +45,11 @@
 				  url: 'http://elearning.marjon.ac.uk/tests/induction/serverstuff/inductionTraining.asp',
 				  
 				 success: function (data) {
-					alert(data[0].testkey);
+					//alert(data[0].session + " - " + data[0].date);
+					$.each(data, function (index, item) {
+							console.log(item.session);
+							console.log(item.date);
+					});
 				  },
 				  error: function () {
 					  alert("fail");
