@@ -37,15 +37,14 @@
 				<script>
 				$("#campusMap").on( "pagebeforeshow", function(event) {
 					$("#campusMap #menuBtn").click(function() {
-							// update panel with extenal menu contents	
-							$("#menuPanel").load('newstudentmenu.html', function () {
-							$(this).trigger('create');
-							$("#menuPanel").panel("open");					
-						});
+						// update panel with extenal menu contents	
+						$("#campusMap #menuPanel").load('newstudentmenu.html', function () {
+						$(this).trigger('create');
+						$("#campusMap #menuPanel").panel("open");					
+					});
 							
 					//initialize();		
-					}
-					);										
+					});										
 					
 				});
 				
@@ -65,17 +64,18 @@
 					</div>
                     <div id="localSearchBar">
 						<label id="searchLabel" for="search">Search Input:</label>
-						<input name="search" id="local_search" value="" placeholder="Places Search..." type="search" data-theme="c">
+						<input name="search" id="local_search" value="" placeholder="Room Search..." type="search" data-theme="c">
+                        <ul id="local_suggestions" data-role="listview" data-inset="true"></ul>
 					</div>
 					<div id="mapCanvas" style="height:300px;"></div>
 					<form id="campusOverlays">
-						<input value="Show campus parking" type="button">
+						<input value="Show campus parking" type="button" id="campus_Parking">
 						<input value="Show facilities" type="button" id="map_Facilities">
 					</form>
 					
 					<form id="localOverlays">
-						<input value="Show local shops" type="button">
-						<input value=" Show local restaurants" type="button">
+						<input value="Show local shops" type="button" id="local_Shops">
+						<input value=" Show local restaurants" type="button" id="local_Restaurants">
 					</form>
 				</div>
                 <script>

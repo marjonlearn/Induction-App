@@ -377,7 +377,7 @@ label#mapLabel, label#searchLabel {
 }
 
 #campusSearchBar .ui-input-search {
-    margin: 0 0 0.5em 0;
+    margin: 0;
 }
 
 #campusSearchBar .ui-icon, #campusSearchBar .ui-icon-searchfield:after {
@@ -431,6 +431,28 @@ img[src*="iws3.png"] {
     display: none;
 }
 
+ul#suggestions {
+	margin-top: 0;
+}
+
+#mapCanvas .infoBox {
+	font-size: 14px;
+	text-shadow: 0 1px 0 #F4F4F4;
+}
+
+.contentContainer #mapCanvas .infoBox {
+	top: 119px;
+}
+
+#mapCanvas img {
+	width: 15px;
+	height: 15px;
+}
+
+p.facItem, p.resItem {
+	padding-right: 20px;
+	margin: 0;
+}
 
 /* HD/"retina" sprite
 -----------------------------------------------------------------------------------------------------------*/

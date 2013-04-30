@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head> 
+		<title>Marjon Induction - Training</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link type="text/css" rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+		<link type="text/css" rel="stylesheet" href="css/induction_theme.css" />
+		<link type="text/css" rel="stylesheet" href="css/custom_style.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src="phonegap.js"></script>
+		<!--<script src="scripts/jquery.ui.map.js"></script>-->
+	</head> 
+	
+	<body> 
+		<div data-role="page" data-theme="a" id="training">
+			
+			<div data-role="panel" id="menuPanel">
+				<!-- panel content goes here -->
+			</div><!-- /panel -->
+		
+			<div data-role="header" id="regHead">
+				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
+				<h1>Training Sessions</h1>
+			</div><!-- /header -->
+		
+			<div data-role="content">
+            
+            <script type="text/javascript">
+				
+			$("#training").on( "pagebeforeshow", function( event ) { 
+														  
+				// pull in some training data
+				function jsoncallback(){
+				}
+				window.jsoncallback = "";	
+			
+				$.ajax({
+				  dataType: 'jsonp',
+				  jsonp: 'false',
+				  jsonpCallback: 'jsoncallback',
+				  contentType: "application/json; charset=UTF-8",
+				  url: 'http://elearning.marjon.ac.uk/tests/induction/serverstuff/inductionTraining.asp',
+				  
+				 success: function (data) {
+					alert(data[0].testkey);
+				  },
+				  error: function () {
+					  alert("fail");
+				  }
+				});
+				
+				
+											
+				$(function() {			
+					$("#training #menuBtn").click(function() {
+							// update panel with extenal menu contents
+							
+							$("#training #menuPanel").load('newstudentmenu.html', function () {
+							$(this).trigger('create');
+							$("#training #menuPanel").panel("open");	
+						});
+					}
+					);
+					});	
+				
+				$(function() {			
+					$("#trainingSessions > li a").click(function() {
+							// update panel with extenal menu contents
+							console.log("a click");
+							var value = $(this).attr("id");
+      						alert(value);
+							
+					}
+					);
+					});	
+	
+			});		
+			
+			
+            </script>
+            
+			<div class="contentContainer">
+				<p id="top">Want to get ahead? Why not sign up for some additional training sessions before you arrive or after induction.</p>
+				
+                <ul data-role="listview" data-inset="true" id="trainingSessions">
+                    <li data-role="list-divider">Academic Skills<span class="ui-li-count">2</span></li>
+                    <li><a href="#" id="0001">
+                        <h2>Introduction to Referencing</h2>
+                        <p>Learn the basics of Harvard referencing.</p>
+                        <p class="ui-li-aside"><strong>3rd August<br/></strong>1pm - 2pm</p>
+                    </a></li>
+                    <li><a href="#" id="0002">
+                        <h2>Time Management</h2>
+                        <p>Never miss an assignment deadline with our helpful hints.</p>
+                        <p class="ui-li-aside"><strong>5th August<br/></strong>2pm-3pm</p>
+                    </a></li>
+                    <li data-role="list-divider">IT Skills<span class="ui-li-count">1</span></li>
+                    <li><a href="#" id="0003">
+                        <h2>Document Formatting</h2>
+                        <p>Format your work like a pro!</p>
+                        <p class="ui-li-aside"><strong>3rd October<br/></strong>10am - 11.30am</p>
+                	</a></li>
+                	<li data-role="list-divider">Library Skills<span class="ui-li-count">1</span></li>
+                	<li><a href="#" id="0004">
+                        <h2>e-Resources</h2>
+                        <p>Locate and use online resources</p>
+                        <p class="ui-li-aside"><strong>8th October<br/></strong>2pm-3pm</p>
+                    </a></li>
+            	</ul>
+				
+				</div>
+			</div><!-- /content -->
+			
+			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">
+				
+			</div><!-- /footer -->
+		
+		</div><!-- /page -->
+	</body>
+	
+</html>
