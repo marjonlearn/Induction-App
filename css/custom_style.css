@@ -84,6 +84,10 @@ h3 {
     padding: 0.4em;
 }
 
+.ui-li-heading {
+    white-space: normal;
+}
+
 /* Choose Page */
 
 #indexHead {
@@ -481,6 +485,11 @@ p.sessionDetails {
 
 .sessionChecked span.ui-icon {
 	background-position: -252px -1px;
+}
+
+p.sessionInfo {
+	white-space: normal;
+	text-overflow: string;
 }
 
 /* HD/"retina" sprite

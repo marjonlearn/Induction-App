@@ -51,17 +51,23 @@
 					});
 					});	
 					
+					$(function() {
+						$(".closeCross").click(function() {
+							$('.ui-popup').popup('close');
+						});
+					});	
+					
 					$(function() {			
 					$("#trainingSessions > li a").click(function() {
 							// update panel with extenal menu contents
-							console.log("a click");
 							var value = $(this).attr("id");
       						alert(value);
 							
 					}
 					);
 					});
-			});	
+			});
+				
             </script>
             
 			<div class="contentContainer">
@@ -71,11 +77,15 @@
 					<h4>Pre-induction Sessions</h4>
 					<ul data-role="listview" data-inset="true" data-split-icon="check" data-theme="a" id="trainingSessions">
 						<li data-role="list-divider">Academic Skills<span class="ui-li-count">2</span></li>
-						<li><a href="#" id="0001">
+						<li><a href="#popupInfo1" data-rel="popup" id="0001">
 							<h2>Introduction to Referencing</h2>
 							<p class="sessionDetails">Learn the basics of Harvard referencing.</p>
 							<p class="ui-li-aside"><strong>3rd August<br/></strong>1pm - 2pm</p></a>
 							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
+							<div data-role="popup" id="popupInfo1" class="ui-content" data-theme="b" style="max-width:350px;">
+								<h4 class="popUpHeader">Introduction to Referencing<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4><p><strong>When: </strong>Thursday 3rd July</p><p><strong>Time: </strong>14:00 - 15:30</p>
+								<p class="sessionInfo">In this session you'll learn how to correct referencing an array of sources, both paper-based and electronic. Using Harvard referencing successfully will allow you to concentrate on the content of your assignments, rather than where the full-stops and initials go.</p>
+							</div>
 							</li>
 						<li><a href="#" id="0002">
 							<h2>Time Management</h2>
