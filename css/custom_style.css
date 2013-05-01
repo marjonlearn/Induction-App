@@ -475,9 +475,13 @@ p.sessionDetails {
 	margin: 0.5em 0 0 0;
 }
 
-/* #preInducSessions .ui-collapsible-content span.ui-btn-inner {
+.sessionUnChecked span.ui-icon {
+	background-position: -452px -1px;
+}
 
-} */
+.sessionChecked span.ui-icon {
+	background-position: -252px -1px;
+}
 
 /* HD/"retina" sprite
 -----------------------------------------------------------------------------------------------------------*/

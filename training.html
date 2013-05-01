@@ -45,6 +45,13 @@
 					});	
 				
 				$(function() {			
+					$("a.sessionUnChecked").click(function() {
+							// update panel with extenal menu contents
+							$(this).toggleClass("sessionChecked");
+					});
+					});	
+					
+					$(function() {			
 					$("#trainingSessions > li a").click(function() {
 							// update panel with extenal menu contents
 							console.log("a click");
@@ -53,8 +60,7 @@
 							
 					}
 					);
-					});	
-	
+					});
 			});	
             </script>
             
@@ -69,27 +75,27 @@
 							<h2>Introduction to Referencing</h2>
 							<p class="sessionDetails">Learn the basics of Harvard referencing.</p>
 							<p class="ui-li-aside"><strong>3rd August<br/></strong>1pm - 2pm</p></a>
-							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionCheck">Purchase album</a>
+							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
 							</li>
 						<li><a href="#" id="0002">
 							<h2>Time Management</h2>
 							<p class="sessionDetails">Never miss an assignment deadline with our helpful hints.</p>
 							<p class="ui-li-aside"><strong>5th August<br/></strong>2pm-3pm</p></a>
-							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionCheck">Purchase album</a>
+							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
 							</li>
 						<li data-role="list-divider">IT Skills<span class="ui-li-count">1</span></li>
 						<li><a href="#" id="0003">
 							<h2>Document Formatting</h2>
 							<p class="sessionDetails">Format your work like a pro!</p>
 							<p class="ui-li-aside"><strong>3rd October<br/></strong>10am - 11.30am</p></a>
-							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionCheck">Purchase album</a>
+							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
 							</li>
 						<li data-role="list-divider">Library Skills<span class="ui-li-count">1</span></li>
 						<li><a href="#" id="0004">
 							<h2>e-Resources</h2>
 							<p class="sessionDetails">Locate and use online resources</p>
 							<p class="ui-li-aside"><strong>8th October<br/></strong>2pm-3pm</p></a>
-							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionCheck">Purchase album</a>
+							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
 							</li>
             		</ul>
 				</div>
@@ -102,27 +108,27 @@
 							<h2>Introduction to Referencing</h2>
 							<p class="sessionDetails">Learn the basics of Harvard referencing.</p>
 							<p class="ui-li-aside"><strong>3rd August<br/></strong>1pm - 2pm</p></a>
-							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionCheck">Purchase album</a>
+							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
 							</li>
 						<li><a href="#" id="0002">
 							<h2>Time Management</h2>
 							<p class="sessionDetails">Never miss an assignment deadline with our helpful hints.</p>
 							<p class="ui-li-aside"><strong>5th August<br/></strong>2pm-3pm</p></a>
-							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionCheck">Purchase album</a>
+							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
 							</li>
 						<li data-role="list-divider">IT Skills<span class="ui-li-count">1</span></li>
 						<li><a href="#" id="0003">
 							<h2>Document Formatting</h2>
 							<p class="sessionDetails">Format your work like a pro!</p>
 							<p class="ui-li-aside"><strong>3rd October<br/></strong>10am - 11.30am</p></a>
-							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionCheck">Purchase album</a>
+							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
 							</li>
 						<li data-role="list-divider">Library Skills<span class="ui-li-count">1</span></li>
 						<li><a href="#" id="0004">
 							<h2>e-Resources</h2>
 							<p class="sessionDetails">Locate and use online resources</p>
 							<p class="ui-li-aside"><strong>8th October<br/></strong>2pm-3pm</p></a>
-							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionCheck">Purchase album</a>
+							<a href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
 							</li>
             		</ul>
 				</div>

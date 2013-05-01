@@ -4,20 +4,19 @@ $(function() {
 $("#newstudentMenu > li a").click(function(){
 	var target = $(this).attr("id");
 	var thePage = $('.ui-page-active').attr('id');
-	console.log(thePage + " #menuPanel");
+	//console.log(thePage + " #menuPanel");
+	//console.log("yo");
 	$("#" + thePage + " " + "#menuPanel").panel("close");
-	$.mobile.changePage(target, { transition: "fade" });
-	
-	
-	/*
+	//$.mobile.changePage(target, { transition: "fade" });
 	
 	$("#" + thePage + " " + "#menuPanel").panel({
   	close: function( event, ui ) {
+		//console.log("close");
 	  $.mobile.changePage(target, { transition: "fade" });
 	  }
 	});
 	
-	*/
+	
 	
 });
 });
