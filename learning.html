@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head> 
+		<title>Marjon Induction - Learning at Marjon</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link type="text/css" rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+		<link type="text/css" rel="stylesheet" href="css/induction_theme.css" />
+		<link type="text/css" rel="stylesheet" href="css/custom_style.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src="phonegap.js"></script>
+		<!--<script src="scripts/jquery.ui.map.js"></script>-->
+	</head> 
+	
+	<body> 
+		<div data-role="page" data-theme="a" id="learning">
+			
+			<div data-role="panel" id="menuPanel">
+				<!-- panel content goes here -->
+			</div><!-- /panel -->
+		
+			<div data-role="header" id="regHead">
+				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
+				<h1>Learning at Marjon</h1>
+			</div><!-- /header -->
+		
+			<div data-role="content">
+            
+            <script type="text/javascript">
+				
+			$("#learning").on( "pagebeforeshow", function( event ) { 
+																			
+				$(function() {			
+					$("#learning #menuBtn").click(function() {
+							// update panel with extenal menu contents
+
+							$("#learning #menuPanel").load('newstudentmenu.html', function () {
+							$(this).trigger('create');
+							$("#learning #menuPanel").panel("open");	
+						});
+					}
+					);
+					});	     
+				
+				$(function() {
+				$(".closeCross").click(function() {
+				$('.ui-popup').popup('close');
+				  });
+			});
+	
+			});		
+            </script>
+            
+				<div class="contentContainer">
+					<p>The following videos are presented by staff members based in a range of student focused services and are designed to give you a flavour of learning at Marjon.</p>
+					<div id="learningVids" data-role="collapsible-set" data-corners="false" data-theme="c" data-content-theme="d">
+						<div data-role="collapsible">
+							<h3>Academic Skills</h3>
+							<div class="fluidVideo">
+								<iframe src="http://player.vimeo.com/video/63804653" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+							</div>
+						</div>
+						<div data-role="collapsible">
+							<h3>LearningSpace/IT</h3>
+							<p>Collapsible content</p>
+						</div>
+						<div data-role="collapsible">
+							<h3>Library</h3>
+							<p>Collapsible content</p>
+						</div>
+						<div data-role="collapsible">
+							<h3>Marjon Plus/Charter</h3>
+							<p>Collapsible content</p>
+						</div>
+					</div>
+				</div>
+			</div><!-- /content -->
+			
+			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">
+				
+			</div><!-- /footer -->
+		
+		</div><!-- /page -->
+	</body>
+	
+</html>
