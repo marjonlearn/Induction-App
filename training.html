@@ -24,6 +24,14 @@
 			<div data-role="header" id="regHead">
 				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
 				<h1>Training Sessions</h1>
+				<a data-theme="a" href="#popupInfo0" data-rel="popup" data-role="button" class="ui-icon-alt ui-btn-right sessionHelp" data-inline="true" data-transition="pop"><img src="images/ui/greyHelpIcon.png" alt="?" /></a>
+				<div data-role="popup" id="popupInfo0" class="ui-content" data-theme="b" style="max-width:350px;">
+					<h4 class="popUpHeader">Interested in a session?<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+					<p class="sessionHelpInfo">You can press a training session title at any time to view a detailed description. If you would like to express your interest in one or more sessions, simply touch the relevent grey box to the right of the screen to check it;</p>
+					<img class="popupImg" src="images/trainingPress.jpg" alt="Press the grey boxes to check the sessions of your choice" />
+					<p class="sessionHelpInfo">Once you have selected all of the training sessions that interest you, simply press the 'Sign me up' button and you will be notified of the session details, closer to the time of event, via email;</p>
+					<img class="popupImg" src="images/trainingsignupBtn.jpg" alt="Seelct the 'Sign me up' button" />
+				</div>
 			</div><!-- /header -->
 		
 			<div data-role="content">
@@ -72,6 +80,7 @@
             
 			<div class="contentContainer">
 				<p id="top">Want to get ahead? Why not sign up for some additional training sessions before you arrive or after induction.</p>
+				<a class="inlineBtn" href="#" data-role="button" data-inline="true" data-theme="b">Sign me up</a>
 				
 				<div data-role="collapsible" id="preInducSessions" data-collapsed="false">
 					<h4>Pre-induction Sessions</h4>

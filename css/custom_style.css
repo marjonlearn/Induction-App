@@ -40,6 +40,7 @@ p#top {
 	height: 15px;
 	float: right;
 	cursor: pointer;
+	padding-left: 10px;
 }
 
 h3 {
@@ -48,6 +49,10 @@ h3 {
 
 .contentContainer {
 	padding: 15px;
+}
+
+a.inlineBtn {
+	margin: 0;
 }
 
 /* Global Overwrites */
@@ -86,6 +91,11 @@ h3 {
 
 .ui-li-heading {
     white-space: normal;
+}
+
+.ui-header .ui-btn-right, .ui-footer .ui-btn-right {
+    right: 5px;
+    top: 5px;
 }
 
 /* Choose Page */
@@ -160,7 +170,7 @@ h3 {
 }
 
 #menuPanel li a {
-	padding: 15px 10px 15px 0;
+	padding: 15px 65px 15px 0;
 	display: block;
 	text-decoration: none;
 	color: #fff;
@@ -460,6 +470,21 @@ p.facItem, p.resItem {
 
 /* Training session page */
 
+a.sessionHelp {
+	width: 38px;
+	height: 32px;
+}
+
+a.sessionHelp span.ui-btn-inner {
+	padding: 0;
+}
+
+a.sessionHelp span.ui-btn-inner img {
+	margin: 2px 0;
+	height: 25px;
+	width: 25px;
+}
+
 #preInducSessions .ui-collapsible-content, #postInducSessions .ui-collapsible-content {
 	padding: 0;
 }
@@ -490,6 +515,16 @@ p.sessionDetails {
 p.sessionInfo {
 	white-space: normal;
 	text-overflow: string;
+}
+
+p.sessionHelpInfo {
+	font-size: 12px;
+}
+
+img.popupImg {
+	margin: 0 auto;
+	border: solid thin #8FC400;
+	display: block;
 }
 
 /* HD/"retina" sprite
