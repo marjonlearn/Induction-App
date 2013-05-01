@@ -33,6 +33,7 @@ p#top {
 	color: #333;
 	border-bottom: 1px solid #999;
 	padding-bottom: 5px;
+	margin: 0;
 }
 
 .closeCross {
@@ -525,6 +526,23 @@ img.popupImg {
 	margin: 0 auto;
 	border: solid thin #8FC400;
 	display: block;
+}
+
+#signUpFormWrap {
+	padding: 20px;
+	display: inline-block
+}
+
+#signUpFormWrap a {
+	margin: 0;
+}
+
+#signUpFormWrap a#signUpBtn {
+	float: left;
+}
+
+#signUpFormWrap a#cancelBtn {
+	float: right;
 }
 
 /* Learning at Marjon page */

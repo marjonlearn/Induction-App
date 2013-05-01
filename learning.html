@@ -28,34 +28,33 @@
 		
 			<div data-role="content">
             
-            <script type="text/javascript">
-				
-			$("#learning").on( "pagebeforeshow", function( event ) { 
-																			
-				$(function() {			
-					$("#learning #menuBtn").click(function() {
-							// update panel with extenal menu contents
-
-							$("#learning #menuPanel").load('newstudentmenu.html', function () {
-							$(this).trigger('create');
-							$("#learning #menuPanel").panel("open");	
-						});
-					}
-					);
-					});	     
-				
-				$(function() {
-				$(".closeCross").click(function() {
-				$('.ui-popup').popup('close');
-				  });
-			});
+            <script type="text/javascript">				
+				$("#learning").on( "pagebeforeshow", function( event ) { 
+																				
+					$(function() {			
+						$("#learning #menuBtn").click(function() {
+								// update panel with extenal menu contents
 	
-			});		
+								$("#learning #menuPanel").load('newstudentmenu.html', function () {
+								$(this).trigger('create');
+								$("#learning #menuPanel").panel("open");	
+							});
+						}
+						);
+						});	     
+					
+					$(function() {
+					$(".closeCross").click(function() {
+					$('.ui-popup').popup('close');
+					  });
+				});
+		
+				});		
             </script>
             
 				<div class="contentContainer">
 					<p>The following videos are presented by staff members based in a range of student focused services and are designed to give you a flavour of learning at Marjon.</p>
-					<div id="learningVids" data-role="collapsible-set" data-corners="false" data-theme="c" data-content-theme="d">
+					<div id="learningVids" data-role="collapsible-set" data-corners="false" data-theme="a" data-content-theme="d">
 						<div data-role="collapsible">
 							<h3>Academic Skills</h3>
 							<div class="fluidVideo">
