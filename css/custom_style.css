@@ -481,9 +481,9 @@ a.sessionHelp span.ui-btn-inner {
 }
 
 a.sessionHelp span.ui-btn-inner img {
-	margin: 2px 0;
-	height: 25px;
-	width: 25px;
+	margin: 0;
+	height: 30px;
+	width: 30px;
 }
 
 #preInducSessions .ui-collapsible-content, #postInducSessions .ui-collapsible-content {

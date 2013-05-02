@@ -46,6 +46,9 @@
 					$(function() {			
 						$("#loadaVid").click(function() {
 						$("#avideo").html('<iframe src="http://player.vimeo.com/video/65286957" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
+						$("#avideo").trigger('create');
+						alert("created?");
+						//console.log("refreshed");
 					});
 					});
 					

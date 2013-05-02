@@ -1,6 +1,6 @@
 /**
  * @name InfoBox
- * @version 1.1.12 [December 11, 2012]
+ * @version 1.1.9 [October 2, 2011]
  * @author Gary Little (inspired by proof-of-concept code from Pamela Fox of Google)
  * @copyright Copyright 2010 Gary Little [gary at luxcentral.com]
  * @fileoverview InfoBox extends the Google Maps JavaScript API V3 <tt>OverlayView</tt> class.
@@ -9,6 +9,14 @@
  *  additional properties for advanced styling. An InfoBox can also be used as a map label.
  *  <p>
  *  An InfoBox also fires the same events as a <tt>google.maps.InfoWindow</tt>.
+ *  <p>
+ *  Browsers tested:
+ *  <p>
+ *  Mac -- Safari (4.0.4), Firefox (3.6), Opera (10.10), Chrome (4.0.249.43), OmniWeb (5.10.1)
+ *  <br>
+ *  Win -- Safari, Firefox, Opera, Chrome (3.0.195.38), Internet Explorer (8.0.6001.18702)
+ *  <br>
+ *  iPod Touch/iPhone -- Safari (3.1.2)
  */
 
 /*!
@@ -33,7 +41,7 @@
  * @name InfoBoxOptions
  * @class This class represents the optional parameter passed to the {@link InfoBox} constructor.
  * @property {string|Node} content The content of the InfoBox (plain text or an HTML DOM node).
- * @property {boolean} [disableAutoPan=false] Disable auto-pan on <tt>open</tt>.
+ * @property {boolean} disableAutoPan Disable auto-pan on <tt>open</tt> (default is <tt>false</tt>).
  * @property {number} maxWidth The maximum width (in pixels) of the InfoBox. Set to 0 if no maximum.
  * @property {Size} pixelOffset The offset (in pixels) from the top left corner of the InfoBox
  *  (or the bottom left corner if the <code>alignBottom</code> property is <code>true</code>)
@@ -41,7 +49,8 @@
  * @property {LatLng} position The geographic location at which to display the InfoBox.
  * @property {number} zIndex The CSS z-index style value for the InfoBox.
  *  Note: This value overrides a zIndex setting specified in the <tt>boxStyle</tt> property.
- * @property {string} [boxClass="infoBox"] The name of the CSS class defining the styles for the InfoBox container.
+ * @property {string} boxClass The name of the CSS class defining the styles for the InfoBox container.
+ *  The default name is <code>infoBox</code>.
  * @property {Object} [boxStyle] An object literal whose properties define specific CSS
  *  style values to be applied to the InfoBox. Style values defined here override those that may
  *  be defined in the <code>boxClass</code> style sheet. If this property is changed after the
@@ -54,18 +63,17 @@
  *  Set this property to "" if no close box is required.
  * @property {Size} infoBoxClearance Minimum offset (in pixels) from the InfoBox to the
  *  map edge after an auto-pan.
- * @property {boolean} [isHidden=false] Hide the InfoBox on <tt>open</tt>.
- *  [Deprecated in favor of the <tt>visible</tt> property.]
- * @property {boolean} [visible=true] Show the InfoBox on <tt>open</tt>.
+ * @property {boolean} isHidden Hide the InfoBox on <tt>open</tt> (default is <tt>false</tt>).
  * @property {boolean} alignBottom Align the bottom left corner of the InfoBox to the <code>position</code>
  *  location (default is <tt>false</tt> which means that the top left corner of the InfoBox is aligned).
  * @property {string} pane The pane where the InfoBox is to appear (default is "floatPane").
  *  Set the pane to "mapPane" if the InfoBox is being used as a map label.
  *  Valid pane names are the property names for the <tt>google.maps.MapPanes</tt> object.
- * @property {boolean} enableEventPropagation Propagate mousedown, mousemove, mouseover, mouseout,
- *  mouseup, click, dblclick, touchstart, touchend, touchmove, and contextmenu events in the InfoBox
- *  (default is <tt>false</tt> to mimic the behavior of a <tt>google.maps.InfoWindow</tt>). Set
- *  this property to <tt>true</tt> if the InfoBox is being used as a map label.
+ * @property {boolean} enableEventPropagation Propagate mousedown, click, dblclick,
+ *  and contextmenu events in the InfoBox (default is <tt>false</tt> to mimic the behavior
+ *  of a <tt>google.maps.InfoWindow</tt>). Set this property to <tt>true</tt> if the InfoBox
+ *  is being used as a map label. iPhone note: This property setting has no effect; events are
+ *  always propagated.
  */
 
 /**
@@ -99,25 +107,18 @@ function InfoBox(opt_opts) {
     this.closeBoxURL_ = "";
   }
   this.infoBoxClearance_ = opt_opts.infoBoxClearance || new google.maps.Size(1, 1);
-
-  if (typeof opt_opts.visible === "undefined") {
-    if (typeof opt_opts.isHidden === "undefined") {
-      opt_opts.visible = true;
-    } else {
-      opt_opts.visible = !opt_opts.isHidden;
-    }
-  }
-  this.isHidden_ = !opt_opts.visible;
-
+  this.isHidden_ = opt_opts.isHidden || false;
   this.alignBottom_ = opt_opts.alignBottom || false;
   this.pane_ = opt_opts.pane || "floatPane";
   this.enableEventPropagation_ = opt_opts.enableEventPropagation || false;
 
   this.div_ = null;
   this.closeListener_ = null;
+  this.eventListener1_ = null;
+  this.eventListener2_ = null;
+  this.eventListener3_ = null;
   this.moveListener_ = null;
   this.contextListener_ = null;
-  this.eventListeners_ = null;
   this.fixedWidthSet_ = null;
 }
 
@@ -131,8 +132,6 @@ InfoBox.prototype = new google.maps.OverlayView();
  */
 InfoBox.prototype.createInfoBoxDiv_ = function () {
 
-  var i;
-  var events;
   var bw;
   var me = this;
 
@@ -140,7 +139,9 @@ InfoBox.prototype.createInfoBoxDiv_ = function () {
   //
   var cancelHandler = function (e) {
     e.cancelBubble = true;
+
     if (e.stopPropagation) {
+
       e.stopPropagation();
     }
   };
@@ -206,24 +207,14 @@ InfoBox.prototype.createInfoBoxDiv_ = function () {
 
     if (!this.enableEventPropagation_) {
 
-      this.eventListeners_ = [];
-
       // Cancel event propagation.
       //
-      // Note: mousemove not included (to resolve Issue 152)
-      events = ["mousedown", "mouseover", "mouseout", "mouseup",
-      "click", "dblclick", "touchstart", "touchend", "touchmove"];
-
-      for (i = 0; i < events.length; i++) {
-
-        this.eventListeners_.push(google.maps.event.addDomListener(this.div_, events[i], cancelHandler));
-      }
-      
-      // Workaround for Google bug that causes the cursor to change to a pointer
-      // when the mouse moves over a marker underneath InfoBox.
-      this.eventListeners_.push(google.maps.event.addDomListener(this.div_, "mouseover", function (e) {
+      this.eventListener1_ = google.maps.event.addDomListener(this.div_, "mousedown", cancelHandler);
+      this.eventListener2_ = google.maps.event.addDomListener(this.div_, "click", cancelHandler);
+      this.eventListener3_ = google.maps.event.addDomListener(this.div_, "dblclick", cancelHandler);
+      this.eventListener4_ = google.maps.event.addDomListener(this.div_, "mouseover", function (e) {
         this.style.cursor = "default";
-      }));
+      });
     }
 
     this.contextListener_ = google.maps.event.addDomListener(this.div_, "contextmenu", ignoreHandler);
@@ -271,7 +262,7 @@ InfoBox.prototype.addClickHandler_ = function () {
   if (this.closeBoxURL_ !== "") {
 
     closeBox = this.div_.firstChild;
-    this.closeListener_ = google.maps.event.addDomListener(closeBox, "click", this.getCloseClickHandler_());
+    this.closeListener_ = google.maps.event.addDomListener(closeBox, 'click', this.getCloseClickHandler_());
 
   } else {
 
@@ -297,14 +288,14 @@ InfoBox.prototype.getCloseClickHandler_ = function () {
       e.stopPropagation();
     }
 
+    me.close();
+
     /**
      * This event is fired when the InfoBox's close box is clicked.
      * @name InfoBox#closeclick
      * @event
      */
     google.maps.event.trigger(me, "closeclick");
-
-    me.close();
   };
 };
 
@@ -558,10 +549,6 @@ InfoBox.prototype.setOptions = function (opt_opts) {
 
     this.isHidden_ = opt_opts.isHidden;
   }
-  if (typeof opt_opts.visible !== "undefined") {
-
-    this.isHidden_ = !opt_opts.visible;
-  }
   if (typeof opt_opts.enableEventPropagation !== "undefined") {
 
     this.enableEventPropagation_ = opt_opts.enableEventPropagation;
@@ -670,18 +657,6 @@ InfoBox.prototype.setZIndex = function (index) {
 };
 
 /**
- * Sets the visibility of the InfoBox.
- * @param {boolean} isVisible
- */
-InfoBox.prototype.setVisible = function (isVisible) {
-
-  this.isHidden_ = !isVisible;
-  if (this.div_) {
-    this.div_.style.visibility = (this.isHidden_ ? "hidden" : "visible");
-  }
-};
-
-/**
  * Returns the content of the InfoBox.
  * @returns {string}
  */
@@ -709,23 +684,7 @@ InfoBox.prototype.getZIndex = function () {
 };
 
 /**
- * Returns a flag indicating whether the InfoBox is visible.
- * @returns {boolean}
- */
-InfoBox.prototype.getVisible = function () {
-
-  var isVisible;
-
-  if ((typeof this.getMap() === "undefined") || (this.getMap() === null)) {
-    isVisible = false;
-  } else {
-    isVisible = !this.isHidden_;
-  }
-  return isVisible;
-};
-
-/**
- * Shows the InfoBox. [Deprecated; use <tt>setVisible</tt> instead.]
+ * Shows the InfoBox.
  */
 InfoBox.prototype.show = function () {
 
@@ -736,7 +695,7 @@ InfoBox.prototype.show = function () {
 };
 
 /**
- * Hides the InfoBox. [Deprecated; use <tt>setVisible</tt> instead.]
+ * Hides the InfoBox.
  */
 InfoBox.prototype.hide = function () {
 
@@ -779,21 +738,22 @@ InfoBox.prototype.open = function (map, anchor) {
  */
 InfoBox.prototype.close = function () {
 
-  var i;
-
   if (this.closeListener_) {
 
     google.maps.event.removeListener(this.closeListener_);
     this.closeListener_ = null;
   }
 
-  if (this.eventListeners_) {
-    
-    for (i = 0; i < this.eventListeners_.length; i++) {
+  if (this.eventListener1_) {
 
-      google.maps.event.removeListener(this.eventListeners_[i]);
-    }
-    this.eventListeners_ = null;
+    google.maps.event.removeListener(this.eventListener1_);
+    google.maps.event.removeListener(this.eventListener2_);
+    google.maps.event.removeListener(this.eventListener3_);
+    google.maps.event.removeListener(this.eventListener4_);
+    this.eventListener1_ = null;
+    this.eventListener2_ = null;
+    this.eventListener3_ = null;
+    this.eventListener4_ = null;
   }
 
   if (this.moveListener_) {
