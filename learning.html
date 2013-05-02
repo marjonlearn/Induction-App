@@ -46,9 +46,14 @@
 					$(function() {	
 					$('#loadAcademic').bind('expand', function () {
 						$("#video_academic").html('<iframe src="http://player.vimeo.com/video/65286957" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
-						$('#video_academic').css('height', '250px');
-						$('#video_academic').css('width', '250px');
-						$('#video_academic').trigger("create");
+						$('#video_academic').css('height', '100%');
+						$('#video_academic').css('width', '100%');
+						$('#learning').trigger('create');
+						alert("created page");
+						$('#video_academic').trigger('refresh');
+						alert("refreshed div");
+						$('#loadAcademic').trigger('refresh');
+						alert("refreshed collapse");
 					}).bind('collapse', function () {
 						console.log("hide");
 					});
