@@ -42,16 +42,18 @@
 						}
 						);
 						});	     
-																				
-					$(function() {			
-						$("#loadaVid").click(function() {
-						$("#avideo").html('<iframe src="http://player.vimeo.com/video/65286957" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
-						$('#avideo').css('height', '100px')
-						//$("#avideo").trigger('refresh');
-						//$("#avideo").trigger( "updatelayout" );
-						//console.log("refreshed");
+					
+					$(function() {	
+					$('#loadAcademic').bind('expand', function () {
+						$("#video_academic").html('<iframe src="http://player.vimeo.com/video/65286957" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
+						$('#video_academic').css('height', '100%');
+						$('#video_academic').css('width', '100%');
+					}).bind('collapse', function () {
+						console.log("hide");
 					});
 					});
+					
+					
 					
 					$(function() {
 					$(".closeCross").click(function() {
@@ -65,9 +67,9 @@
 				<div class="contentContainer">
 					<p>The following videos are presented by staff members based in a range of student focused services and are designed to give you a flavour of learning at Marjon.</p>
 					<div id="learningVids" data-role="collapsible-set" data-corners="false" data-theme="a" data-content-theme="d">
-						<div data-role="collapsible">
+						<div data-role="collapsible" id="loadAcademic">
 							<h3>Academic Skills</h3>
-							<div class="fluidVideo">
+							<div class="fluidVideo" id="video_academic">
 								
 							</div>
 						</div>

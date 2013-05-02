@@ -24,11 +24,24 @@
 			<div data-role="header" id="regHead">
 				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
 				<h1>What to bring</h1>
+				<a data-theme="a" href="#popupInfo0" data-rel="popup" data-role="button" class="ui-icon-alt ui-btn-right sessionHelp" data-inline="true" data-transition="pop"><img src="images/ui/whiteHelpIcon.png" alt="?" /></a>
+				<div data-role="popup" id="popupInfo0" class="ui-content" data-theme="b" style="max-width:350px;">
+					<h4 class="popUpHeader">Be prepared!<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+					<p class="sessionHelpInfo">This checklist is designed to make sure you arrive on campus with everything you need. In the months leading up to induction, you can check items off of your list by simply pressing the item in question. Your selections will be remembered for the next time you visit the page;</p>
+					<img class="popupImg" src="images/checkPressBtn.jpg" alt="Press items on the list to tick them off of your list." />
+					<p class="sessionHelpInfo">More specific details about items in the checklist can be found by pressing the question mark icon to the right of each item.</p>
+				</div>
 			</div><!-- /header -->
 		
 			<div data-role="content">
             
             <script type="text/javascript">
+			
+			$(function() {
+						$(".closeCross").click(function() {
+							$('.ui-popup').popup('close');
+						});
+					});
 				
 			$("#checklist").on( "pagebeforeshow", function( event ) { 
 																			

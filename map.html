@@ -27,6 +27,15 @@
 					<option value="campus" data-theme="c">Campus Map</option>
 					<option value="local" data-theme="c">Local Map</option>
 				</select>
+				<a data-theme="a" href="#popupInfo0" data-rel="popup" data-role="button" class="ui-icon-alt ui-btn-right sessionHelp" data-inline="true" data-transition="pop"><img src="images/ui/whiteHelpIcon.png" alt="?" /></a>
+				<div data-role="popup" id="popupInfo0" class="ui-content" data-theme="b" style="max-width:350px;">
+					<h4 class="popUpHeader">Feeling a bit lost?<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+					<p class="sessionHelpInfo">This interactive map will give you helpful locations, such as campus parking zones and shops, on campus and around the wider local area. To switch between campus and local, simply slide the selector bar to your desired map type;</p>
+					<img class="popupImg" src="images/mapSlidePress.jpg" alt="Slide the selector accross to reveal the map of your choice." />
+					<p class="sessionHelpInfo">You can then toggle between markers for facilities, restaurants etc. by pressing the appropriate button;</p>
+					<img class="popupImg" src="images/mapRevealPress.jpg" alt="Decide on what you are looking for by pressing the appropriate button." />
+					<p class="sessionHelpInfo">If you are looking for a specific room on campus, use the search bar at the top of the page. You should be presented with a list of suggestions once you've started entering a room. Simply select the room you require from the list, and its location will be pinpointed on the map.</p>
+				</div>
 			</div><!-- /header -->
 		
 			<div data-role="content">
@@ -35,6 +44,12 @@
             <script type="text/javascript" src="scripts/autoComplete.js"></script>
             
 				<script>
+				$(function() {
+						$(".closeCross").click(function() {
+							$('.ui-popup').popup('close');
+						});
+					});
+				
 				$("#campusMap").on( "pagebeforeshow", function(event) {
 					$("#campusMap #menuBtn").click(function() {
 						// update panel with extenal menu contents	

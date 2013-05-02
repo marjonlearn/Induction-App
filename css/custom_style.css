@@ -376,7 +376,7 @@ label#mapLabel, label#searchLabel {
 #regHead div.ui-slider-switch {
 	display: inline-block;
 	position: absolute;
-	right: 5px;
+	right: 60px;
 	top: 5px;
 	margin: 0;
 	width: 10em;
