@@ -42,6 +42,12 @@
 						}
 						);
 						});	     
+																				
+					$(function() {			
+						$("#loadaVid").click(function() {
+						$("#avideo").html('<iframe src="http://player.vimeo.com/video/65286957" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
+					});
+					});
 					
 					$(function() {
 					$(".closeCross").click(function() {
@@ -58,7 +64,7 @@
 						<div data-role="collapsible">
 							<h3>Academic Skills</h3>
 							<div class="fluidVideo">
-								<iframe src="http://player.vimeo.com/video/65286957" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+								
 							</div>
 						</div>
 						<div data-role="collapsible">
@@ -75,6 +81,8 @@
 						</div>
 					</div>
 				</div>
+                <div id="avideo">load video in here</div>
+               <a href="" id="loadaVid">load a video</a> 
 			</div><!-- /content -->
 			
 			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">
