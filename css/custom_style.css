@@ -566,40 +566,66 @@ img.popupImg {
 	height: 100%;
 }
 
+/* Social Networks page */
+
+.socialNetworkIcons .ui-bar, .socialNetworkIcons .ui-bar a {
+	border: none;
+	background: none;
+	box-shadow: none;
+}
+
+.socialNetworkIcons .ui-bar a span {
+	padding: 0;
+}
+
+.socialNetworkIcons img {
+	height: auto;
+	width: 123px;
+}
+
 /* HD/"retina" sprite
 -----------------------------------------------------------------------------------------------------------*/
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3),
        only screen and (min--moz-device-pixel-ratio: 1.3),
        only screen and (min-resolution: 200dpi) {
 	   
-	 .ui-icon-check {
-		background-image: url(images/icons-36-white.png);
-		-moz-background-size: 775px 18px;
-		-o-background-size: 775px 18px;
-		-webkit-background-size: 775px 18px;
-		background-size: 775px 18px;
-	}
+.sessionUnChecked span.ui-icon {
+	background-position: -432px -1px;
+}
+
+.sessionChecked span.ui-icon {
+	background-position: -224px -1px;
+}
 	   
-	.ui-icon-checkbox-on {
-		background-position: 	-723px 50%;
-	}
-	.ui-icon-checkbox-off {
-		background-position: 	-760px 50%;
-	}
+.ui-icon-check {
+	background-image: url(images/icons-36-white.png);
+	-moz-background-size: 775px 18px;
+	-o-background-size: 775px 18px;
+	-webkit-background-size: 775px 18px;
+	background-size: 775px 18px;
+}
+	   
+.ui-icon-checkbox-on {
+	background-position: 	-647px 50%;
+}
+
+.ui-icon-checkbox-off {
+	background-position: 	-560px 50%;
+}
 	
-	#mapSearchBar .ui-icon, #mapSearchBar .ui-icon-searchfield:after {
+#campusSearchBar .ui-icon, #campusSearchBar .ui-icon-searchfield:after, #localSearchBar .ui-icon, #localSearchBar .ui-icon-searchfield:after {
     background-color: transparent;
     background-image: url("images/icons-36-black.png");
     background-repeat: no-repeat;
     border-radius: 9px 9px 9px 9px;
 }
 
-#mapSearchBar .ui-icon-delete {
+#campusSearchBar .ui-icon-delete, #localSearchBar .ui-icon-delete {
 	background-image: url("images/icons-36-white.png");
-	background-position: -82px 50%;
+	background-position: -73px 50%;
 }
 
 .ui-icon-search, .ui-icon-searchfield:after {
-	background-position: -684px 50%;
+	background-position: -610px 50%;
 }
 }

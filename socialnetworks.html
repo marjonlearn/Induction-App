@@ -14,7 +14,7 @@
 	</head> 
 	
 	<body> 
-		<div data-role="page" data-theme="a" id="network">		
+		<div data-role="page" data-theme="a" id="socialNetworks">		
 			<div data-role="panel" id="menuPanel">
 				<!-- panel content goes here -->
 			</div><!-- /panel -->
@@ -32,17 +32,22 @@
 						});
 					});	
 					
-					$("#network").on( "pagebeforeshow", function(event) {
-					$("#network #menuBtn").click(function() {
+					$("#socialNetworks").on( "pagebeforeshow", function(event) {
+					$("#socialNetworks #menuBtn").click(function() {
 						// update panel with extenal menu contents	
-						$("#network #menuPanel").load('newstudentmenu.html', function () {
+						$("#socialNetworks #menuPanel").load('newstudentmenu.html', function () {
 						$(this).trigger('create');
-						$("#network #menuPanel").panel("open");					
+						$("#socialNetworks #menuPanel").panel("open");					
 					});	
 					});	
 					});				
 				 </script>
 			 	<div class="contentContainer">
+					<p>You will probably be no stranger to Social Networks like Facebook and Twitter so you'll be pleased to know that Marjon has a presence on both. By liking our Facebook page and following us on Twitter you will be able to keep in the loop with University news and events, ahead of induction, and network with prospective and existing students and staff.</p><p>Touch the icons below to be taken to Marjon's offical Facebook and Twitter pages;</p>
+					<div class="ui-grid-a socialNetworkIcons" data-theme="a">
+						<div class="ui-block-a"><div class="ui-bar ui-bar-e"><a href="https://www.facebook.com/MarjonUni" target="_blank"><img src="images/fbLogo.png" alt="Marjon's official Facebook page" /></a></div></div>
+						<div class="ui-block-b"><div class="ui-bar ui-bar-e"><a href="https://twitter.com/marjonuni" target="_blank"><img src="images/twitterLogo.png" alt="Marjon's official Twitter page" /></a></div></div>
+					</div><!-- /grid-a -->
 				</div>
 			</div><!-- /content -->
 			
