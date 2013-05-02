@@ -46,8 +46,9 @@
 					$(function() {			
 						$("#loadaVid").click(function() {
 						$("#avideo").html('<iframe src="http://player.vimeo.com/video/65286957" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
-						$("#avideo").trigger('create');
-						alert("created?");
+						$('#mylink').trigger('click');
+						//$("#avideo").trigger('refresh');
+						//$("#avideo").trigger( "updatelayout" );
 						//console.log("refreshed");
 					});
 					});
@@ -85,7 +86,8 @@
 					</div>
 				</div>
                 <div id="avideo">load video in here</div>
-               <a href="" id="loadaVid">load a video</a> 
+               <a href="" id="loadaVid">load a video</a> <br/>
+               <a href="" id="mylink">link to test click</a>
 			</div><!-- /content -->
 			
 			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">
