@@ -32,4 +32,7 @@
 		
 		<icon src="icon.png" />
 		<gap:splash src="splash.png" />
+		
+		<access origin="http://*.vimeo.com" />
+		<access uri="http://vimeo.com" subdomains="true" />
 	</widget>
