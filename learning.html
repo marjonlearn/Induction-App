@@ -43,26 +43,7 @@
 						);
 						});	     
 					
-					$(function() {	
-					$('#loadAcademic').bind('expand', function () {
 						
-						/*$('#video_academic').css('height', '100%');
-						$('#video_academic').css('width', '100%');
-						$('#learning').trigger('create');
-						alert("created page");
-						$('#video_academic').trigger('refresh');
-						alert("refreshed div");
-						$('#loadAcademic').trigger('refresh');
-						alert("refreshed collapse");*/
-						alert("here");
-						$("#academicVideo").attr("src", "http://player.vimeo.com/video/65286957");
-					}).bind('collapse', function () {
-						console.log("hide");
-					});
-					});
-					
-					
-					
 					$(function() {
 					$(".closeCross").click(function() {
 					$('.ui-popup').popup('close');
@@ -70,12 +51,7 @@
 				});
 		
 				});		
-				
-			/*$("#learning").on( "pageshow", function( event ) { 
-													  console.log("yo");
-			   $('#avideo').html('<iframe src="http://player.vimeo.com/video/65286957" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'); 
-			});	*/
-            </script>
+	          </script>
             
 				<div class="contentContainer">
 					<p>The following videos are presented by staff members based in a range of student focused services and are designed to give you a flavour of learning at Marjon.</p>
@@ -83,7 +59,7 @@
 						<div data-role="collapsible" id="loadAcademic">
 							<h3>Academic Skills</h3>
 							<div class="fluidVideo">
-								
+								<iframe src="http://player.vimeo.com/video/65286957" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 							</div>
 						</div>
 						<div data-role="collapsible">
@@ -100,8 +76,7 @@
 						</div>
 					</div>
 				</div>
-                <div id="avideo"><iframe src="http://player.vimeo.com/video/65286957" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
-               <a href="" id="loadaVid">load a video</a> <br/>
+                
 			</div><!-- /content -->
 			
 			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">
