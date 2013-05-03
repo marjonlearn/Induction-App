@@ -64,6 +64,22 @@ a.inlineBtn {
 	margin-bottom: 0;
 }
 
+.valError {
+    background-color: #FFDCDC;
+    border: 1px dotted #CC0000;
+    color: #CC0000;
+    padding: 10px;
+	text-shadow: none;
+}
+
+.valSuccess {
+    background-color: #D8F2C6;
+    border: 1px dotted #2B7D12;
+    color: #2B7D12;
+    padding: 10px;
+	text-shadow: none;
+}
+
 /* Global Overwrites */
 
 .ui-body-a, .ui-overlay-a {
@@ -589,6 +605,29 @@ img.popupImg {
 .socialNetworkIcons img {
 	height: auto;
 	width: 123px;
+}
+
+/* Help page */
+
+textarea#message {
+	height: 120px;
+	resize: none;
+}
+
+label#feedbackLabel {
+	display: none;
+}
+
+#messageLabel {
+	padding: 0;
+	margin: 0;
+}
+
+img#helpLogo {
+    display: block;
+    height: 150px;
+    margin: 0 auto;
+    width: 150px;
 }
 
 /* HD/"retina" sprite
