@@ -22,10 +22,25 @@
 			<div data-role="header" id="regHead">
 				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
 				<h1>Marjon Induction - Returning Students</h1>
+				<a data-theme="a" href="#popupInfo0" data-rel="popup" data-role="button" class="ui-icon-alt ui-btn-right sessionHelp" data-inline="true" data-transition="pop"><img src="images/ui/whiteHelpIcon.png" alt="?" /></a>
+				<div data-role="popup" id="popupInfo0" class="ui-content" data-theme="b" style="max-width:350px;">
+					<h4 class="popUpHeader">The Help button<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+					<p class="sessionHelpInfo">A number of sections in this app feature a help button, like this one, in the top right hand corner of the page;</p>
+					<img class="popupImg" src="images/helpPress.jpg" alt="Press the help button to reveal handy tips for using the app." />
+					<p class="sessionHelpInfo">Pressing this button will reveal a pop-up box letting you know about the page you are on and how to make use of it;</p>
+					<img class="popupImg" src="images/helpRevealPress.jpg" alt="A help box will open, revealing information about the page that you are on and how to use it." />
+					<p class="sessionHelpInfo">The information provided should be enough to enable you to use all of the features and get the most from your app, however if you have any further questions, comments or feedback then navigate to the <strong>Help!</strong> section using the Quick Links menu and get in touch!</p>
+				</div>
 			</div><!-- /header -->
 		
 			<div data-role="content">
 				  <script>
+				  	$(function() {
+						$(".closeCross").click(function() {
+							$('.ui-popup').popup('close');
+						});
+					});
+					
 					$("#returningstudent").on( "pagebeforeshow", function( event ) {	
 						$(function() {													   
 							$("returningstudent #menuBtn").click(function() {

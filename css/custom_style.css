@@ -56,6 +56,14 @@ a.inlineBtn {
 	margin: 0;
 }
 
+.ui-popup-container .ui-content p.sessionHelpInfo, .ui-popup-container .ui-content img.popupImg {
+	margin: 1em 0;
+}
+
+.ui-popup-container .ui-content p:last-child.sessionHelpInfo {
+	margin-bottom: 0;
+}
+
 /* Global Overwrites */
 
 .ui-body-a, .ui-overlay-a {
