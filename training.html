@@ -72,7 +72,8 @@
 							var countSessions = 0;
 							$('.sessionChecked').each(function(i, obj) {
 								var session = $(this).attr('id');
-								allSessions = allSessions + "," + session;
+								var title = $(this).attr('alt');	
+								allSessions = allSessions + "~[" + session + "]: " + title;
 								countSessions++;
 								//console.log(allSessions);
 							});
@@ -87,8 +88,50 @@
 						});
 				});	
 				
-			});
-			
+					// sign-up to sessions
+					$(function() {
+							$("#train_submitBtn").click(function() {
+							// pull in some training data
+							function jsoncallback(){
+							}
+							window.jsoncallback = "";	
+							
+							// grab contact details from form
+							/*var name = $("#session_user").val();
+							var email = $("#session_email").val();
+							var tel = $("#session_tel").val();*/
+							
+							var myDetails =  $('#sessionSignUp').serialize();
+							var allSessions = localStorage.getItem("sessionReg");
+							var countSessions = localStorage.getItem("sessionCount");
+							
+							//console.log(allSessions + countSessions);
+							
+							$.ajax({
+							  dataType: 'jsonp',
+							  data: myDetails + '&session_list=' + allSessions + '&session_count=' + countSessions,
+							  type: 'GET',
+							  jsonp: 'false',
+							  jsonpCallback: 'jsoncallback',
+							  contentType: "application/json; charset=UTF-8",
+							  url: 'http://elearning.marjon.ac.uk/tests/induction/serverstuff/inductionEmail.asp',
+							  
+							 success: function (data) {
+								//alert(data[0].session + " - " + data[0].date);
+								/*$.each(data, function (index, item) {
+										console.log(item.session);
+										console.log(item.date);*/
+										alert("success");
+								
+							  },
+							  error: function () {
+								  alert("fail");
+							  }
+							});
+							
+							});
+					});
+			});	
 			$("#training").on( "pagehide", function( event ) { 
 				// clear checked sessions when exiting page by removing page from DOM
 							$("#training").remove();
@@ -107,7 +150,7 @@
 							<h2>Introduction to Referencing</h2>
 							<p class="sessionDetails">Learn the basics of Harvard referencing.</p>
 							<p class="ui-li-aside"><strong>3rd August<br/></strong>1pm - 2pm</p></a>
-							<a id="session_001" href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Select Session</a>
+							<a id="session_001" alt="Introduction to Referencing | 3rd August 1pm - 2pm" href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Select Session</a>
 							<div data-role="popup" id="popupInfo1" class="ui-content" data-theme="b" style="max-width:350px;">
 								<h4 class="popUpHeader">Introduction to Referencing<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4><p><strong>When: </strong>Thursday 3rd July</p><p><strong>Time: </strong>14:00 - 15:30</p>
 								<p class="sessionInfo">In this session you'll learn how to correct referencing an array of sources, both paper-based and electronic. Using Harvard referencing successfully will allow you to concentrate on the content of your assignments, rather than where the full-stops and initials go.</p>
@@ -117,7 +160,7 @@
 							<h2>Time Management</h2>
 							<p class="sessionDetails">Never miss an assignment deadline with our helpful hints.</p>
 							<p class="ui-li-aside"><strong>5th August<br/></strong>2pm-3pm</p></a>
-							<a id="session_002"  href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Select Session</a>
+							<a id="session_002" alt="Time Management | 5th August 2pm-3pm" href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Select Session</a>
                             <div data-role="popup" id="popupInfo2" class="ui-content" data-theme="b" style="max-width:350px;">
 								<h4 class="popUpHeader">Time Management<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4><p><strong>When: </strong>Thursday 3rd July</p><p><strong>Time: </strong>14:00 - 15:30</p>
 								<p class="sessionInfo">In this session you'll learn how to correct referencing an array of sources, both paper-based and electronic. Using Harvard referencing successfully will allow you to concentrate on the content of your assignments, rather than where the full-stops and initials go.</p>
@@ -128,7 +171,7 @@
 							<h2>Document Formatting</h2>
 							<p class="sessionDetails">Format your work like a pro!</p>
 							<p class="ui-li-aside"><strong>3rd October<br/></strong>10am - 11.30am</p></a>
-							<a id="session_003" href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Select Session</a>
+							<a id="session_003" alt="IT Skills | 3rd October 10am - 11.30am" href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Select Session</a>
                             <div data-role="popup" id="popupInfo3" class="ui-content" data-theme="b" style="max-width:350px;">
 								<h4 class="popUpHeader">Document Formatting<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4><p><strong>When: </strong>Thursday 3rd July</p><p><strong>Time: </strong>14:00 - 15:30</p>
 								<p class="sessionInfo">In this session you'll learn how to correct referencing an array of sources, both paper-based and electronic. Using Harvard referencing successfully will allow you to concentrate on the content of your assignments, rather than where the full-stops and initials go.</p>
@@ -139,7 +182,7 @@
 							<h2>e-Resources</h2>
 							<p class="sessionDetails">Locate and use online resources</p>
 							<p class="ui-li-aside"><strong>8th October<br/></strong>2pm-3pm</p></a>
-							<a id="session_004"  href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Select Session</a>
+							<a id="session_004" alt="e-Resources | 8th October 2pm-3pm"  href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Select Session</a>
                             <div data-role="popup" id="popupInfo4" class="ui-content" data-theme="b" style="max-width:350px;">
 								<h4 class="popUpHeader">e-Resources<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4><p><strong>When: </strong>Thursday 3rd July</p><p><strong>Time: </strong>14:00 - 15:30</p>
 								<p class="sessionInfo">In this session you'll learn how to correct referencing an array of sources, both paper-based and electronic. Using Harvard referencing successfully will allow you to concentrate on the content of your assignments, rather than where the full-stops and initials go.</p>
@@ -156,7 +199,7 @@
 							<h2>Introduction to Referencing</h2>
 							<p class="sessionDetails">Learn the basics of Harvard referencing.</p>
 							<p class="ui-li-aside"><strong>3rd August<br/></strong>1pm - 2pm</p></a>
-							<a id="session_005" href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
+							<a id="session_005" title="Introduction to Referencing" href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
 							</li>
 						<li><a href="#">
 							<h2>Time Management</h2>
@@ -184,19 +227,19 @@
 				</div>
                 <!-- sign-up form -->
                 <div data-role="popup" id="popupSignUp" data-overlay-theme="a" data-theme="b" class="ui-corner-all" data-dismissible="false">
-                        <form>
+                        <form id="sessionSignUp">
                             <div id="signUpFormWrap">
                               <h4 class="popUpHeader">Sign-Up For Sessions</h4>
                               <p>You've selected:<span id="sessionCount">4</span> session(s)</p>
                               <p>Thanks for your interest. Fill in your details below and we'll get in touch with some more details about the session(s) you selected.</p>
                               	<label for="session_user" class="ui-hidden-accessible">Name:</label>
-                              	<input type="text" name="user" id="session_user" value="" placeholder="Name" data-theme="b">
+                              	<input type="text" name="session_user" id="session_user" value="" placeholder="Name" data-theme="b">
 								<label for="session_user" class="ui-hidden-accessible">Email:</label>
-                             	<input type="text" name="email" id="session_email" value="" placeholder="Email" data-theme="b">
+                             	<input type="text" name="session_email" id="session_email" value="" placeholder="Email" data-theme="b">
                                 <label for="session_user" class="ui-hidden-accessible">Tel:</label>
-                              	<input type="text" name="tel" id="session_tel" value="" placeholder="Phone number" data-theme="b">
-        						<a id="cancelBtn" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="b">Cancel</a>
-        						<a id="signUpBtn" href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="a">Sign-Up</a>
+                              	<input type="text" name="session_tel" id="session_tel" value="" placeholder="Phone number" data-theme="b">
+        						<a id="train_cancelBtn" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="b">Cancel</a>
+        						<a id="train_submitBtn" href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="a">Sign-Up</a>
                             </div>
                         </form>
                     
