@@ -54,19 +54,23 @@
 				});							
    				 </script>
 				 <div class="contentContainer">
-				 	<img id="helpLogo" src="images/landingLogo.png" alt="University of St. Mark &amp; St. John - Induction App" />             
-					<p>We would love to hear your feedback. From general comments and bug spotting to things you think the map might be missing, your input is welcome. Please select your message subject from the list below, and get typing!</p>
-					<form action="" method="post" id="mailNOW" name="mailNOW">			
-						<div data-role="fieldcontain" class="ui-hide-label" id="messageLabel">
-							<label id="feedbackLabel" for="Message">Message:</label>
-							<textarea name="message" id="message" value="" placeholder="" data-theme="b"></textarea>
-						</div>
-		
-						<a href="" data-role="button" data-theme="a" class="mailBtn" id="mailBtn">Submit</a>
-					   
-						<p id="serverFail" class="valError">Problem contacting server</p>
-						<p id="serverOK" class="valSuccess">Feedback submitted. Thank you!</p>
-					</form>
+					<p id="top">If you have any questions or concerns regarding induction or your return to Marjon then don't hesitate to get in touch with the Induction Team who will be able to answer you queries. By pressing the button below, your device's native email client will open ready for you to compose your message:</p>
+					<a href="mailto:induction@marjon.ac.uk?Subject=Induction%20query" data-role="button">Email the Induction Team</a>
+					<div data-role="collapsible" id="feedbackCollapsible">
+						<h4>Induction app feedback</h4>             
+						<p>We would love to hear your feedback. From general comments and bug spotting to things you think the map might be missing, your input is welcome. Please select your message subject from the list below, and get typing!</p>
+						<form action="" method="post" id="mailNOW" name="mailNOW">			
+							<div data-role="fieldcontain" class="ui-hide-label" id="messageLabel">
+								<label id="feedbackLabel" for="Message">Message:</label>
+								<textarea name="message" id="message" value="" placeholder="" data-theme="b"></textarea>
+							</div>
+			
+							<a href="" data-role="button" data-theme="a" class="mailBtn" id="mailBtn">Submit</a>
+						   
+							<p id="serverFail" class="valError">Woops! There was a problem contacting the server.</p>
+							<p id="serverOK" class="valSuccess">Feedback submitted. Thank you!</p>
+						</form>
+					</div>
 				 </div>
 			</div><!-- /content -->
 			

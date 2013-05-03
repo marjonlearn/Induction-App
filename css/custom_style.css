@@ -631,6 +631,10 @@ img#helpLogo {
     width: 150px;
 }
 
+#feedbackCollapsible .ui-collapsible-content {
+	padding: 0;
+}
+
 /* HD/"retina" sprite
 -----------------------------------------------------------------------------------------------------------*/
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3),
