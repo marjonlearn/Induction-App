@@ -16,6 +16,9 @@ local.properties
 .settings/
 .loadpath
 
+# Server files to ignore
+serverstuff/
+
 # External tool builders
 .externalToolBuilders/
 

@@ -25,21 +25,20 @@
 			</div><!-- /header -->
 		
 			<div data-role="content">
-				<script>
-				$("#returningstudent").on( "pagebeforeshow", function( event ) {	
-					$(function() {													   
-						$("returningstudent #menuBtn").click(function() {
-								// update panel with extenal menu contents
-								
-								$("#menuPanel").load('returningstudentmenu.html', function () {
-								$(this).trigger('create');
-								$("#menuPanel").panel("open");
-								
-							});
-							}
-						);
+				  <script>
+					$("#returningstudent").on( "pagebeforeshow", function( event ) {	
+						$(function() {													   
+							$("returningstudent #menuBtn").click(function() {
+									// update panel with extenal menu contents
+									
+									$("#menuPanel").load('returningstudentmenu.html', function () {
+									$(this).trigger('create');
+									$("#menuPanel").panel("open");	
+								});
+								}
+							);
+						});			
 					});			
-				});			
    				 </script>
 				 <img id="landingLogo" src="images/landingLogo.png" alt="University of St. Mark &amp; St. John - Induction App" />
 				 <div class="contentContainer">
