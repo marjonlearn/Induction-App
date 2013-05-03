@@ -404,6 +404,7 @@ label#mapLabel, label#searchLabel {
 	top: 5px;
 	margin: 0;
 	width: 10em;
+	height: 32.5px;
 }
 
 #mapCanvas {
