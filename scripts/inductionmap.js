@@ -22,7 +22,7 @@
 								mapOptions);
 							
 							// specify the custom icon image and size
-							var marjonIcon = new google.maps.MarkerImage("images/markers/marjonicon.png", null, null, null, new google.maps.Size(125,50));
+							var marjonIcon = new google.maps.MarkerImage("images/markers/marjonicon.png", null, null, null, new google.maps.Size(150,60));
 							
 							
 							// generate the marker
@@ -80,7 +80,8 @@
 								  parseFloat(location[1])),
 						  map: map,
 						  icon: image,
-						  title:""						  
+						  title:"",
+						  animation: google.maps.Animation.DROP
 					 	 });
 										
 						// push marker in to array, can then be deleted when required
@@ -133,7 +134,8 @@
 								  parseFloat(location[1])),
 						  map: map,
 						  icon: image,
-						  title:""						  
+						  title:"",
+						  animation: google.maps.Animation.DROP
 					 	 });
 										
 						// push marker in to array, can then be deleted when required
@@ -186,7 +188,8 @@
 								  parseFloat(location[1])),
 						  map: map,
 						  icon: image,
-						  title:""						  
+						  title:"",
+						  animation: google.maps.Animation.DROP
 					 	 });
 										
 						// push marker in to array, can then be deleted when required
@@ -297,7 +300,8 @@
 							  parseFloat(location[1])),
 					  map: map,
 					  icon: image,
-					  title:""						  
+					  title:"",
+					  animation: google.maps.Animation.DROP
 					 });
 					
 					// push marker in to array, can then be deleted when required
