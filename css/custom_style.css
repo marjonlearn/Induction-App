@@ -655,6 +655,17 @@ img#helpLogo {
 	padding: 0;
 }
 
+/* Online Enrolment page */
+
+#enrolmentCollapsible .ui-collapsible-content {
+	padding: 10px 0;
+}
+
+#enrolmentCollapsible .ui-btn-inner {
+	font-size: 14px;
+	white-space: normal;
+}
+
 /* HD/"retina" sprite
 -----------------------------------------------------------------------------------------------------------*/
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3),
