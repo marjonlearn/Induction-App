@@ -36,6 +36,14 @@
 			</div><!-- /header -->
 		
 			<div data-role="content">
+            <style>
+			.ui-input-text ui-body-b.error {
+			background-color:red;
+			border:1px solid #F00;
+			
+			
+			}
+			</style>
             
             <script type="text/javascript">
 				
@@ -304,12 +312,15 @@
 							// console.log("changed");
 						var formOK = $("#sessionSignUp").valid();	
 						if 	(formOK == true) {
-							console.log("true")
-							
+							//console.log("true")
+							// passes validation
+							$('#train_submitBtn').removeClass('ui-disabled');
 							
 						}
 						else {
-							console.log("false");
+							//console.log("false");
+							// fails validation
+							$('#train_submitBtn').addClass('ui-disabled');
 						}
 							
 					 });

@@ -656,7 +656,7 @@ img#helpLogo {
 }
 
 #contactDetails p, #contactDetails strong {
-	line-height: 14px;
+	margin: 10px 0;
 }
 
 /* Online Enrolment page */
@@ -716,3 +716,6 @@ img#helpLogo {
 	background-position: -610px 50%;
 }
 }
+
+
+
