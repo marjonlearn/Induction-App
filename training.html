@@ -11,6 +11,7 @@
 		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 		<script src="phonegap.js"></script>
+        <script type="text/javascript" src="scripts/jquery.validate.min.js"></script>
 		<!--<script src="scripts/jquery.ui.map.js"></script>-->
 	</head> 
 	
@@ -52,22 +53,141 @@
 					);
 					});	
 				
-				$(function() {			
-					$("a.sessionUnChecked").click(function() {
-							$(this).toggleClass("sessionChecked");
-					});
-					});	
+														  
+				// before page loads, check server for latest training sessions
+				function jsoncallback(){
+				}
+				window.jsoncallback = "";	
+			
+				$.ajax({
+				  dataType: 'jsonp',
+				  jsonp: 'false',
+				  jsonpCallback: 'jsoncallback',
+				  contentType: "application/json; charset=UTF-8",
+				  url: 'http://elearning.marjon.ac.uk/tests/induction/serverstuff/inductionTraining.asp',
+				  
+				 success: function (data) {
+					//alert(data[0].session + " - " + data[0].date);
 					
-				$(function() {
-						$(".closeCross").click(function() {
-							$('.ui-popup').popup('close');
-						});
+					// set up variables to hold sessions
+					window.pre_aca = "";
+					window.pre_lib= "";
+					window.pre_IT = "";
+					window.post_aca = "";
+					window.post_lib = "";
+					window.post_IT = "";
+					window.pre_aca_count = 0;
+					window.pre_lib_count = 0;
+					window.pre_IT_count = 0;
+					window.post_aca_count = 0;
+					window.post_lib_count = 0;
+					window.post_IT_count = 0;
+					
+					$.each(data, function (index, item) {
+						
+						if (item.type == "pre") {
+						// pre induction session	
+							
+							// sort according to category
+							switch(item.cat)
+							{
+							case "aca":
+							  pre_aca = pre_aca+"<li><a href='#"+item.id+"_popup' data-rel='popup'><h2>"+ item.title +"</h2><p class='sessionDetails'>"+ item.short +"</p><p class='ui-li-aside'><strong>"+ item.date +"<br/></strong>"+item.time+"</p></a><a id='"+item.id+"' alt='"+item.title+"|"+item.date+ " "+item.time+"' href='' data-rel='popup' data-position-to='window' data-transition='pop' class='sessionUnChecked'>Select Session</a><div data-role='popup' id='"+item.id+"_popup' class='ui-content' data-theme='b' style='max-width:350px;'><h4 class='popUpHeader'>"+item.title+"<img class='closeCross' src='images/ui/greyCloseIcon.png' alt='Close' /></h4><p><strong>When: </strong>"+item.date+"</p><p><strong>Time: </strong>"+item.time+"</p><p class='sessionInfo'>"+item.long+"</p></div></li>"
+							  pre_aca_count++;
+							  break;
+							case "lib":
+							  pre_lib = pre_lib+"<li><a href='#"+item.id+"_popup' data-rel='popup'><h2>"+ item.title +"</h2><p class='sessionDetails'>"+ item.short +"</p><p class='ui-li-aside'><strong>"+ item.date +"<br/></strong>"+item.time+"</p></a><a id='"+item.id+"' alt='"+item.title+"|"+item.date+ " "+item.time+"' href='' data-rel='popup' data-position-to='window' data-transition='pop' class='sessionUnChecked'>Select Session</a><div data-role='popup' id='"+item.id+"_popup' class='ui-content' data-theme='b' style='max-width:350px;'><h4 class='popUpHeader'>"+item.title+"<img class='closeCross' src='images/ui/greyCloseIcon.png' alt='Close' /></h4><p><strong>When: </strong>"+item.date+"</p><p><strong>Time: </strong>"+item.time+"</p><p class='sessionInfo'>"+item.long+"</p></div></li>"
+							  pre_lib_count++;
+							  break;
+							case "IT":
+							  pre_IT = pre_IT+"<li><a href='#"+item.id+"_popup' data-rel='popup'><h2>"+ item.title +"</h2><p class='sessionDetails'>"+ item.short +"</p><p class='ui-li-aside'><strong>"+ item.date +"<br/></strong>"+item.time+"</p></a><a id='"+item.id+"' alt='"+item.title+"|"+item.date+ " "+item.time+"' href='' data-rel='popup' data-position-to='window' data-transition='pop' class='sessionUnChecked'>Select Session</a><div data-role='popup' id='"+item.id+"_popup' class='ui-content' data-theme='b' style='max-width:350px;'><h4 class='popUpHeader'>"+item.title+"<img class='closeCross' src='images/ui/greyCloseIcon.png' alt='Close' /></h4><p><strong>When: </strong>"+item.date+"</p><p><strong>Time: </strong>"+item.time+"</p><p class='sessionInfo'>"+item.long+"</p></div></li>"
+							  pre_IT_count++;
+							  break;  
+							default:
+							  // flag no matches
+							  console.log("no match pre");
+							}
+						}
+						
+						else {
+						// post induction session	
+						// sort according to category
+							switch(item.cat)
+							{
+							case "aca":
+							  post_aca = post_aca+"<li><a href='#"+item.id+"_popup' data-rel='popup'><h2>"+ item.title +"</h2><p class='sessionDetails'>"+ item.short +"</p><p class='ui-li-aside'><strong>"+ item.date +"<br/></strong>"+item.time+"</p></a><a id='"+item.id+"' alt='"+item.title+"|"+item.date+ " "+item.time+"' href='' data-rel='popup' data-position-to='window' data-transition='pop' class='sessionUnChecked'>Select Session</a><div data-role='popup' id='"+item.id+"_popup' class='ui-content' data-theme='b' style='max-width:350px;'><h4 class='popUpHeader'>"+item.title+"<img class='closeCross' src='images/ui/greyCloseIcon.png' alt='Close' /></h4><p><strong>When: </strong>"+item.date+"</p><p><strong>Time: </strong>"+item.time+"</p><p class='sessionInfo'>"+item.long+"</p></div></li>"
+							  post_aca_count++;
+							  break;
+							case "lib":
+							  post_lib = post_lib+"<li><a href='#"+item.id+"_popup' data-rel='popup'><h2>"+ item.title +"</h2><p class='sessionDetails'>"+ item.short +"</p><p class='ui-li-aside'><strong>"+ item.date +"<br/></strong>"+item.time+"</p></a><a id='"+item.id+"' alt='"+item.title+"|"+item.date+ " "+item.time+"' href='' data-rel='popup' data-position-to='window' data-transition='pop' class='sessionUnChecked'>Select Session</a><div data-role='popup' id='"+item.id+"_popup' class='ui-content' data-theme='b' style='max-width:350px;'><h4 class='popUpHeader'>"+item.title+"<img class='closeCross' src='images/ui/greyCloseIcon.png' alt='Close' /></h4><p><strong>When: </strong>"+item.date+"</p><p><strong>Time: </strong>"+item.time+"</p><p class='sessionInfo'>"+item.long+"</p></div></li>"
+							  post_lib_count++;
+							  break;
+							case "IT":
+							  post_IT = post_IT+"<li><a href='#"+item.id+"_popup' data-rel='popup'><h2>"+ item.title +"</h2><p class='sessionDetails'>"+ item.short +"</p><p class='ui-li-aside'><strong>"+ item.date +"<br/></strong>"+item.time+"</p></a><a id='"+item.id+"' alt='"+item.title+"|"+item.date+ " "+item.time+"' href='' data-rel='popup' data-position-to='window' data-transition='pop' class='sessionUnChecked'>Select Session</a><div data-role='popup' id='"+item.id+"_popup' class='ui-content' data-theme='b' style='max-width:350px;'><h4 class='popUpHeader'>"+item.title+"<img class='closeCross' src='images/ui/greyCloseIcon.png' alt='Close' /></h4><p><strong>When: </strong>"+item.date+"</p><p><strong>Time: </strong>"+item.time+"</p><p class='sessionInfo'>"+item.long+"</p></div></li>"
+							  post_IT_count++;
+							  break;  
+							default:
+							  // flag no matches
+							  console.log("no match post");
+							}
+						}	
 					});
+					
+					// count categories and set appropriate list items
+					var aca_head = "";
+					var lib_head = "";
+					var IT_head = "";
+					
+					if (pre_aca_count != 0){
+							aca_head = '<li data-role="list-divider">Academic Skills<span class="ui-li-count">'+pre_aca_count+'</span></li>';
+					}
+					if (pre_lib_count != 0){
+							lib_head = '<li data-role="list-divider">Library Skills<span class="ui-li-count">'+pre_lib_count+'</span></li>';
+					}
+					if (pre_IT_count != 0){
+							IT_head = '<li data-role="list-divider">IT Skills<span class="ui-li-count">'+pre_IT_count+'</span></li>';
+					}
+					
+					
+					// build the pre-induction training list
+					$('#trainingSessions_pre').append(aca_head+pre_aca+IT_head+pre_IT+lib_head+pre_lib);
+					$('#trainingSessions_pre').listview('refresh');
+					$('#trainingSessions_pre').trigger("create");
+					
+					// count categories and set appropriate list items
+					aca_head = "";
+					lib_head = "";
+					IT_head = "";
+					
+					if (post_aca_count != 0){
+							aca_head = '<li data-role="list-divider">Academic Skills<span class="ui-li-count">'+post_aca_count+'</span></li>';
+					}
+					if (post_lib_count != 0){
+							lib_head = '<li data-role="list-divider">Library Skills<span class="ui-li-count">'+post_lib_count+'</span></li>';
+					}
+					if (post_IT_count != 0){
+							IT_head = '<li data-role="list-divider">IT Skills<span class="ui-li-count">'+post_IT_count+'</span></li>';
+					}
+					
+					// build the post-induction training list
+					$('#trainingSessions_post').append(aca_head+post_aca+IT_head+post_IT+lib_head+post_lib);
+					$('#trainingSessions_post').listview('refresh');
+					$('#trainingSessions_post').trigger("create");
+				  },
+				  error: function () {
+					  alert("fail");
+				  }
+				});
+				
+				
+					
+				
 				
 				// sign-up to sessions
 				$(function() {
 						$("#signupBtn").click(function() {
-							//console.log("sign up");
+							
+							// grab checked sessions and store IDs and titles
 							var allSessions = "";
 							var countSessions = 0;
 							$('.sessionChecked').each(function(i, obj) {
@@ -75,7 +195,6 @@
 								var title = $(this).attr('alt');	
 								allSessions = allSessions + "~[" + session + "]: " + title;
 								countSessions++;
-								//console.log(allSessions);
 							});
 							
 							// push all sessions checked to local storage for access later
@@ -88,25 +207,21 @@
 						});
 				});	
 				
-					// sign-up to sessions
+					// submit session sign-uo
 					$(function() {
 							$("#train_submitBtn").click(function() {
-							// pull in some training data
+							
 							function jsoncallback(){
 							}
 							window.jsoncallback = "";	
-							
-							// grab contact details from form
-							/*var name = $("#session_user").val();
-							var email = $("#session_email").val();
-							var tel = $("#session_tel").val();*/
-							
+							// grab data from form						
 							var myDetails =  $('#sessionSignUp').serialize();
+							// a string of sessions ticked
 							var allSessions = localStorage.getItem("sessionReg");
+							// a count of sessions ticked
 							var countSessions = localStorage.getItem("sessionCount");
 							
-							//console.log(allSessions + countSessions);
-							
+							// push sign-up data to email
 							$.ajax({
 							  dataType: 'jsonp',
 							  data: myDetails + '&session_list=' + allSessions + '&session_count=' + countSessions,
@@ -117,25 +232,97 @@
 							  url: 'http://elearning.marjon.ac.uk/tests/induction/serverstuff/inductionEmail.asp',
 							  
 							 success: function (data) {
-								//alert(data[0].session + " - " + data[0].date);
-								/*$.each(data, function (index, item) {
-										console.log(item.session);
-										console.log(item.date);*/
-										alert("success");
+								 // email sent to Marjon, handle success
+								alert("success");
 								
 							  },
 							  error: function () {
-								  alert("fail");
+								  // email failed, handle error
+								alert("fail");
 							  }
 							});
 							
 							});
 					});
+					
+					
+					$(function() {
+					// validate signup form on keyup and submit
+					var validator = $("#sessionSignUp").validate({
+						rules: {
+							session_user: {
+								required: true,
+								minlength: 4
+							},
+							session_email: {
+								required: true,
+								email: true
+							},
+							session_number: {
+								required: true,
+								digits: true,
+								minlength: 8,
+								maxlength: 8
+							},
+							session_tel: {
+								required: true,
+								digits: true
+							}
+						},
+						messages: {
+							session_user: "Please enter your full name",
+							session_number: "Please enter your 8 digit Marjon student number",
+							session_email: "Enter a valid email",
+							session_tel: "Please enter a contact number"
+						}
+					});
+					});
+					
+				
+					
 			});	
+			
+			// set listeners once the page is built - this includes AJAX added stuff
+			$("#training").on( "pageshow", function( event ) { 
+			$(function() {
+					// function to close popups when cross clicked	   
+					$(".closeCross").click(function() {
+						$('.ui-popup').popup('close');
+						});
+					});
+			
+			$(function() {			
+					// show tick when selecting a session	   
+					$("a.sessionUnChecked").click(function() {
+							$(this).toggleClass("sessionChecked");
+							});
+					});	
+			
+			$(function() {
+				// check for form validation and show/hide submit
+					$("#sessionSignUp input").change(function (){
+							// console.log("changed");
+						var formOK = $("#sessionSignUp").valid();	
+						if 	(formOK == true) {
+							console.log("true")
+							
+							
+						}
+						else {
+							console.log("false");
+						}
+							
+					 });
+				});
+			
+			});
+			
 			$("#training").on( "pagehide", function( event ) { 
 				// clear checked sessions when exiting page by removing page from DOM
-							$("#training").remove();
+				$("#training").remove();
 			});
+			
+			
             </script>
             
 			<div class="contentContainer">
@@ -144,83 +331,13 @@
 				
 				<div data-role="collapsible" id="preInducSessions" data-collapsed="false">
 					<h4>Pre-induction Sessions</h4>
-					<ul data-role="listview" data-inset="true" data-split-icon="check" data-theme="a" id="trainingSessions">
-						<li data-role="list-divider">Academic Skills<span class="ui-li-count">2</span></li>
-						<li><a href="#popupInfo1" data-rel="popup">
-							<h2>Introduction to Referencing</h2>
-							<p class="sessionDetails">Learn the basics of Harvard referencing.</p>
-							<p class="ui-li-aside"><strong>3rd August<br/></strong>1pm - 2pm</p></a>
-							<a id="session_001" alt="Introduction to Referencing | 3rd August 1pm - 2pm" href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Select Session</a>
-							<div data-role="popup" id="popupInfo1" class="ui-content" data-theme="b" style="max-width:350px;">
-								<h4 class="popUpHeader">Introduction to Referencing<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4><p><strong>When: </strong>Thursday 3rd July</p><p><strong>Time: </strong>14:00 - 15:30</p>
-								<p class="sessionInfo">In this session you'll learn how to correct referencing an array of sources, both paper-based and electronic. Using Harvard referencing successfully will allow you to concentrate on the content of your assignments, rather than where the full-stops and initials go.</p>
-							</div>
-							</li>
-						<li><a href="#popupInfo2" data-rel="popup">
-							<h2>Time Management</h2>
-							<p class="sessionDetails">Never miss an assignment deadline with our helpful hints.</p>
-							<p class="ui-li-aside"><strong>5th August<br/></strong>2pm-3pm</p></a>
-							<a id="session_002" alt="Time Management | 5th August 2pm-3pm" href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Select Session</a>
-                            <div data-role="popup" id="popupInfo2" class="ui-content" data-theme="b" style="max-width:350px;">
-								<h4 class="popUpHeader">Time Management<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4><p><strong>When: </strong>Thursday 3rd July</p><p><strong>Time: </strong>14:00 - 15:30</p>
-								<p class="sessionInfo">In this session you'll learn how to correct referencing an array of sources, both paper-based and electronic. Using Harvard referencing successfully will allow you to concentrate on the content of your assignments, rather than where the full-stops and initials go.</p>
-							</div>
-							</li>
-						<li data-role="list-divider">IT Skills<span class="ui-li-count">1</span></li>
-						<li><a href="#popupInfo3" data-rel="popup">
-							<h2>Document Formatting</h2>
-							<p class="sessionDetails">Format your work like a pro!</p>
-							<p class="ui-li-aside"><strong>3rd October<br/></strong>10am - 11.30am</p></a>
-							<a id="session_003" alt="IT Skills | 3rd October 10am - 11.30am" href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Select Session</a>
-                            <div data-role="popup" id="popupInfo3" class="ui-content" data-theme="b" style="max-width:350px;">
-								<h4 class="popUpHeader">Document Formatting<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4><p><strong>When: </strong>Thursday 3rd July</p><p><strong>Time: </strong>14:00 - 15:30</p>
-								<p class="sessionInfo">In this session you'll learn how to correct referencing an array of sources, both paper-based and electronic. Using Harvard referencing successfully will allow you to concentrate on the content of your assignments, rather than where the full-stops and initials go.</p>
-							</div>
-							</li>
-						<li data-role="list-divider">Library Skills<span class="ui-li-count">1</span></li>
-						<li><a href="#popupInfo4" data-rel="popup">
-							<h2>e-Resources</h2>
-							<p class="sessionDetails">Locate and use online resources</p>
-							<p class="ui-li-aside"><strong>8th October<br/></strong>2pm-3pm</p></a>
-							<a id="session_004" alt="e-Resources | 8th October 2pm-3pm"  href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Select Session</a>
-                            <div data-role="popup" id="popupInfo4" class="ui-content" data-theme="b" style="max-width:350px;">
-								<h4 class="popUpHeader">e-Resources<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4><p><strong>When: </strong>Thursday 3rd July</p><p><strong>Time: </strong>14:00 - 15:30</p>
-								<p class="sessionInfo">In this session you'll learn how to correct referencing an array of sources, both paper-based and electronic. Using Harvard referencing successfully will allow you to concentrate on the content of your assignments, rather than where the full-stops and initials go.</p>
-							</div>
-							</li>
-            		</ul>
+					<ul data-role="listview" data-inset="true" data-split-icon="check" data-theme="a" id="trainingSessions_pre">
+           		</ul>
 				</div>
 				
 				<div data-role="collapsible" id="postInducSessions">
 					<h4>Post-induction Sessions</h4>
-					<ul data-role="listview" data-inset="true" data-split-icon="check" data-theme="a" id="trainingSessions">
-						<li data-role="list-divider">Academic Skills<span class="ui-li-count">2</span></li>
-						<li><a href="#">
-							<h2>Introduction to Referencing</h2>
-							<p class="sessionDetails">Learn the basics of Harvard referencing.</p>
-							<p class="ui-li-aside"><strong>3rd August<br/></strong>1pm - 2pm</p></a>
-							<a id="session_005" title="Introduction to Referencing" href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
-							</li>
-						<li><a href="#">
-							<h2>Time Management</h2>
-							<p class="sessionDetails">Never miss an assignment deadline with our helpful hints.</p>
-							<p class="ui-li-aside"><strong>5th August<br/></strong>2pm-3pm</p></a>
-							<a id="session_006" href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
-							</li>
-						<li data-role="list-divider">IT Skills<span class="ui-li-count">1</span></li>
-						<li><a href="#">
-							<h2>Document Formatting</h2>
-							<p class="sessionDetails">Format your work like a pro!</p>
-							<p class="ui-li-aside"><strong>3rd October<br/></strong>10am - 11.30am</p></a>
-							<a id="session_007" href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
-							</li>
-						<li data-role="list-divider">Library Skills<span class="ui-li-count">1</span></li>
-						<li><a href="#">
-							<h2>e-Resources</h2>
-							<p class="sessionDetails">Locate and use online resources</p>
-							<p class="ui-li-aside"><strong>8th October<br/></strong>2pm-3pm</p></a>
-							<a id="session_008" href="" data-rel="popup" data-position-to="window" data-transition="pop" class="sessionUnChecked">Purchase album</a>
-							</li>
+					<ul data-role="listview" data-inset="true" data-split-icon="check" data-theme="a" id="trainingSessions_post">
             		</ul>
 				</div>
 				
@@ -234,16 +351,18 @@
                               <p>Thanks for your interest. Fill in your details below and we'll get in touch with some more details about the session(s) you selected.</p>
                               	<label for="session_user" class="ui-hidden-accessible">Name:</label>
                               	<input type="text" name="session_user" id="session_user" value="" placeholder="Name" data-theme="b">
-								<label for="session_user" class="ui-hidden-accessible">Email:</label>
+                                <label for="session_number" class="ui-hidden-accessible">Student Number:</label>
+                              	<input type="text" name="session_number" id="session_number" value="" placeholder="Student Number" data-theme="b">
+								<label for="session_email" class="ui-hidden-accessible">Email:</label>
                              	<input type="text" name="session_email" id="session_email" value="" placeholder="Email" data-theme="b">
-                                <label for="session_user" class="ui-hidden-accessible">Tel:</label>
+                                <label for="session_tel" class="ui-hidden-accessible">Tel:</label>
                               	<input type="text" name="session_tel" id="session_tel" value="" placeholder="Phone number" data-theme="b">
         						<a id="train_cancelBtn" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="b">Cancel</a>
         						<a id="train_submitBtn" href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="a">Sign-Up</a>
                             </div>
                         </form>
                     
-                </div><!-- sign-up for -->
+                </div><!-- sign-up form -->
 			</div><!-- /content -->
 			
 			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">

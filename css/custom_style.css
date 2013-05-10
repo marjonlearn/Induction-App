@@ -25,8 +25,16 @@ img {
 	padding: 3.5px 8px;
 }
 
-p#top {
+p#top, p.top {
 	margin-top: 0;
+}
+
+p.bottom {
+	margin-bottom: 0;
+}
+
+.screenShot {
+	border: solid 1px #8FC402;
 }
 
 .popUpHeader {

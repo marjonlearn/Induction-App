@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head> 
+		<title>Marjon Induction - Enrol Online</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+		<link rel="stylesheet" href="css/induction_theme.css" />
+		<link rel="stylesheet" href="css/custom_style.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src="phonegap.js"></script>
+	</head> 
+	
+	<body> 
+		<div data-role="page" data-theme="a" id="enrol">
+			<div data-role="panel" id="menuPanel">
+				<!-- panel content goes here -->           
+			</div><!-- /panel -->
+		
+			<div data-role="header" id="regHead">
+				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
+				<h1>Marjon Induction - Enrol Online</h1>
+			</div><!-- /header -->
+		
+			<div data-role="content">
+				  <script>
+				  	$(function() {
+						$(".closeCross").click(function() {
+							$('.ui-popup').popup('close');
+						});
+					});
+					
+					$("#enrol").on( "pagebeforeshow", function(event) {
+					$("#enrol #menuBtn").click(function() {
+						// update panel with extenal menu contents	
+						$("#enrol #menuPanel").load('newstudentmenu.html', function () {
+						$(this).trigger('create');
+						$("#enrol #menuPanel").panel("open");					
+					});
+							
+					//initialize();		
+					});										
+					
+				});							
+   				 </script>
+				 <div class="contentContainer">
+				 	<p id="top">This section will take through online registration step by step, to help make sure the process goes as smoothly as possible for you. We strongly recommend that you access the online registration system using a desktop computer or a laptop as opposed to a mobile device such as a phone or a tablet as the web forms that you will be asked to compelte are best viewed on a larger screen and filled out using a physical keyboard. This section is designed to act as a guide to help you through the process.</p>
+					
+					<div data-role="collapsible-set" data-inset="false">
+						
+						<!-- Step 0 -->
+						<div data-role="collapsible">
+							<h3>Accessing the online registration system</h3>
+							<p class="top">Enter this web address into your web browser; http://www.marjon.ac.uk/onlinereg/</p>
+							<img class="screenShot" src="images/reg/1.png" alt="Enter this web address into your web browser; http://www.marjon.ac.uk/onlinereg/" />
+							<p>Enter your student number and your date of birth, be sure to use the correct date format and to include the forward slashes;</p>
+							<img class="screenShot" src="images/reg/2.png" alt="Enter your student number and your date of birth, be sure to use the correct date format and to include the forward slashes" />
+							<p>Click the login button.</p>
+							<p>Once you have successfully logged in you will see which course(s) yoi are actively enrolled in and you can now proceed through steps 1-5 to complete your online registration;</p>
+							<img class="screenShot" src="images/reg/3.png" alt="Once you have successfully logged in you will see which course(s) yoi are actively enrolled in and you can now proceed through steps 1-5 to complete your online registration" />
+						</div>
+						<!-- Step 1 -->
+						<div data-role="collapsible">
+							<h3>Step 1 - Confirming enrolment details</h3>
+							<p class="top">Click on step 1 of the online registration process entitled: 'Confirm Your Enrolment Details'.</p>
+							<p>Check the list of courses and module enrolments to the left of the screen;</p>
+							<img class="screenShot" src="images/reg/4.png" alt="Check the list of courses and module enrolments to the left of the screen" />
+							<p>If they are correct then you can continue to step 2 of the process by clicking the green confirmation button;</p>
+							<img class="screenShot" src="images/reg/5.png" alt="If they are correct then you can continue to step 2 of the process by clicking the green confirmation button" />
+							<p>If there is a problem then please contact the Registry before you continue. They can be contacted on <a href="tel:01752636746">01752 636746</a> or by email: <a href="mailto:registry@marjon.ac.uk">registry@marjon.ac.uk</a></p>
+							<p>Once you have completed each step there will be a green tick next to the section, you can now move onto step 2 by selecting it;</p>
+							<img class="screenShot" src="images/reg/6.png" alt="Once you have completed each step there will be a green tick next to the section, you can now move onto step 2 by selecting it" />
+						</div>
+						<!-- Step 2 -->
+						<div data-role="collapsible">
+							<h3>Step 2 - Mandatory Data Requirements</h3>
+							<p class="top">In section 2, complete all of the questions on the page using the drop down boxes;</p>
+							<img class="screenShot" src="images/reg/7.png" alt="In section 2, complete all of the questions on the page using the drop down boxes" />
+							<p>Once complete, click on the green confirmation button;</p>
+							<img class="screenShot" src="images/reg/8.png" alt="Once complete, click on the green confirmation button" />
+							<p class="bottom">You will now see two green ticks next to steps 1 and 2.</p>
+						</div>
+						<!-- Step 3 -->
+						<div data-role="collapsible">
+							<h3>Step 3 - Contact Details</h3>
+							<p class="top">Click on step 3.</p>
+							<p>Here you can verify your contact details, please make certain that your details are up to date. If you have a personal email address and mobile number be sure to use them;</p>
+							<img class="screenShot" src="images/reg/9.png" alt="Here you can verify your contact details, please make certain that your details are up to date. If you have a personal email address and mobile number be sure to use them" />
+							<p class="bottom">Once complete, click on the green confirmation button;</p>
+							<img class="screenShot" src="images/reg/10.png" alt="Once complete, click on the green confirmation button" />
+						</div>
+						<!-- Step 4 -->
+						<div data-role="collapsible">
+							<h3>Step 4 - Funding Arrangements</h3>
+							<p class="top">Click on step 4.</p>
+							<p>Using the drop down box, select how your studies are being funded *Usually your funding will be provided by your Local Education Authority (LEA) or by the Student Loans Company (SLC) however in certain circumstances you may be recieving a grant or award. If you are unsure of which option your fee provider falls under then contact the Registry team*;</p>
+							<img class="screenShot" src="images/reg/11.png" alt="Using the drop down box, select how your studies are being funded *Usually your funding will be provided by your Local Education Authority (LEA) however in certain circumstances you may be recieving a grant or award. If you are unsure of which option your fee provider falls under then contact the Registry team*" />
+							<p>Once complete, click on the green confirmation button;</p>
+							<img class="screenShot" src="images/reg/12.png" alt="Once complete, click on the green confirmation button" />
+						</div>
+						<!-- Step 5 -->
+						<div data-role="collapsible">
+							<h3>Step 5 - Uploading a Photo</h3>
+							<p class="top">Click on step 5 - 'Upload You Photo'.</p>
+							<p>To upload your photo you will need to have an electronic copy of it saved on your computer. *As stated on the registration system, the photo should be up to date, clearly showing an unobstructed view of your face, with a white background. The file will need to be in a JPEG format.*</p>
+							<p>To begin click the 'Choose File' button;</p>
+							<img class="screenShot" src="images/reg/13.png" alt="To upload your photo you will need to have an electronic copy of it saved on your computer. *As stated on the registration system, the photo should be up to date, clearly showing an unobstructed view of your face, with a white background. The file will need to be in a JPEG format.*" />
+							<p>Browse for the photo you want to upload and select it, then click 'Open';</p>
+							<img class="screenShot" src="images/reg/14.png" alt="Browse for the photo you want to upload and select it, then click 'Open'" />
+							<p>The file you have chosen will appear next to the 'Choose File' button, next click on the 'Upload Photo' button;</p>
+							<p>The image that you selected will now be displayed, if you are happy with this photo and it follows the correct guidelines mentioned on the right of the screen then click on the green 'Save Photo' button;</p>
+							<img class="screenShot" src="images/reg/15.png" alt="The image that you selected will now be displayed, if you are happy with this photo and it follows the correct guidelines mentioned on the right of the screen then click on the green 'Save Photo' button" />
+							<p class="bottom">Now continue to step 6.</p>
+						</div>
+						<!-- Step 6 -->
+						<div data-role="collapsible">
+							<h3>Complete enrolment &amp; Pay Fees</h3>
+							<p class="top">Finally you will be shown a breakdown of your fees, there will be a note below your balance informing you of any payments that do/do not need to be paid. If you are happy with these details, click on the green tick to continue;</p>
+							<img class="screenShot" src="images/reg/16.png" alt="Step 6 will show you a breakdown of your fees, there will be a note below your balance informing you of any payments that do/do not need to be paid. If you are happy with these details, click on the green tick to continue" />
+							<p>Finally, you will be asked to confirm your enrolment by selecting the tick boxes to confirm that you have read, understood and agree to section 6.12 of the informaton booklet (clicking on the blue link on the left hand side at this point will take you to the correct documentation).</p>
+							<p>You can also select the tick box next to receiving information about becoming a Student Ambassador if you wish.</p>
+							<p class="bottom">Click on the green 'Register' button to finish;</p>
+							<img class="screenShot" src="images/reg/17.png" alt="Finally, you will be asked to confirm your enrolment by selecting the tick boxes to confirm that you have read, understood and agree to section 6.12 of the informaton booklet (clicking on the blue link on the left hand side at this point will take you to the correct documentation). You can also select the tick box next to receiving information about becoming a Student Ambassador if you wish." />						
+						</div>
+						<!-- Step 7 -->
+						<div data-role="collapsible">
+							<h3>Completing the Process</h3>
+							<p class="top">You should now see green ticks against all five registration steps;</p>
+							<img class="screenShot" src="images/reg/18.png" alt="You should now see green ticks against all five registration steps" />
+							<p>Now that you have completed the online part of your enrolment you can click on the blue 'click here' link to be taken to the Marjon website to view your induction timetable.</p>
+							<p>You can also visit step 7 for more information and clicking step 8 will take you to the online application form for a parking permit should you require one;</p>
+							<img class="screenShot" src="images/reg/19.png" alt="You can also visit step 7 for more information and clicking step 8 will take you to the online application form for a parking permit should you require one" />
+							<p class="bottom">Good luck with your online registration and we look forward to welcoming you to the University of St mark &amp; St John very soon!</p>				
+						</div>
+						
+					</div>
+					
+				 </div>
+			</div><!-- /content -->
+			
+			<div id="footerBar" data-role="footer" data-id="footerMob">
+			</div><!-- /footer -->
+		
+		</div><!-- /page -->
+	</body>
+	
+</html>
