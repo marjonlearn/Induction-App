@@ -655,6 +655,10 @@ img#helpLogo {
 	padding: 0;
 }
 
+#contactDetails p, #contactDetails strong {
+	line-height: 14px;
+}
+
 /* Online Enrolment page */
 
 #enrolmentCollapsible .ui-collapsible-content {
