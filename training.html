@@ -36,15 +36,6 @@
 			</div><!-- /header -->
 		
 			<div data-role="content">
-            <style>
-			.ui-input-text ui-body-b.error {
-			background-color:red;
-			border:1px solid #F00;
-			
-			
-			}
-			</style>
-            
             <script type="text/javascript">
 				
 			$("#training").on( "pagebeforeshow", function( event ) { 
@@ -257,6 +248,7 @@
 					$(function() {
 					// validate signup form on keyup and submit
 					var validator = $("#sessionSignUp").validate({
+						errorElement: "ui-input-text",										 
 						rules: {
 							session_user: {
 								required: true,
@@ -309,16 +301,14 @@
 			$(function() {
 				// check for form validation and show/hide submit
 					$("#sessionSignUp input").change(function (){
-							// console.log("changed");
+
 						var formOK = $("#sessionSignUp").valid();	
 						if 	(formOK == true) {
-							//console.log("true")
 							// passes validation
 							$('#train_submitBtn').removeClass('ui-disabled');
 							
 						}
 						else {
-							//console.log("false");
 							// fails validation
 							$('#train_submitBtn').addClass('ui-disabled');
 						}
@@ -361,7 +351,7 @@
                               <p>You've selected:<span id="sessionCount">4</span> session(s)</p>
                               <p>Thanks for your interest. Fill in your details below and we'll get in touch with some more details about the session(s) you selected.</p>
                               	<label for="session_user" class="ui-hidden-accessible">Name:</label>
-                              	<input type="text" name="session_user" id="session_user" value="" placeholder="Name" data-theme="b">
+                              	<span class="nob"><input type="text" name="session_user" id="session_user" value="" placeholder="Name" data-theme="b"></span>
                                 <label for="session_number" class="ui-hidden-accessible">Student Number:</label>
                               	<input type="text" name="session_number" id="session_number" value="" placeholder="Student Number" data-theme="b">
 								<label for="session_email" class="ui-hidden-accessible">Email:</label>
