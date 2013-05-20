@@ -13,16 +13,11 @@
 		<script src="phonegap.js"></script>
         
 		<!--<script src="scripts/jquery.ui.map.js"></script>-->
-        <style>
-		:invalid {
-			color: red;
-		}
-		</style>
 	</head> 
 	
 	<body> 
 		<div data-role="page" data-theme="a" id="training">
-
+		<script type="text/javascript" src="scripts/jquery.validate.min.js"></script>	
 			<div data-role="panel" id="menuPanel">
 				<!-- panel content goes here -->
 			</div><!-- /panel -->
@@ -211,20 +206,10 @@
 						});
 				});	
 				
-				function showRequestSuccess() {
-					 	console.log("success");
-					 	$('#emailSuccess').popup('open');
-						$( "#popupSignUp" ).unbind('popupafterclose');
-					 }
-					 
-				function showRequestError() {
-					 	console.log("error");
-					 	$('#emailError').popup('open');
-						$( "#popupSignUp" ).unbind('popupafterclose');
-					 }	 
-				
-				function sendRequest() {
-							//console.log("email me");		   
+					// submit session sign-uo
+					$(function() {
+							$("#train_submitBtn").click(function() {
+							
 							function jsoncallback(){
 							}
 							window.jsoncallback = "";	
@@ -235,7 +220,7 @@
 							// a count of sessions ticked
 							var countSessions = localStorage.getItem("sessionCount");
 							
-							// push sign-up data to email 
+							// push sign-up data to email
 							$.ajax({
 							  dataType: 'jsonp',
 							  data: myDetails + '&session_list=' + allSessions + '&session_count=' + countSessions,
@@ -246,41 +231,55 @@
 							  url: 'http://elearning.marjon.ac.uk/tests/induction/serverstuff/inductionEmail.asp',
 							  
 							 success: function (data) {
-								 
-								 $( "#popupSignUp" ).bind('popupafterclose', showRequestSuccess);
 								 // email sent to Marjon, handle success
-								$('#popupSignUp').popup('close');
+								alert("success");
 								
 							  },
 							  error: function () {
-								  // show error pop-up
-								 $( "#popupSignUp" ).bind('popupafterclose', showRequestError);
-								 // email sent to Marjon, handle success
-								$('#popupSignUp').popup('close');
-
-							} // end of error fun
-								
-							}) // end of AJAX call
-							
-					 } //end of sendRequest function
-					 
-					 
-					 
-					 
-					// submit session sign-uo
-					$(function() {
-							$("#sessionSignUp").submit(function(e) {
-							// catch form submission and call email function
-							sendRequest(); 
-							$('#popupSignUp').popup('close');
-							// stop default form submission
-							return false;					
-							
+								  // email failed, handle error
+								alert("fail");
+							  }
 							});
 							
-							
+							});
 					});
-										
+					
+					
+					$(function() {
+					// validate signup form on keyup and submit
+					var validator = $("#sessionSignUp").validate({
+						errorElement: "ui-input-text",										 
+						rules: {
+							session_user: {
+								required: true,
+								minlength: 4
+							},
+							session_email: {
+								required: true,
+								email: true
+							},
+							session_number: {
+								required: true,
+								digits: true,
+								minlength: 8,
+								maxlength: 8
+							},
+							session_tel: {
+								required: true,
+								digits: true
+							}
+						},
+						messages: {
+							session_user: "Please enter your full name",
+							session_number: "Please enter your 8 digit Marjon student number",
+							session_email: "Enter a valid email",
+							session_tel: "Please enter a contact number"
+						}
+					});
+					});
+					
+				
+					
 			});	
 			
 			// set listeners once the page is built - this includes AJAX added stuff
@@ -299,7 +298,23 @@
 							});
 					});	
 			
-			
+			$(function() {
+				// check for form validation and show/hide submit
+					$("#sessionSignUp input").change(function (){
+
+						var formOK = $("#sessionSignUp").valid();	
+						if 	(formOK == true) {
+							// passes validation
+							$('#train_submitBtn').removeClass('ui-disabled');
+							
+						}
+						else {
+							// fails validation
+							$('#train_submitBtn').addClass('ui-disabled');
+						}
+							
+					 });
+				});
 			
 			});
 			
@@ -336,32 +351,19 @@
                               <p>You've selected:<span id="sessionCount">4</span> session(s)</p>
                               <p>Thanks for your interest. Fill in your details below and we'll get in touch with some more details about the session(s) you selected.</p>
                               	<label for="session_user" class="ui-hidden-accessible">Name:</label>
-                              	<input autofocus type="text" name="session_user" required="true" id="session_user" value="" placeholder="Name" data-theme="b" pattern="[A-Za-z]*" title="Letters only" >
-                                <label for="session_number"  class="ui-hidden-accessible">Student Number:</label>
-                              	<input type="number" required="true" name="session_number" id="session_number" value="" placeholder="Student Number" data-theme="b" min="20000000" max="29999999" title="Enter your 8 digit student number (starts 200...)">
+                              	<span class="nob"><input type="text" name="session_user" id="session_user" value="" placeholder="Name" data-theme="b"></span>
+                                <label for="session_number" class="ui-hidden-accessible">Student Number:</label>
+                              	<input type="text" name="session_number" id="session_number" value="" placeholder="Student Number" data-theme="b">
 								<label for="session_email" class="ui-hidden-accessible">Email:</label>
-                             	<input required="true" type="email" name="session_email" id="session_email" value="" placeholder="Email" data-theme="b">
+                             	<input type="text" name="session_email" id="session_email" value="" placeholder="Email" data-theme="b">
                                 <label for="session_tel" class="ui-hidden-accessible">Tel:</label>
-                              	<input  type="number" name="session_tel" id="session_tel" value="" placeholder="Phone number" data-theme="b" required="true">
-                                <input type="submit" name="train_submitBtn" id="train_submitBtn" value="Sign-Up" />
+                              	<input type="text" name="session_tel" id="session_tel" value="" placeholder="Phone number" data-theme="b">
         						<a id="train_cancelBtn" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="b">Cancel</a>
-        						<!--<a id="train_submitBtn" href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="a">Sign-Up</a>-->
+        						<a id="train_submitBtn" href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="a">Sign-Up</a>
                             </div>
                         </form>
                     
                 </div><!-- sign-up form -->
-                
-                <div data-role="popup" id="emailSuccess" data-overlay-theme="a" data-theme="b" class="ui-corner-all" data-dismissible="true">
-                	<h4 class="popUpHeader">Success!<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
-                    <p>Good news, we've emailed your request for training. You should receive an automated email with further information.</p>
-                    <a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="b">Ok</a>
-                </div>
-                    <div data-role="popup" id="emailError" data-overlay-theme="a" data-theme="b" class="ui-corner-all" data-dismissible="true">
-                    <h4 class="popUpHeader">Error!<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
-                    <p>Ooops, it appears something went wrong. Please ensure you have a working Internet connection and try again.</p>
-                <a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="b">Ok</a>
-                </div>
-                
 			</div><!-- /content -->
 			
 			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">

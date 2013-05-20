@@ -578,6 +578,10 @@ img.popupImg {
 	float: right;
 }
 
+:invalid {
+			color: red;
+}
+
 /* Learning at Marjon page */
 
 #learningVids .ui-collapsible-content {
