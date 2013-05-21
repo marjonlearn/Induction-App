@@ -562,7 +562,7 @@ img.popupImg {
 }
 
 #signUpFormWrap {
-	padding: 20px;
+	padding: 15px;
 	display: inline-block
 }
 
@@ -593,25 +593,48 @@ img.popupImg {
     margin: 0;
     padding-bottom: 5px;
 	display: block;
-	height: 20px;
 }
 
 #signUpPopHeader .popContent {
 	background: none;
 	border: none;
+	padding: 0;
 }
 
-h4.headerLeft {
-	float: left;
-	display: inline;
+#signUpPopHeader .headerRight .popContent {
+	font-weight: normal;
+}
+
+#signUpPopHeader .popContent p {
 	margin: 0;
-	
+}
+
+#signUpPopHeader h4 {
+	border: none;
 }
 
 .headerRight {
-	float: right;
 	display: inline;
 	margin: 0;
+	text-align: right;
+}
+
+#signUpFormWrap .ui-btn {
+	display: inline-block;
+	margin: 0;
+}
+
+#emailSuccess, #emailError {
+	padding: 15px;
+}
+
+#emailSuccess h4, #emailError h4, #emailSuccess p, #emailError p, #emailSuccess a, #emailError a,  {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#emailSuccess a, #emailError a {
+	display: block;
 }
 
 /* Learning at Marjon page */
@@ -623,7 +646,7 @@ h4.headerLeft {
 .fluidVideo {
 	position: relative;
 	padding-bottom: 50.5%; /* 1024 x 768 */
-	padding-top: 25px;
+	padding-top: 0;
 	height: 0;
 	border: solid thin #8FC402;
 }
@@ -651,6 +674,11 @@ h4.headerLeft {
 	padding: 0 10px;
 	margin: 20px 0 0 0;
 	border: solid thin #8FC402;
+}
+
+video {
+      max-width: 100%;
+      height: auto;
 }
 
 /* Social Networks page */

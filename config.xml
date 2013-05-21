@@ -2,8 +2,8 @@
     <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "marjon.induction"
-        versionCode = "1" 
-        version   = "0.1">
+        versionCode = "1.0" 
+        version   = "1.0">
 
 		<!-- versionCode is optional and Android only -->
 	
@@ -19,12 +19,12 @@
 		
 		<preference name="phonegap-version" value="2.5.0" />
 		<preference name="fullscreen" value="true" />
-		<preference name="orientation" value="portrait" />
+		<preference name="orientation" value="default" />
 		<preference name="auto-hide-splash-screen" value="true" />
 		<preference name="stay-in-webview" value="true" />
 		<!-- iOS specific preferences -->
 		<preference name="prerendered-icon" value="true" />
-		<preference name="show-splash-screen-spinner" value="false" />
+		<preference name="show-splash-screen-spinner" value="true" />
 		<!-- Blackberry specific preferences -->
 		<preference name="disable-cursor" value="true" />
 		<!-- Android specific preferences -->
