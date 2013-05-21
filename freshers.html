@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head> 
+		<title>Marjon Induction - Fresher's Week</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+		<link rel="stylesheet" href="css/induction_theme.css" />
+		<link rel="stylesheet" href="css/custom_style.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src="phonegap.js"></script>
+	</head> 
+	
+	<body> 
+		<div data-role="page" data-theme="a" id="freshers">		
+			<div data-role="panel" id="menuPanel">
+				<!-- panel content goes here -->
+			</div><!-- /panel -->
+		
+			<div data-role="header" id="regHead" class="mapHead">
+				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
+				<h1>Fresher's Week</h1>
+			</div><!-- /header -->
+		
+			<div data-role="content">
+				<script>
+				$(function() {
+						$(".closeCross").click(function() {
+							$('.ui-popup').popup('close');
+						});
+					});	
+					
+					$("#freshers").on( "pagebeforeshow", function(event) {
+					$("#freshers #menuBtn").click(function() {
+						// update panel with extenal menu contents	
+						$("#freshers #menuPanel").load('newstudentmenu.html', function () {
+						$(this).trigger('create');
+						$("#freshers #menuPanel").panel("open");					
+					});	
+					});	
+					});				
+				 </script>
+			 	<div class="contentContainer">
+					<p id="top">Your Marjon Student Union (MSU) officers will be working feverishly over the summer to make sure your Fresher's Week is an unforgettable one. The full line-up of events will be completed a little closer to September so make sure you check the MSU website regularly for all of the latest details:</p>
+					<a href="http://www.marjonsu.co.uk/" data-role="button" title="Marjon Student Union Website (will open in a new web page)">Marjon student Union Website</a>
+					<p>In the mean time, here's a quick introduction to your MSU officers for next year:</p>
+					
+					<div id="MSUBios" data-role="collapsible-set" data-theme="a" data-content-theme="c">
+						<div data-role="collapsible">
+							<h3>Ryan Ellis &amp; Casey Candler</h3>
+							<img class="bioImg" src="images/officers/ryan_casey.jpg" alt="Ryan Ellis &amp; Casey Candler - Joint Diversity Officers" />
+							<p class="top"><strong>MSU Title's: </strong>Joint Diversity Officers</p>
+							<p class="bottom"><strong>About Us: </strong>Hello freshers, we are your joint diversity officers, this is a quick message to introduce ourselves. We are both studying in Education and have been elected to support you as students this year. We have a few plans this year and if you ever want to get into contact with us feel free to message either of us on Facebook. We look forward to meeting you all and enjoy freshers! :)</p>
+						</div>
+						
+						<div data-role="collapsible">
+							<h3>Victoria Lee</h3>
+							<img class="bioImg" src="images/officers/vix_lee.jpg" alt="Victoria Lee - Mature Student Officer" />
+							<p class="top"><strong>Nickname: </strong>Vix</p>
+							<p><strong>MSU Title: </strong>Mature Student Officer</p>
+							<p class="bottom"><strong>About Me: </strong>This is my 3rd year at Marjon and having been a Student Rep for the last two years, I wanted to go that little bit further when it comes to representing my fellow students. As we make up such a large part of the student body, it's important that the Mature Students of Marjon have a voice. By working with the other Student Union officers, I hope to help make the experience of coming to study at Marjon, as rewarding and fun as possible.</p>
+						</div>
+						
+						<div data-role="collapsible">
+							<h3>Jack Levick</h3>
+							<img class="bioImg" src="images/officers/jack_levick.jpg" alt="Jack Levick - Deputy President" />
+							<p class="top"><strong>MSU Title: </strong>Deputy President</p>
+							<p class="bottom"><strong>About Me: </strong>For the last 3 years I have been studying media production and have been heavily involved in the student union, being a member of the marjon union social team as well as being elected as Entertaiment's Officer as well as a Senior Resident Student (SRS) in my third year. This year I will be your Deputy President and I look forward to meeting you all.</p>
+						</div>
+						
+						<div data-role="collapsible">
+							<h3>Section 3</h3>
+							<img class="bioImg" src="images/officers/placeholder.jpg" alt="placeholder" />
+							<p class="top"><strong>MSU Title's: </strong>Joint Diversity Officers</p>
+							<p class="bottom"><strong>About Us: </strong>Hello freshers, we are your joint diversity officers, this is a quick message to introduce ourselves. We are both studying in Education and have been elected to support you as students this year. We have a few plans this year and if you ever want to get into contact with us feel free to message either of us on Facebook. We look forward to meeting you all and enjoy freshers! :)</p>
+						</div>
+						
+						<div data-role="collapsible">
+							<h3>Section 3</h3>
+							<img class="bioImg" src="images/officers/placeholder.jpg" alt="placeholder" />
+							<p class="top"><strong>MSU Title's: </strong>Joint Diversity Officers</p>
+							<p class="bottom"><strong>About Us: </strong>Hello freshers, we are your joint diversity officers, this is a quick message to introduce ourselves. We are both studying in Education and have been elected to support you as students this year. We have a few plans this year and if you ever want to get into contact with us feel free to message either of us on Facebook. We look forward to meeting you all and enjoy freshers! :)</p>
+						</div>
+						
+						<div data-role="collapsible">
+							<h3>Section 3</h3>
+							<img class="bioImg" src="images/officers/placeholder.jpg" alt="placeholder" />
+							<p class="top"><strong>MSU Title's: </strong>Joint Diversity Officers</p>
+							<p class="bottom"><strong>About Us: </strong>Hello freshers, we are your joint diversity officers, this is a quick message to introduce ourselves. We are both studying in Education and have been elected to support you as students this year. We have a few plans this year and if you ever want to get into contact with us feel free to message either of us on Facebook. We look forward to meeting you all and enjoy freshers! :)</p>
+						</div>
+						
+						<div data-role="collapsible">
+							<h3>Section 3</h3>
+							<img class="bioImg" src="images/officers/placeholder.jpg" alt="placeholder" />
+							<p class="top"><strong>MSU Title's: </strong>Joint Diversity Officers</p>
+							<p class="bottom"><strong>About Us: </strong>Hello freshers, we are your joint diversity officers, this is a quick message to introduce ourselves. We are both studying in Education and have been elected to support you as students this year. We have a few plans this year and if you ever want to get into contact with us feel free to message either of us on Facebook. We look forward to meeting you all and enjoy freshers! :)</p>
+						</div>
+						
+						<div data-role="collapsible">
+							<h3>Section 3</h3>
+							<img class="bioImg" src="images/officers/placeholder.jpg" alt="placeholder" />
+							<p class="top"><strong>MSU Title's: </strong>Joint Diversity Officers</p>
+							<p class="bottom"><strong>About Us: </strong>Hello freshers, we are your joint diversity officers, this is a quick message to introduce ourselves. We are both studying in Education and have been elected to support you as students this year. We have a few plans this year and if you ever want to get into contact with us feel free to message either of us on Facebook. We look forward to meeting you all and enjoy freshers! :)</p>
+						</div>
+					</div>
+					
+				</div>
+			</div><!-- /content -->
+			
+			<div id="footerBar" data-role="footer" data-id="footerMob">
+			</div><!-- /footer -->
+		
+		</div><!-- /page -->
+	</body>
+	
+</html>

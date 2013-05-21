@@ -21,20 +21,62 @@
 	
 	<body> 
 		<div data-role="page" data-theme="a" id="index">
+			<div data-role="panel" id="menuPanel">
+				<!-- panel content goes here -->           
+			</div><!-- /panel -->
 		
 			<div data-role="header" id="regHead">
-				<h1>Marjon Induction</h1>
+				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
+				<h1>Marjon Induction - New Students</h1>
+				<a data-theme="a" href="#popupInfo0" data-rel="popup" data-role="button" class="ui-icon-alt ui-btn-right sessionHelp" data-inline="true" data-transition="pop"><img src="images/ui/whiteHelpIcon.png" alt="?" /></a>
+				<div data-role="popup" id="popupInfo0" class="ui-content" data-theme="b" style="max-width:350px;">
+					<h4 class="popUpHeader">The Help button<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
+					<p class="sessionHelpInfo">A number of sections in this app feature a help button, like this one, in the top right hand corner of the page;</p>
+					<img class="popupImg" src="images/helpPress.jpg" alt="Press the help button to reveal handy tips for using the app." />
+					<p class="sessionHelpInfo">Pressing this button will reveal a pop-up box letting you know about the page you are on and how to make use of it;</p>
+					<img class="popupImg" src="images/helpRevealPress.jpg" alt="A help box will open, revealing information about the page that you are on and how to use it." />
+					<p class="sessionHelpInfo">The information provided should be enough to enable you to use all of the features and get the most from your app, however if you have any further questions, comments or feedback then navigate to the <strong>Help!</strong> section using the Quick Links menu and get in touch!</p>
+				</div>
 			</div><!-- /header -->
 		
 			<div data-role="content">
-				<div class="contentContainer">
-					<p>Welcome to the Marjon Induction app! This app aims to offer you essential advice, whatever stage of your University life you are heading into. Let us know below if you are a brand new Undergraduate or a returning student coming back for more!</p>
-					<a href="newstudent.html" data-role="button">I'm a new student</a>
-					<a href="returningstudent.html" data-role="button">I'm a returning student</a>
-				</div>	
+				  <script>
+				  	$(function() {
+						$(".closeCross").click(function() {
+							$('.ui-popup').popup('close');
+						});
+					});
+					
+					$("#index").on( "pagebeforeshow", function( event ) {
+						$(function() {			
+						$("#index #menuBtn").click(function() {
+								// update panel with extenal menu contents
+								
+								$("#menuPanel").load('newstudentmenu.html', function () {
+								$(this).trigger('create');
+								$("#menuPanel").panel("open");
+								
+							});
+						});
+						});						
+					});								
+   				 </script>
+				 <img id="landingLogo" src="images/landingLogo.png" alt="University of St. Mark &amp; St. John - Induction App" />
+				 <div class="contentContainer">                 
+					 <h3 id="landingHeader">Welcome to the University of St. Mark &amp; St. John!</h3>
+					<p>Induction is the process of introducing you to the University, its staff and its environment. You'll complete your registration onto your programme of study and prepare for the academic year ahead.</p>
+					<p>This app is designed to help you before, during and after the induction process by providing you with a range of information to help make sure everything goes as smoothly as possible.</p>
+					<p>To access the quick menu, simply press the icon on the top left hand corner of the screen and select the section that you would like to visit from the list:</p>
+					
+					<div class="ui-grid-b" id="landingInstruc">
+						<div class="ui-block-a"><div class="ui-bar ui-bar-e"><img id="menuPush" src="images/menuPress.jpg" alt="Tap the icon tothe top left of the page." /></div></div>
+						<div class="ui-block-b"><div class="ui-bar ui-bar-e"><img id="menuArrow" src="images/arrow.png" alt="The quick links panel will slide out." /></div></div>
+						<div class="ui-block-c"><div class="ui-bar ui-bar-e"><img id="menuShow" src="images/menuReveal.jpg" alt="Quick links will now be displayed ready to use." /></div></div>
+					</div><!-- /grid-b -->
+				</div>
 			</div><!-- /content -->
 			
-			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">
+			<div id="footerBar" data-role="footer" data-id="footerMob">
 			</div><!-- /footer -->
 		
 		</div><!-- /page -->

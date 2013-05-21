@@ -23,28 +23,28 @@
 		
 			<div data-role="header" id="regHead">
 				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
-				<h1>Marjon Induction - marjon Mobile App</h1>
+				<h1>Marjon Mobile App</h1>
 			</div><!-- /header -->
 		
 			<div data-role="content">
 				<script>
-				$("#mobileapp").on( "pagebeforeshow", function( event ) {
-					$(function() {			
-					$("#mobileapp #menuBtn").click(function() {
-							// update panel with extenal menu contents
-							
-							$("#mobileapp #menuPanel").load('newstudentmenu.html', function () {
-							$(this).trigger('create');
-							$("#mobileapp #menuPanel").panel("open");
-							
-						});
-					}
-					);
-					});		
-					
-				});	
+					$("#mobileapp").on( "pagebeforeshow", function( event ) {
+						$(function() {			
+						$("#mobileapp #menuBtn").click(function() {
+								// update panel with extenal menu contents
 								
+								$("#mobileapp #menuPanel").load('newstudentmenu.html', function () {
+								$(this).trigger('create');
+								$("#mobileapp #menuPanel").panel("open");
+								
+							});
+						}
+						);
+						});		
+						
+					});									
    				 </script>
+				 
 				 <img id="mobileLogo" src="images/mobileLogo.png" alt="Marjon Mobile App" />
 				 <div class="contentContainer">
 				 	<p id="top">Marjon Mobile is a web app designed to compliment your life at Marjon. It has been designed from the ground up as a mobile friendly feature rich application that gives you access to a range of personalised information and campus updates. Features include:</p>

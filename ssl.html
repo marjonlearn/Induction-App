@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head> 
+		<title>Marjon Induction - Surviving Student Life</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+		<link rel="stylesheet" href="css/induction_theme.css" />
+		<link rel="stylesheet" href="css/custom_style.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src="phonegap.js"></script>
+		<!--<script src="scripts/jquery.ui.map.js"></script>-->
+		
+	</head> 
+	
+	<body> 
+		<div data-role="page" data-theme="a" id="ssl">
+			<div data-role="panel" id="menuPanel">
+				<!-- panel content goes here -->
+			</div><!-- /panel -->
+		
+			<div data-role="header" id="regHead">
+				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
+				<h1>Surviving Student Life</h1>
+			</div><!-- /header -->
+		
+			<div data-role="content">
+				<script>
+					$("#ssl").on( "pagebeforeshow", function( event ) {
+						$(function() {			
+						$("#ssl #menuBtn").click(function() {
+								// update panel with extenal menu contents
+								
+								$("#ssl #menuPanel").load('newstudentmenu.html', function () {
+								$(this).trigger('create');
+								$("#ssl #menuPanel").panel("open");
+								
+							});
+						}
+						);
+						});		
+						
+					});						
+   				 </script>
+				 
+				 <img id="mobileLogo" src="images/sslLogo.png" alt="Surviving Student Life web app" />
+				 <div class="contentContainer">
+				 	<p id="top">The Surviving Student Life web app is a dynamic service aimed at answering the more common questions that arise during induction and during your time at University in general. From letting you know your halls address to how to find information about MSU clubs and societies, Surviving Student Life is filled with essential info.</p>
+					<p>It also features some fantastic advice and information for maintaining your well-being during your time at University, focusing on the academic, emotional, financial, spiritual and social aspects of your life.</p>
+					<p>Surviving Student Life is a web app, optimised to run on mobile devices, and can be accessed through this link:</p>
+					<a href="" data-role="button" title="Access Surviving Student Life (will open in a new web page)">Access the Surviving Student Life web app</a>
+				 </div>
+			 </div><!-- /content -->
+			
+			<div id="footerBar" data-role="footer" data-id="footerMob">
+			</div><!-- /footer -->
+		
+		</div><!-- /page -->
+	</body>
+	
+</html>

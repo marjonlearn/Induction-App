@@ -604,8 +604,14 @@ img.popupImg {
 	height: 100%;
 }
 
-.colourHeader {
-	background: linear-gradient(#C8E280, #8FC400) repeat #8FC400;
+.colourHeader {	
+	background: #8FC402 /*{e-body-background-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #8e8ed0 /*{e-body-background-start}*/), to( #8FC402 /*{e-body-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #C8E280 /*{e-body-background-start}*/, #8FC402 /*{e-body-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #C8E280 /*{e-body-background-start}*/, #8FC402 /*{e-body-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #C8E280 /*{e-body-background-start}*/, #8FC402 /*{e-body-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #C8E280 /*{e-body-background-start}*/, #8FC402 /*{e-body-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #C8E280 /*{e-body-background-start}*/, #8FC402 /*{e-body-background-end}*/);
     display: block;
     line-height: 2.7em;
 	font-weight: bold;
@@ -672,6 +678,36 @@ img#helpLogo {
 #enrolmentCollapsible .ui-btn-inner {
 	font-size: 14px;
 	white-space: normal;
+}
+
+/* Fresher Page */
+
+img.bioImg {
+	margin-right: 10px;
+	padding: 0;
+	float: left;
+	border: solid thin #8FC402;
+}
+
+#MSUBios .ui-collapsible-content[aria-hidden=true] {
+	display: hidden;
+}
+
+#MSUBios .ui-collapsible-content[aria-hidden=false] {
+	padding: 10px;
+	display: inline-block;
+}
+
+#MSUBios .ui-collapsible-content p.top {
+	margin-top: 0;
+}
+
+#MSUBios .ui-collapsible-content p.bottom {
+	margin-bottom: 0;
+}
+
+#MSUBios .ui-collapsible-content p {
+	margin: 10px 0;
 }
 
 /* HD/"retina" sprite
