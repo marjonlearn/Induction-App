@@ -11,7 +11,7 @@
 		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 		<script src="phonegap.js"></script>
-	</head> 
+    </head> 
 	
 	<body> 
 		<div data-role="page" data-theme="a" id="help">
@@ -25,8 +25,8 @@
 				<a data-theme="a" href="#popupInfo0" data-rel="popup" data-role="button" class="ui-icon-alt ui-btn-right sessionHelp" data-inline="true" data-transition="pop"><img src="images/ui/whiteAboutIcon.png" alt="?" /></a>
 				<div data-role="popup" id="popupInfo0" class="ui-content" data-theme="b" style="max-width:350px;">
 					<h4 class="popUpHeader">About Marjon Induction app<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
-					<p class="sessionHelpInfo">Thank you for using the Marjon Induction app. We hope that it is doing its bit to make your arrival or return to Marjon as smooth as possible!</p>
-					<p class="sessionHelpInfo"><strong>Version: </strong>0.1</p>
+					<p class="sessionHelpInfo">Thank you for using the Marjon Induction app. We hope that it is doing its bit to make your arrival at Marjon as smooth as possible!</p>
+					<p class="sessionHelpInfo"><strong>Version: </strong>1.0</p>
 					<p class="sessionHelpInfo">Designed and developed by the e-Learning Team for the University of St Mark &amp; St John</p>
 					<p class="sessionHelpInfo">The Marjon Induction app is built using the jQuery Mobile Framework and compiled using Adobe<sup>&reg;</sup> PhoneGap<sup>&trade;</sup> Build</p>
 				</div>
@@ -41,6 +41,10 @@
 					});
 					
 					$("#help").on( "pagebeforeshow", function(event) {
+					
+					$("#serverOK").hide();
+					$("#serverFail").hide();
+															  
 					$("#help #menuBtn").click(function() {
 						// update panel with extenal menu contents	
 						$("#help #menuPanel").load('newstudentmenu.html', function () {
@@ -51,30 +55,101 @@
 					//initialize();		
 					});										
 					
-				});							
+				});			
+					
+					// post feedback message to server
+					function sendRequest() {
+							var message = $("textarea#message").val(); 
+							var type = $("select#contactChoice").val();  
+							var name = $("#feedName").val();
+							var email = $("#feedEmail").val(); 
+							email = encodeURIComponent(email);
+							message = encodeURIComponent(message);
+							var dataString = 'message='+ message + '&type=' + type + '&name=' + name + '&email=' + email;    
+							//alert(message);
+						 $.ajax({  
+							  dataType: 'jsonp',
+							  type: "GET",  
+								data: dataString,
+							  jsonp: 'false',
+							  jsonpCallback: 'jsoncallback',
+							  contentType: "application/json; charset=UTF-8",
+							  url: 'http://www.marjon.ac.uk/students/induction/inductionapp/admin/inductionFeedback.asp',
+							  success: function(response) {
+								 // successful ajax, now validate response
+								//console.log(response[0].success);
+							
+
+								if (response[0].success == "true") {
+								// worked, say thank you for feedback
+								//$("#messageLabel").hide();
+								$("#message").hide();
+								//$("#mailBtn").hide();
+								$("#serverOK").show();
+								}
+								
+								else {
+									
+								$("#serverFail").show();
+								}						 
+								 //
+							  }, 
+							  error: function(response) {
+								//alert("There was a problem logging in. Please try again later."); 
+								$("#serverFail").show();
+							  }
+							}) // end of AJAX call
+							
+					 } //end of sendRequest function
+			
+				
+				
+				// submit feedback message
+					$(function() {
+							$("#mailNOW").submit(function(e){
+							// catch form submission and call email function
+							sendRequest(); 
+
+							// stop default form submission
+							return false;					
+							
+							});								
+					});
+				
+				
+				$("#help").on( "pagehide", function( event ) { 
+					// clear form when exiting page by removing page from DOM
+					$("#help").remove();
+				});
+				
    				 </script>
 				 <div class="contentContainer">
 					<p id="top">If you have any questions or concerns regarding induction or your return to Marjon then don't hesitate to get in touch with the Induction Team who will be able to answer you queries. By pressing the button below, your device's native email client will open ready for you to compose your message:</p>
-					<a href="mailto:induction@marjon.ac.uk?Subject=Induction%20query" data-role="button">Email the Induction Team</a>
+					<a href="mailto:induction@marjon.ac.uk?Subject=Induction%20query" data-role="button" data-theme="b">Email the Induction Team</a>
 					<div data-role="collapsible" id="feedbackCollapsible">
-						<h4>Induction app feedback</h4>             
+						<h4>Induction App Feedback</h4>             
 						<p>We would love to hear your feedback. From general comments and bug spotting to things you think the map might be missing, your input is welcome. Please select your message subject from the list below, and get typing!</p>
-						<label for="contactChoice" class="select" id="choiceLabel">Select:</label>
+						<form action="" method="post" id="mailNOW" name="mailNOW">	
+                        <label for="contactChoice" class="select" id="choiceLabel">Select:</label>
 						<select name="contactChoice" id="contactChoice">
 							<option>Type of message</option>
-							<option value="feedback">Feedback</option>
-							<option value="bug">Bug alert</option>
-							<option value="feature">Feature request</option>
+							<option value="Feedback">Feedback</option>
+							<option value="Bug">Bug alert</option>
+							<option value="Feature Request">Feature request</option>
 						</select>
-						<form action="" method="post" id="mailNOW" name="mailNOW">			
+								
 							<div data-role="fieldcontain" class="ui-hide-label" id="messageLabel">
-								<label id="feedbackLabel" for="Message">Message:</label>
-								<textarea name="message" id="message" value="" placeholder="" data-theme="b"></textarea>
+								<label id="feedbackLabel" for="feedbackMessage">Message:</label>
+								<textarea name="message" id="message" value="" placeholder="Your feedback" data-theme="b" required="true" title="Invalid character in message, please remove" /></textarea>
 							</div>
-			
-							<a href="" data-role="button" data-theme="a" class="mailBtn" id="mailBtn">Submit</a>
+                            <div>Add your name and email details below if you're happy for us to get back to you. Leave blank for anonymous feedback.</div>
+                            <input type="text" id="feedName" placeholder="Name" data-theme="b" pattern="[a-zA-Z- ]*"/>
+                            <input type="email" id="feedEmail" placeholder="Email address" data-theme="b" />
+							
+                            <input type="submit" id="mailBtn" class="mailBtn" data-theme="a" value="Submit" />
+							
 						   
-							<p id="serverFail" class="valError">Woops! There was a problem contacting the server.</p>
+							<p id="serverFail" class="valError">Woops! There was a problem contacting the server. Make sure you have a working Internet connection</p>
 							<p id="serverOK" class="valSuccess">Feedback submitted. Thank you!</p>
 						</form>
 					</div>

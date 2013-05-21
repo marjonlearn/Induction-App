@@ -570,8 +570,13 @@ img.popupImg {
 	margin: 0;
 }
 
-#signUpFormWrap a#train_submitBtn {
+#signUpFormWrap .ui-btn-inner {
+	
+}
+
+#signUpFormWrap input#train_submitBtn {
 	float: left;
+	display: inline-block;
 }
 
 #signUpFormWrap a#train_cancelBtn {
@@ -580,6 +585,33 @@ img.popupImg {
 
 :invalid {
 			color: red;
+}
+
+#signUpPopHeader {
+	border-bottom: 1px solid #999999;
+    color: #333333;
+    margin: 0;
+    padding-bottom: 5px;
+	display: block;
+	height: 20px;
+}
+
+#signUpPopHeader .popContent {
+	background: none;
+	border: none;
+}
+
+h4.headerLeft {
+	float: left;
+	display: inline;
+	margin: 0;
+	
+}
+
+.headerRight {
+	float: right;
+	display: inline;
+	margin: 0;
 }
 
 /* Learning at Marjon page */

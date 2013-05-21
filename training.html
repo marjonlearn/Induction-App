@@ -64,7 +64,7 @@
 				  jsonp: 'false',
 				  jsonpCallback: 'jsoncallback',
 				  contentType: "application/json; charset=UTF-8",
-				  url: 'http://elearning.marjon.ac.uk/tests/induction/serverstuff/inductionTraining.asp',
+				  url: 'http://www.marjon.ac.uk/students/induction/inductionapp/admin/inductionTraining.asp',
 				  
 				 success: function (data) {
 					//alert(data[0].session + " - " + data[0].date);
@@ -235,7 +235,7 @@
 							  jsonp: 'false',
 							  jsonpCallback: 'jsoncallback',
 							  contentType: "application/json; charset=UTF-8",
-							  url: 'http://elearning.marjon.ac.uk/tests/induction/serverstuff/inductionEmail.asp',
+							  url: 'http://www.marjon.ac.uk/students/induction/inductionapp/admin/inductionEmail.asp',
 							  
 							 success: function (data) {
 								 
@@ -324,11 +324,15 @@
                 <div data-role="popup" id="popupSignUp" data-overlay-theme="a" data-theme="b" class="ui-corner-all" data-dismissible="false">
                         <form id="sessionSignUp">
                             <div id="signUpFormWrap">
-                              <h4 class="popUpHeader">Sign-Up For Sessions</h4>
-                              <p>You've selected:<span id="sessionCount">4</span> session(s)</p>
+							  
+							  <div class="ui-grid-a" id="signUpPopHeader">
+								<div class="ui-block-a headerLeft"><div class="ui-bar ui-bar-e popContent"><h4 class="popUpHeader">Sign-Up For Sessions</h4></div></div>
+								<div class="ui-block-b headerRight"><div class="ui-bar ui-bar-e popContent"><p>You've selected:<span id="sessionCount">4</span> session(s)</p></div></div>
+							  </div><!-- /grid-a -->
+							  
                               <p>Thanks for your interest. Fill in your details below and we'll get in touch with some more details about the session(s) you selected.</p>
                               	<label for="session_user" class="ui-hidden-accessible">Name:</label>
-                              	<input autofocus type="text" name="session_user" required="true" id="session_user" value="" placeholder="Name" data-theme="b" pattern="[A-Za-z]*" title="Letters only" >
+                              	<input autofocus type="text" name="session_user" required="true" id="session_user" value="" placeholder="Name" data-theme="b" pattern="[A-Za-z ]*" title="Letters only" >
                                 <label for="session_number"  class="ui-hidden-accessible">Student Number:</label>
                               	<input type="text" required="true" name="session_number" id="session_number" value="" placeholder="Student Number" data-theme="b" pattern="[2][0-9]{7,7}" title="Enter your 8 digit student number (starts 200...)">
 								<label for="session_email" class="ui-hidden-accessible">Email:</label>
