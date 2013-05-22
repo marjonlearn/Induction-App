@@ -99,7 +99,7 @@ a.inlineBtn {
 }
 
 .ui-icon-checkbox-on {
-    background-position: -648px 0;
+    background-position: -647px 0;
 }
 
 .ui-body-b, .ui-overlay-b {
@@ -328,14 +328,14 @@ a.inlineBtn {
 
 #checkGroup .ui-block-b {
 	position: absolute;
-    right: 13px;
+    right: 12px;
     width: 45px;
     z-index: 2;
 }
 
 #checkGroup .ui-block-b a {
 	margin: 0;
-	height: 40px;
+	height: 39px;
 	width: 40px;
 }
 
@@ -505,8 +505,8 @@ p.facItem, p.resItem {
 /* Training session page */
 
 a.sessionHelp {
-	width: 38px;
-	height: 32px;
+	width: 37px;
+	height: 31px;
 }
 
 a.sessionHelp span.ui-btn-inner {
@@ -514,7 +514,7 @@ a.sessionHelp span.ui-btn-inner {
 }
 
 a.sessionHelp span.ui-btn-inner img {
-	margin: 0;
+	padding: 0.1px 4.2px;
 	height: 30px;
 	width: 30px;
 }
