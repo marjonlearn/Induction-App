@@ -109,15 +109,17 @@
 					$(function() {
 							$("#mailNOW").submit(function(e){
 							// catch form submission and call email function
+							alert("submit pressed");
 							var valid = $('form').h5Validate('allValid');
-							console.log(valid);
+							alert(valid);
 							
 							if (valid) {
-								console.log("submit");	
+								alert("submit");
+								
 								sendRequest(); 
 							}
 							else {
-								console.log("don't submit");	
+								alert("don't submit");	
 							}
 							
 							// stop default form submission
@@ -183,7 +185,7 @@
             $("#help").on( "pageshow", function( event ) { 
 					// clear form when exiting page by removing page from DOM
 					$("form").h5Validate();
-					console.log("h5 valid");
+					alert("h5 valid");
 				});
             </script>     
 			</div><!-- /content -->
