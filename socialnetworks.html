@@ -36,6 +36,8 @@
 					$("#socialNetworks #menuBtn").click(function() {
 						// update panel with extenal menu contents	
 						$("#socialNetworks #menuPanel").load('newstudentmenu.html', function () {
+						var currentPage = "#newstudentMenu #menu_" + $.mobile.activePage.attr('id');
+						$(currentPage).addClass("current");	
 						$(this).trigger('create');
 						$("#socialNetworks #menuPanel").panel("open");					
 					});	

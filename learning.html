@@ -36,6 +36,8 @@
 								// update panel with extenal menu contents
 	
 								$("#learning #menuPanel").load('newstudentmenu.html', function () {
+								var currentPage = "#newstudentMenu #menu_" + $.mobile.activePage.attr('id');
+								$(currentPage).addClass("current");	
 								$(this).trigger('create');
 								$("#learning #menuPanel").panel("open");	
 							});

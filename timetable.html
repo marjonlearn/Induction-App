@@ -36,6 +36,8 @@
 					$("#timetable #menuBtn").click(function() {
 						// update panel with extenal menu contents	
 						$("#timetable #menuPanel").load('newstudentmenu.html', function () {
+						var currentPage = "#newstudentMenu #menu_" + $.mobile.activePage.attr('id');
+						$(currentPage).addClass("current");																		 
 						$(this).trigger('create');
 						$("#timetable #menuPanel").panel("open");					
 					});	
