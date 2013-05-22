@@ -36,5 +36,8 @@
 		
 		<access origin="http://*.vimeo.com" />
 		<access origin="https://*.vimeo.com" />
+		<access origin="http://*.vimeocdn.com" />
 		<access uri="http://vimeo.com" subdomains="true" />
+		<access uri="http://vimeocdn.com" subdomains="true" />
+		<access uri="https://vimeocdn.com" subdomains="true" />
 	</widget>
