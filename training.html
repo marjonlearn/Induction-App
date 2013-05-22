@@ -37,6 +37,7 @@
 			</div><!-- /header -->
 		
 			<div data-role="content">
+            <script type="text/javascript" src="scripts/jquery.h5validate.js"></script>
             <script type="text/javascript">
 				
 			$("#training").on( "pagebeforeshow", function( event ) { 
@@ -263,8 +264,17 @@
 					$(function() {
 							$("#sessionSignUp").submit(function(e) {
 							// catch form submission and call email function
-							sendRequest(); 
-							$('#popupSignUp').popup('close');
+							
+							// check HTML5 validation
+							var valid = $('form').h5Validate('allValid');
+							
+							// if valid then send email
+							if (valid) {
+								sendRequest(); 
+								$('#popupSignUp').popup('close');
+							}
+														
+							
 							// stop default form submission
 							return false;					
 							
@@ -332,13 +342,13 @@
 							  
                               <p>Please fill in your details and we'll get in touch with some info about the session(s).</p>
                               	<label for="session_user" class="ui-hidden-accessible">Name:</label>
-                              	<input autofocus type="text" name="session_user" required="true" id="session_user" value="" placeholder="Name" data-theme="b" pattern="[A-Za-z ]*" title="Letters only" >
+                              	<input type="text" name="session_user" required id="session_user" value="" placeholder="Name" data-theme="b" pattern="[A-Za-z ]*" title="Letters only" >
                                 <label for="session_number"  class="ui-hidden-accessible">Student Number:</label>
-                              	<input type="text" required="true" name="session_number" id="session_number" value="" placeholder="Student Number" data-theme="b" pattern="[2][0-9]{7,7}" title="Enter your 8 digit student number (starts 200...)">
+                              	<input type="text" required= name="session_number" id="session_number" value="" placeholder="Student Number" data-theme="b" pattern="[2][0-9]{7,7}" title="Enter your 8 digit student number (starts 200...)">
 								<label for="session_email" class="ui-hidden-accessible">Email:</label>
-                             	<input required="true" type="email" name="session_email" id="session_email" value="" placeholder="Email" data-theme="b">
+                             	<input required type="text" name="session_email" id="session_email" value="" placeholder="Email" data-theme="b" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" title="Please enter a valid email address">
                                 <label for="session_tel" class="ui-hidden-accessible">Tel:</label>
-                              	<input  type="text" name="session_tel" id="session_tel" value="" placeholder="Phone number" data-theme="b" pattern="[0-9]*" required="true" title="Mobile or home phone contact number">
+                              	<input  type="text" name="session_tel" id="session_tel" value="" placeholder="Phone number" data-theme="b" pattern="[0-9]*" required title="Mobile or home phone contact number">
                                 <input type="submit" name="train_submitBtn" id="train_submitBtn" value="Sign-Up" />
         						<a id="train_cancelBtn" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="b">Cancel</a>
                             </div>
@@ -356,7 +366,12 @@
                     <p>Ooops, it appears something went wrong. Please ensure you have a working Internet connection and try again.</p>
                 <a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="b">Ok</a>
                 </div>
-                
+            <script>
+            	$("#training").on( "pageshow", function( event ) { 
+					// initialise the HTML5 validation plugin workaround of Android/iOS
+					$("#training form").h5Validate({errorClass:'ourError'});
+				});
+            </script>        
 			</div><!-- /content -->
 			
 			<div id="footerBar" data-role="footer" data-id="footerMob" data-position="fixed">

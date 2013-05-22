@@ -14,13 +14,7 @@
     </head> 
 	
 	<body> 
-    <style>
-	.ui-input-text.ui-body-b.ourError.h5-active {
-	color:#06C;
-	background-color:#F00;
-	}
-	
-	</style>
+  
 		<div data-role="page" data-theme="a" id="help">
 			<div data-role="panel" id="menuPanel">
 				<!-- panel content goes here -->           
@@ -184,7 +178,7 @@
             <script>
             	$("#help").on( "pageshow", function( event ) { 
 					// initialise the HTML5 validation plugin workaround of Android/iOS
-					$("form").h5Validate({errorClass:'ourError'});
+					$("#help form").h5Validate({errorClass:'ourError'});
 				});
             </script>     
 			</div><!-- /content -->
