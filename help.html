@@ -9,12 +9,18 @@
 		<link rel="stylesheet" href="css/custom_style.css" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-       
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 		<script src="phonegap.js"></script>
     </head> 
 	
 	<body> 
+    <style>
+	.ui-input-text.ui-body-b.ourError.h5-active {
+	color:#06C;
+	background-color:#F00;
+	}
+	
+	</style>
 		<div data-role="page" data-theme="a" id="help">
 			<div data-role="panel" id="menuPanel">
 				<!-- panel content goes here -->           
@@ -54,50 +60,49 @@
 						$("#help #menuPanel").panel("open");					
 					});
 							
-					//initialize();		
 					});										
 					
 				});			
 					
 					// post feedback message to server
 					function sendRequest() {
+						// grab form values
 							var message = $("textarea#message").val(); 
 							var type = $("select#contactChoice").val();  
 							var name = $("#feedName").val();
 							var email = $("#feedEmail").val(); 
+							
+							// encode special chars
 							email = encodeURIComponent(email);
 							message = encodeURIComponent(message);
+							
+							// create data string for form submit
 							var dataString = 'message='+ message + '&type=' + type + '&name=' + name + '&email=' + email;    
-							//alert(message);
 						 $.ajax({  
 							  dataType: 'jsonp',
 							  type: "GET",  
-								data: dataString,
+							  data: dataString,
 							  jsonp: 'false',
 							  jsonpCallback: 'jsoncallback',
 							  contentType: "application/json; charset=UTF-8",
 							  url: 'http://www.marjon.ac.uk/students/induction/inductionapp/admin/inductionFeedback.asp',
 							  success: function(response) {
-								 // successful ajax, now validate response
-								//console.log(response[0].success);
-							
+								 // successful ajax, now validate response						
 
 								if (response[0].success == "true") {
 								// worked, say thank you for feedback
-								//$("#messageLabel").hide();
 								$("#message").hide();
-								//$("#mailBtn").hide();
 								$("#serverOK").show();
 								}
 								
 								else {
-									
+									// something went wrong
 								$("#serverFail").show();
 								}						 
-								 //
+								 
 							  }, 
 							  error: function(response) {
-								//alert("There was a problem logging in. Please try again later."); 
+								// ajax failed
 								$("#serverFail").show();
 							  }
 							}) // end of AJAX call
@@ -105,27 +110,21 @@
 					 } //end of sendRequest function
 			
 				
-				
 				// submit feedback message
 					$(function() {
 							$("#mailNOW").submit(function(e){
 							// catch form submission and call email function
-							alert("submit pressed");
-							var valid = $('form').h5Validate('allValid');
-							alert(valid);
 							
+							// check HTML5 validation
+							var valid = $('form').h5Validate('allValid');
+							
+							// if valid then send email
 							if (valid) {
-								alert("submit");
-								
 								sendRequest(); 
-							}
-							else {
-								alert("don't submit");	
 							}
 							
 							// stop default form submission
 							return false;					
-							
 							});								
 					});
 				
@@ -183,10 +182,9 @@
 				 </div>
                  
             <script>
-            $("#help").on( "pageshow", function( event ) { 
-					// clear form when exiting page by removing page from DOM
-					$("form").h5Validate();
-					alert("h5 valid");
+            	$("#help").on( "pageshow", function( event ) { 
+					// initialise the HTML5 validation plugin workaround of Android/iOS
+					$("form").h5Validate({errorClass:'ourError'});
 				});
             </script>     
 			</div><!-- /content -->

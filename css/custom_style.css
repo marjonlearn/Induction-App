@@ -729,6 +729,14 @@ img#helpLogo {
 	margin: 10px 0;
 }
 
+#mailNOW .ui-input-text.ui-body-b.ourError.h5-active {
+	color: #FF0000;
+	background:url(../images/ui/validationWarningIcon.png) no-repeat left;
+	background-color: none;
+	background-size: 20px, 20px;
+	padding-left: 25px
+}
+
 /* Online Enrolment page */
 
 #enrolmentCollapsible .ui-collapsible-content {
