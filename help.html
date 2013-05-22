@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="css/custom_style.css" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+        <script type="text/javascript" src="scripts/jquery.h5validate.js"></script>
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 		<script src="phonegap.js"></script>
     </head> 
@@ -108,8 +109,17 @@
 					$(function() {
 							$("#mailNOW").submit(function(e){
 							// catch form submission and call email function
-							sendRequest(); 
-
+							var valid = $('form').h5Validate('allValid');
+							console.log(valid);
+							
+							if (valid) {
+								console.log("submit");	
+								sendRequest(); 
+							}
+							else {
+								console.log("don't submit");	
+							}
+							
 							// stop default form submission
 							return false;					
 							
@@ -121,6 +131,7 @@
 					// clear form when exiting page by removing page from DOM
 					$("#help").remove();
 				});
+				
 				
    				 </script>
 				 <div class="contentContainer">
@@ -140,11 +151,11 @@
 								
 							<div data-role="fieldcontain" class="ui-hide-label" id="messageLabel">
 								<label id="feedbackLabel" for="feedbackMessage">Message:</label>
-								<textarea name="message" id="message" value="" placeholder="Your feedback" data-theme="b" required="true" title="Invalid character in message, please remove" /></textarea>
+								<textarea name="message" id="message" value="" placeholder="Your feedback" data-theme="b" required title="Invalid character in message, please remove" /></textarea>
 							</div>
                             <div>Add your name and email details below if you're happy for us to get back to you. Leave blank for anonymous feedback.</div>
                             <input type="text" id="feedName" placeholder="Name" data-theme="b" pattern="[a-zA-Z- ]*"/>
-                            <input type="email" id="feedEmail" placeholder="Email address" data-theme="b" />
+                            <input type="text" id="feedEmail" placeholder="Email address" data-theme="b" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" title="Please enter a valid email address" />
 							
                             <input type="submit" id="mailBtn" class="mailBtn" data-theme="a" value="Submit" />
 							
@@ -167,6 +178,14 @@
 						<p>The Admissions and Registry teams can help with any queries related to your enrolment status.</p>
 					</div>
 				 </div>
+                 
+            <script>
+            $("#help").on( "pageshow", function( event ) { 
+					// clear form when exiting page by removing page from DOM
+					$("form").h5Validate();
+					console.log("h5 valid");
+				});
+            </script>     
 			</div><!-- /content -->
 			
 			<div id="footerBar" data-role="footer" data-id="footerMob">

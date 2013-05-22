@@ -21,7 +21,7 @@
 		<preference name="fullscreen" value="true" />
 		<preference name="orientation" value="default" />
 		<preference name="auto-hide-splash-screen" value="true" />
-		<preference name="stay-in-webview" value="true" />
+		<!--<preference name="stay-in-webview" value="true" />-->
 		<!-- iOS specific preferences -->
 		<preference name="prerendered-icon" value="true" />
 		<preference name="show-splash-screen-spinner" value="true" />
@@ -35,5 +35,6 @@
 		<gap:splash src="splash.png" />
 		
 		<access origin="http://*.vimeo.com" />
+		<access origin="https://*.vimeo.com" />
 		<access uri="http://vimeo.com" subdomains="true" />
 	</widget>
