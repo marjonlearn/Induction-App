@@ -35,7 +35,7 @@
 		<preference name="disable-cursor" value="true" />
 		<!-- Android specific preferences -->
 		<preference name="load-url-timeout" value="30000" />
-		<preference name="splash-screen-duration" value="15000" />
+		<preference name="splash-screen-duration" value="5000" />
 		
 		<icon src="images/android/icons/ldpi.png" gap:platform="android" gap:density="ldpi" />
 		<icon src="images/android/icons/mdpi.png" gap:platform="android" gap:density="mdpi" />
