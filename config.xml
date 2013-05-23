@@ -22,7 +22,7 @@
     	permission on your app, which PhoneGap requires. -->
 		<preference name="permissions" value="none"/>
 		
-		<preference name="phonegap-version" value="2.5.0" />
+		<preference name="phonegap-version" value="2.7.0" />
 		<preference name="fullscreen" value="true" />
 		<preference name="orientation" value="default" />
 		<!--<preference name="auto-hide-splash-screen" value="true" />-->

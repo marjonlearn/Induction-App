@@ -677,8 +677,10 @@ img.popupImg {
 }
 
 video {
+      max-width: 480px;
+	  max-height: 270px;
 	  height: auto;
-	  width: 100%;
+	  width: 100% !important;
 }
 
 /* Social Networks page */
