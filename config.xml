@@ -37,10 +37,14 @@
 		<preference name="load-url-timeout" value="30000" />
 		<preference name="splash-screen-duration" value="5000" />
 		
+		<icon src="icon.png" />
+		
 		<icon src="images/android/icons/ldpi.png" gap:platform="android" gap:density="ldpi" />
 		<icon src="images/android/icons/mdpi.png" gap:platform="android" gap:density="mdpi" />
 		<icon src="images/android/icons/hdpi.png" gap:platform="android" gap:density="hdpi" />
 		<icon src="images/android/icons/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+		
+		<gap:splash src="splash.png" />
 		
 		<gap:splash src="images/android/splash/ldpi.png" gap:platform="android" gap:density="ldpi" />
 		<gap:splash src="images/android/splash/mdpi.png" gap:platform="android" gap:density="mdpi" />
