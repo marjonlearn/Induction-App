@@ -655,9 +655,9 @@ img.popupImg {
 	padding-bottom: 0; /* 1024 x 768 */
 	padding-top: 0;
 	height: auto;
-	border: solid thin #8FC402;
 	top: 0;
 	left: 0;
+	border: solid thin #8FC402;
 }
 
 .colourHeader {	
@@ -668,7 +668,6 @@ img.popupImg {
 	background-image:     -ms-linear-gradient( #C8E280 /*{e-body-background-start}*/, #8FC402 /*{e-body-background-end}*/); /* IE10 */
 	background-image:      -o-linear-gradient( #C8E280 /*{e-body-background-start}*/, #8FC402 /*{e-body-background-end}*/); /* Opera 11.10+ */
 	background-image:         linear-gradient( #C8E280 /*{e-body-background-start}*/, #8FC402 /*{e-body-background-end}*/);
-    display: block;
     line-height: 2.7em;
 	font-weight: bold;
 	text-shadow: none;
@@ -678,10 +677,8 @@ img.popupImg {
 }
 
 video {
-      max-width: 480px;
-	  max-height: 270px;
 	  height: auto;
-	  width: 100% !important;
+	  width: 100%;
 }
 
 /* Social Networks page */
