@@ -652,8 +652,9 @@ img.popupImg {
 
 .fluidVideo {
 	position: relative;
-	padding: 0;
-	height: 0;
+	padding-bottom: 0; /* 1024 x 768 */
+	padding-top: 0;
+	height: auto;
 	border: solid thin #8FC402;
 }
 
