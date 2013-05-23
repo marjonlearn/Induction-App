@@ -4,18 +4,24 @@
 		<title>Marjon Induction</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+		<link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
 		<link rel="stylesheet" href="css/induction_theme.css" />
 		<link rel="stylesheet" href="css/custom_style.css" />
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script type="text/javascript" src="scripts/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="scripts/jquery.mobile-1.3.1.min.js"></script>
+        <script type="text/javascript" src="scripts/google.map.js"></script>
 		<script src="phonegap.js"></script>
-		
 		<script type="text/javascript" src="cordova-2.7.0.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
 			app.initialize();
+			
+			document.addEventListener("deviceready", onDeviceReady, false);
+
+			function onDeviceReady() {
+				// Now safe to use the PhoneGap API
+				navigator.splashscreen.hide();
+			}
 		</script>
 	</head> 
 	
@@ -27,13 +33,13 @@
 		
 			<div data-role="header" id="regHead">
 				<a href="#" id="menuBtn" class="ui-btn-left"><img src="images/ui/panelMenuIcon.png" alt="Display Menu" /></a>
-				<h1>Marjon Induction - New Students</h1>
+				<h1>Welcome</h1>
 				<a data-theme="a" href="#popupInfo0" data-rel="popup" data-role="button" class="ui-icon-alt ui-btn-right sessionHelp" data-inline="true" data-transition="pop"><img src="images/ui/whiteHelpIcon.png" alt="?" /></a>
 				<div data-role="popup" id="popupInfo0" class="ui-content" data-theme="b" style="max-width:350px;">
 					<h4 class="popUpHeader">The Help button<img class="closeCross" src="images/ui/greyCloseIcon.png" alt="Close" /></h4>
 					<p class="sessionHelpInfo">A number of sections in this app feature a help button, like this one, in the top right hand corner of the page;</p>
 					<img class="popupImg" src="images/helpPress.jpg" alt="Press the help button to reveal handy tips for using the app." />
-					<p class="sessionHelpInfo">Pressing this button will reveal a pop-up box letting you know about the page you are on and how to make use of it;</p>
+					<p class="sessionHelpInfo">Pressing this button will reveal a pop-up box providing additional help for the current page;</p>
 					<img class="popupImg" src="images/helpRevealPress.jpg" alt="A help box will open, revealing information about the page that you are on and how to use it." />
 					<p class="sessionHelpInfo">The information provided should be enough to enable you to use all of the features and get the most from your app, however if you have any further questions, comments or feedback then navigate to the <strong>Help!</strong> section using the Quick Links menu and get in touch!</p>
 				</div>
@@ -64,11 +70,11 @@
 						});						
 					});								
    				 </script>
-				 <img id="landingLogo" src="images/landingLogo.png" alt="University of St. Mark &amp; St. John - Induction App" />
+				 <img id="landingLogo" src="images/landingLogo.png" alt="University of St Mark &amp; St John - Induction App" />
 				 <div class="contentContainer">                 
-					 <h3 id="landingHeader">Welcome to the University of St. Mark &amp; St. John!</h3>
-					<p>Induction is the process of introducing you to the University, its staff and its environment. You'll complete your registration onto your programme of study and prepare for the academic year ahead.</p>
-					<p>This app is designed to help you before, during and after the induction process by providing you with a range of information to help make sure everything goes as smoothly as possible.</p>
+					 <h3 id="landingHeader">Welcome to the University of St Mark &amp; St John's Induction App!</h3>
+					<p>Induction is the process of introducing you to the University, its staff and its environment. During 'Induction Week' you'll complete your registration onto your programme of study and prepare for the academic year ahead.</p>
+					<p>This app is designed to support you before, during and after the induction process by providing you with a range of information to help make sure everything goes as smoothly as possible. We hope you find it useful.</p>
 					<p>To access the quick menu, simply press the icon on the top left hand corner of the screen and select the section that you would like to visit from the list:</p>
 					
 					<div class="ui-grid-b" id="landingInstruc">

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-    <widget xmlns = "http://www.w3.org/ns/widgets"
-        xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "marjon.induction"
-        versionCode = "1.0" 
-        version   = "1.0">
+    <widget xmlns 	= "http://www.w3.org/ns/widgets"
+        xmlns:gap	= "http://phonegap.com/ns/1.0"
+        id        	= "marjon.induction"
+        versionCode = "1.0.0" 
+        version   	= "1.0">
 
 		<!-- versionCode is optional and Android only -->
 	
@@ -17,22 +17,35 @@
 			e-Learning Team - University of St Mark &amp; St John &copy; 2013
 		</author>
 		
+		<!-- If you do not want any permissions to be added to your app, add the
+    	following tag to your config.xml; you will still have the INTERNET
+    	permission on your app, which PhoneGap requires. -->
+		<preference name="permissions" value="none"/>
+		
 		<preference name="phonegap-version" value="2.5.0" />
 		<preference name="fullscreen" value="true" />
 		<preference name="orientation" value="default" />
-		<preference name="auto-hide-splash-screen" value="true" />
+		<!--<preference name="auto-hide-splash-screen" value="true" />-->
 		<!--<preference name="stay-in-webview" value="true" />-->
 		<!-- iOS specific preferences -->
 		<preference name="prerendered-icon" value="true" />
 		<preference name="show-splash-screen-spinner" value="true" />
+		<preference name="ios-statusbarstyle" value="black-opaque" />
 		<!-- Blackberry specific preferences -->
 		<preference name="disable-cursor" value="true" />
 		<!-- Android specific preferences -->
 		<preference name="load-url-timeout" value="30000" />
 		<preference name="splash-screen-duration" value="15000" />
 		
-		<icon src="icon.png" />
-		<gap:splash src="splash.png" />
+		<icon src="images/android/icons/ldpi.png" gap:platform="android" gap:density="ldpi" />
+		<icon src="images/android/icons/mdpi.png" gap:platform="android" gap:density="mdpi" />
+		<icon src="images/android/icons/hdpi.png" gap:platform="android" gap:density="hdpi" />
+		<icon src="images/android/icons/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+		
+		<gap:splash src="images/android/splash/ldpi.png" gap:platform="android" gap:density="ldpi" />
+		<gap:splash src="images/android/splash/mdpi.png" gap:platform="android" gap:density="mdpi" />
+		<gap:splash src="images/android/splash/hdpi.png" gap:platform="android" gap:density="hdpi" />
+		<gap:splash src="images/android/splash/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
 		
 		<access origin="http://*.vimeo.com" />
 		<access origin="https://*.vimeo.com" />
