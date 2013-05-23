@@ -656,6 +656,8 @@ img.popupImg {
 	padding-top: 0;
 	height: auto;
 	border: solid thin #8FC402;
+	top: 0;
+	left: 0;
 }
 
 .colourHeader {	
@@ -677,7 +679,8 @@ img.popupImg {
 
 video {
       max-width: 480px;
-      height: auto !important;
+	  max-height: 270px;
+	  height: auto;
 	  width: 100% !important;
 }
 
