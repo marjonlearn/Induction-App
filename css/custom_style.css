@@ -652,18 +652,9 @@ img.popupImg {
 
 .fluidVideo {
 	position: relative;
-	padding-bottom: 50.5%; /* 1024 x 768 */
-	padding-top: 0;
+	padding: 0;
 	height: 0;
 	border: solid thin #8FC402;
-}
-
-.fluidVideo iframe {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
 }
 
 .colourHeader {	
@@ -684,8 +675,9 @@ img.popupImg {
 }
 
 video {
-      max-width: 100%;
-      height: auto;
+      max-width: 480px;
+      height: auto !important;
+	  width: 100% !important;
 }
 
 /* Social Networks page */
