@@ -26,7 +26,7 @@
 		<preference name="fullscreen" value="true" />
 		<preference name="orientation" value="default" />
 		<!--<preference name="auto-hide-splash-screen" value="true" />-->
-		<!--<preference name="stay-in-webview" value="true" />-->
+		<preference name="stay-in-webview" value="false" />
 		<!-- iOS specific preferences -->
 		<preference name="prerendered-icon" value="true" />
 		<preference name="show-splash-screen-spinner" value="true" />
