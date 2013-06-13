@@ -23,7 +23,7 @@
 		<preference name="permissions" value="none"/>
 		
 		<preference name="phonegap-version" value="2.7.0" />
-		<preference name="fullscreen" value="true" />
+		<preference name="fullscreen" value="false" />
 		<preference name="orientation" value="default" />
 		<!--<preference name="auto-hide-splash-screen" value="true" />-->
 		<preference name="stay-in-webview" value="false" />

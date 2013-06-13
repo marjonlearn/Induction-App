@@ -705,6 +705,7 @@ video {
 textarea#message {
 	height: 120px;
 	resize: none;
+	margin: 0 0 8px 0;
 }
 
 label#feedbackLabel {
