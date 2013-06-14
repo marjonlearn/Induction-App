@@ -52,6 +52,10 @@
 		<gap:splash src="images/android/splash/hdpi.png" gap:platform="android" gap:density="hdpi" />
 		<gap:splash src="images/android/splash/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
 		
+		<access origin="http://*.google.com" />
+		<access uri="http://google.com" subdomains="true" />
+		<access origin="http://*.marjon.ac.uk" />
+		<access uri="http://marjon.ac.uk" subdomains="true" />
 		<access origin="http://*.vimeo.com" />
 		<access origin="https://*.vimeo.com" />
 		<access origin="http://*.vimeocdn.com" />
