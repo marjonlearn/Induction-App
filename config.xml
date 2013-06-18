@@ -52,17 +52,6 @@
 		<gap:splash src="images/android/splash/hdpi.png" gap:platform="android" gap:density="hdpi" />
 		<gap:splash src="images/android/splash/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
 		
-		<!--<access origin="*" />-->
+		<access origin="*" />
 		
-		
-		<access origin="http://*.google.com" />
-		<access uri="http://google.com" subdomains="true" />
-		<access origin="http://*.marjon.ac.uk" />
-		<access uri="http://marjon.ac.uk" subdomains="true" />
-		<access origin="http://*.vimeo.com" />
-		<access origin="https://*.vimeo.com" />
-		<access origin="http://*.vimeocdn.com" />
-		<access uri="http://vimeo.com" subdomains="true" />
-		<access uri="http://vimeocdn.com" subdomains="true" />
-		<access uri="https://vimeocdn.com" subdomains="true" />
 	</widget>
