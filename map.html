@@ -43,9 +43,16 @@
 			<div data-role="content">
             <script src="scripts/jquery.ui.map.js"></script>
 			<script src="scripts/infobox.js"></script>
-            <script type="text/javascript" src="scripts/autoComplete.js"></script>
+            <script type="text/javascript" src="scripts/jqm.autoComplete-1.5.1.js"></script>
             
 				<script>
+				// function for no map result
+				function noMapResult() {
+					var errorText = "<li class='noRoom'>No room found...</li>";
+					$('#suggestions').append(errorText).listview('refresh');
+				};
+				
+				
 				$(function() {
 						$(".closeCross").click(function() {
 							$('.ui-popup').popup('close');

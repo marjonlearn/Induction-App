@@ -470,6 +470,14 @@ label#mapLabel, label#searchLabel, label#choiceLabel {
 	background-image: url("images/icons-18-white.png");
 }
 
+ul#suggestions li.noRoom {
+	background: linear-gradient(#727272, #454545) repeat scroll 0 0 #6E6E6E;
+    border: 1px solid #4D4D4D;
+    color: #EBEBEB;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #3D3D3D;
+	cursor: default;
+}
 
 #localOverlays {
 	display:none;	
