@@ -4,25 +4,15 @@
 	$("#newstudentMenu > li a").click(function(){
 		var target = $(this).attr("id");
 		var thePage = $('.ui-page-active').attr('id');
-		//console.log(thePage + " #menuPanel");
-		//console.log("yo");
 		$("#" + thePage + " " + "#menuPanel").panel("close");
-		//$.mobile.changePage(target, { transition: "fade" });
-		
 		$("#" + thePage + " " + "#menuPanel").panel({
 		close: function( event, ui ) {
-			//console.log("close");
 		  $.mobile.changePage(target, { transition: "fade" });
 		  }
 		});
 		
-		
-		
 	});
 	});
-	
-	
-
 	
 </script>
 
@@ -33,8 +23,8 @@
 <li id="menu_checklist"><a class="bring" id="whattobring.html" href="">What to Bring</a></li>
 <li id="menu_enrol"><a class="onlineEnrolment" href="" id="enrolonline.html">Enrol Online</a></li>
 <li id="menu_freshers"><a class="freshers" href="" id="freshers.html">Fresher's Week</a></li>
-<!--<li id="menu_training"><a class="training" id="training.html" href="">Training</a></li>-->
-<li id="menu_ssl"><a class="ssl" href="" id="ssl.html">SSL</a></li>
+<li id="menu_training"><a class="training" id="training.html" href="">Training</a></li>
+<li id="menu_ssl"><a class="ssl" href="" id="ssl.html">Survive Student Life</a></li>
 <li id="menu_learning"><a class="learning" id="learning.html" href="">Learning at Marjon</a></li>
 <li id="menu_socialNetworks"><a class="network" id="socialnetworks.html" href="">Social Networks</a></li>
 <li id="menu_mobileapp"><a class="app" href="" id="mobileapp.html">Mobile App</a></li>
