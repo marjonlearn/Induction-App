@@ -68,7 +68,15 @@
 							});
 						});
 						});						
-					});								
+					});		
+					
+					function link() {
+						window.open("http://www.marjon.ac.uk/students/induction/", "_system", "location=yes")
+					}
+					
+					function link2() {
+						window.open("http://www.marjon.ac.uk/students/induction/informationbooklet/Induction%20Booklet%202013-14%20Combined.pdf", "_system", "location=yes")
+					}
    				 </script>
 				 <img id="landingLogo" src="images/landingLogo.png" alt="University of St Mark &amp; St John - Induction App" />
 				 <div class="contentContainer">                 
@@ -82,6 +90,11 @@
 						<div class="ui-block-b"><div class="ui-bar ui-bar-e"><img id="menuArrow" src="images/arrow.png" alt="The quick links panel will slide out." /></div></div>
 						<div class="ui-block-c"><div class="ui-bar ui-bar-e"><img id="menuShow" src="images/menuReveal.jpg" alt="Quick links will now be displayed ready to use." /></div></div>
 					</div><!-- /grid-b -->
+                    <br/>
+                    <h3>Welcome Booklet Now Available!</h3>
+                    <p>Although we can't guarantee how legible it might be on your mobile device, you can access a PDF version of the Welcome Booklet by clicking the button below!</p> 
+                    <a onClick="link2()" data-role="button" target="_blank" title="Welcome (Induction) Booklet">Welcome Booklet</a>
+                    <p><small><strong>Note: </strong>The welcome booklet, and other important information can be found on the <a onclick="link()" target="_blank" title="Induction Website">Marjon Induction website</a>.</small></p>
 				</div>
 			</div><!-- /content -->
 			

@@ -44,13 +44,22 @@
 						$("#timetable #menuPanel").panel("open");					
 					});	
 					});	
-					});				
+					});		
+					
+					function link() {
+						window.open("http://www.marjon.ac.uk/students/induction/", "_system", "location=yes")
+					}
+					
+					function link2() {
+						window.open("http://www.marjon.ac.uk/students/induction/informationbooklet/Induction%20Booklet%202013-14%20Combined.pdf", "_system", "location=yes")
+					}
 				 </script>
 			 	<div class="contentContainer">
-					<p id="top">This section of the app will provide you with an overview of key events taking place throughout Induction Week.</p>
-					<p>A comprehensive timetable for your course/programme will be published on the Marjon website closer to September so when you arrive you will know exactly where to go:</p>
-					<a href="http://www.marjon.ac.uk/students/induction/" data-role="button" target="_blank" title="Marjon website Induction pages (will open in a new web page)">Induction Website</a> 
-                    <p><small><strong>Note:</strong> We'll post more information here as it becomes available over the summer, so keep checking back.</small></p>
+					<p id="top">A comprehensive timetable for your course/programme will be published on the Marjon website closer to September, so when you arrive you will know exactly where to go.</p>
+                    <p>To see if your timetable is available, or to access the detailed Induction Booklet (important read!) please see the official Marjon website.</p>
+					<a onClick="link()" data-role="button" target="_blank" title="Marjon website Induction pages (will open in a new web page)">Induction Website</a>
+                    <p>Although we can't guarantee how legible it might be on your mobile device, you can access a PDF version of the Welcome Booklet by clicking the button below!</p> 
+                    <a onClick="link2()" data-role="button" target="_blank" title="Welcome (Induction) Booklet">Welcome Booklet</a>
 				</div>
 				<br/>
 				<br/>
@@ -60,6 +69,9 @@
 				<br/>
 				<br/>
 				<br/>
+				<br/>
+				<br/>
+                <br/>
 				<br/>
 				<br/>
 			</div><!-- /content -->

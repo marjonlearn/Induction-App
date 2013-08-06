@@ -814,6 +814,11 @@ img#helpLogo {
 
 /* Fresher Page */
 
+#freshersEvents li{
+	font-weight:normal;
+}
+
+
 img.bioImg {
 	margin-right: 10px;
 	padding: 0;
